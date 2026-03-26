@@ -1,0 +1,15 @@
+/* Website-specific overrides — match slide teal (#107895) branding */
+
+:root {
+  --bs-primary: #107895;
+  --bs-link-color: #0C6480;
+  --bs-link-hover-color: #107895;
+}
+
+a {
+  color: var(--bs-link-color);
+}
+
+a:hover {
+  color: var(--bs-link-hover-color);
+}

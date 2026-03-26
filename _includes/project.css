@@ -1,0 +1,152 @@
+/* ==========================================================================
+ * Project-specific CSS — IQB Workshop
+ * --------------------------------------------------------------------------
+ * Brand tokens and project overrides. Loaded AFTER custom.css (the global
+ * RevealJS CSS).
+ *
+ * The global file defines --accent with a fallback. This file overrides it
+ * and adds project-specific tokens.
+ * ========================================================================== */
+
+:root {
+  /* Brand tokens (scientific data palette — see R/tokens.R) */
+  --accent:          #107895;
+  --iqb-paper:       #FAFBFC;
+  --iqb-ink:         #1B2B3A;
+  --iqb-muted:       #506070;
+  --iqb-axis:        #8A9AAA;
+  --iqb-accent:      var(--accent);
+  --iqb-accent-light:#4D9DBB;
+  --iqb-accent-soft: #D4EBF5;
+  --iqb-accent-2:    #9a2515;
+  --iqb-link:        #0C6480;
+  --iqb-section-bg:  var(--accent);
+  --iqb-section-fg:  #ffffff;
+}
+
+.reveal blockquote {
+  font-weight: 600;
+}
+
+.label-stack {
+  height: 100%;
+}
+
+.dgp-overlay {
+  background: rgba(250, 251, 252, 0.92);
+  border-radius: 8px;
+  padding: 0.5em 0.8em;
+  font-size: 0.7em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dgp-overlay pre {
+  margin: 0;
+}
+
+.dgp-overlay code {
+  font-size: 1em;
+}
+
+/* Markdown tables on .center slides — shrink-wrap and space columns */
+.reveal section.center table {
+  margin-left: auto;
+  margin-right: auto;
+  width: auto !important;
+}
+
+.reveal section.center table td,
+.reveal section.center table th {
+  padding: 0.15em 0.7em;
+}
+
+/* SCM definition box — centered box with accent border */
+.reveal .scm-box {
+  border: 2px solid var(--accent);
+  border-radius: 6px;
+  padding: 0.6em 1.2em;
+  margin-top: 0.4em;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .scm-box table {
+  font-size: 0.95em;
+  line-height: 1.7;
+  border: none !important;
+  margin: 0;
+  white-space: nowrap;
+  width: auto !important;    /* override Pandoc colgroup percentage widths */
+}
+
+.reveal .scm-box colgroup {
+  display: none;             /* remove Pandoc's <col style="width: %"> entirely */
+}
+
+.reveal .scm-box table td,
+.reveal .scm-box table th,
+.reveal .scm-box table tr {
+  border: none !important;
+  padding: 0.1em 0.5em;
+}
+
+.reveal .scm-box table thead {
+  display: none;
+}
+
+/* Theory table — literature overview with clean typography
+ * Usage:  ::: {.theory-table}
+ *         | **Variable** | Description (Author, Year) |
+ *         |---|---|
+ *         | ... | ... |
+ *         :::
+ */
+.reveal .theory-table {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.6em;
+}
+
+.reveal .theory-table colgroup {
+  display: none;
+}
+
+.reveal .theory-table table {
+  width: auto !important;
+  border: none !important;
+  border-collapse: collapse;
+  font-size: 0.72em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.5;
+}
+
+.reveal .theory-table table thead {
+  display: none;
+}
+
+.reveal .theory-table table tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+.reveal .theory-table table tr:last-child {
+  border-bottom: none !important;
+}
+
+.reveal .theory-table table td {
+  border: none !important;
+  padding: 0.35em 0.8em;
+  vertical-align: baseline;
+}
+
+/* First column: variable name — tighter, accent-tinted */
+.reveal .theory-table table td:first-child {
+  white-space: nowrap;
+  color: var(--accent);
+  padding-right: 1.2em;
+}
+
+/* Second column: description — relaxed width */
+.reveal .theory-table table td:last-child {
+  color: var(--iqb-ink);
+}

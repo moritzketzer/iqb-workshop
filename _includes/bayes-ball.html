@@ -1,0 +1,645 @@
+<style>
+/* === Bayes Ball Widget ===================================================
+ * Interactive d-separation visualization for RevealJS slides.
+ * Circle nodes, thin black strokes, solid arrowheads, teal (#107895) text
+ * in Source Sans 3. One widget per slide — sized to fill the slide.
+ * ======================================================================= */
+
+/* ── Subsection title slides ─────────────────────────────────────────── */
+/* Centered h2 on dark background (structure labels: Fork, Chain, …).    */
+/* Display-level sizing (2× body) to match h1 section slides.            */
+.reveal section.center.has-dark-background h2 {
+  font-size: 2em;
+}
+
+.bayes-ball-widget {
+  --bb-accent: #107895;
+  --bb-stroke: #222;
+  --bb-observed: #D55E00;
+  --bb-open: #009E73;
+  --bb-blocked: #D55E00;
+  --bb-ball: #E69F00;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8em;
+  user-select: none;
+  height: 100%;
+}
+
+.bayes-ball-widget svg {
+  display: block;
+  flex: 1 1 auto;
+  max-height: 55vh;
+}
+
+/* ── Edges ─────────────────────────────────────────────────────────────── */
+.bayes-ball-widget .bb-edge {
+  stroke: var(--bb-stroke);
+  stroke-width: 2;
+  stroke-linecap: butt;
+  fill: none;
+  transition: stroke 0.3s, stroke-width 0.3s, stroke-dasharray 0.3s;
+}
+
+.bayes-ball-widget .bb-edge.path-open {
+  stroke: var(--bb-open);
+  stroke-width: 2.8;
+}
+
+.bayes-ball-widget .bb-edge.path-blocked {
+  stroke: var(--bb-blocked);
+  stroke-width: 2.8;
+  stroke-dasharray: 8 4;
+}
+
+/* ── Nodes (circles) ───────────────────────────────────────────────────── */
+.bayes-ball-widget .bb-node {
+  fill: white;
+  stroke: var(--bb-stroke);
+  stroke-width: 2.4;
+  cursor: pointer;
+  transition: fill 0.25s, stroke 0.25s;
+}
+
+.bayes-ball-widget .bb-node:hover {
+  stroke-width: 2.8;
+  filter: drop-shadow(0 0 4px rgba(16, 120, 149, 0.3));
+}
+
+.bayes-ball-widget .bb-node.observed {
+  fill: var(--bb-observed);
+  stroke: var(--bb-observed);
+}
+
+
+/* ── Labels ────────────────────────────────────────────────────────────── */
+.bayes-ball-widget .bb-node-label {
+  font-family: 'Source Sans 3', 'Source Sans Pro', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 34px;
+  text-anchor: middle;
+  dominant-baseline: central;
+  pointer-events: none;
+  fill: var(--bb-accent);
+  transition: fill 0.25s;
+}
+
+.bayes-ball-widget .bb-node.observed ~ .bb-node-label {
+  fill: white;
+}
+
+/* ── Ball ──────────────────────────────────────────────────────────────── */
+.bayes-ball-widget .bb-ball {
+  fill: var(--bb-ball);
+  stroke: #c47e00;
+  stroke-width: 2;
+  opacity: 0;
+}
+
+/* ── Controls row ──────────────────────────────────────────────────────── */
+.bayes-ball-widget .bb-controls {
+  display: flex;
+  flex-direction: row;
+  gap: 0.8em;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.bayes-ball-widget .bb-btn {
+  font-family: 'Source Sans 3', 'Source Sans Pro', system-ui, sans-serif;
+  font-size: 0.85em;
+  font-weight: 600;
+  padding: 0.3em 1.2em;
+  border: 2px solid var(--bb-accent);
+  border-radius: 5px;
+  background: white;
+  color: var(--bb-accent);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+
+.bayes-ball-widget .bb-btn:hover {
+  background: var(--bb-accent);
+  color: white;
+}
+
+.bayes-ball-widget .bb-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* ── Result badge ──────────────────────────────────────────────────────── */
+.bayes-ball-widget .bb-result {
+  font-family: 'Source Sans 3', 'Source Sans Pro', system-ui, sans-serif;
+  font-size: 0.9em;
+  font-weight: 700;
+  padding: 0.25em 1em;
+  border-radius: 5px;
+  white-space: nowrap;
+  min-height: 1.6em;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.bayes-ball-widget .bb-result.show { opacity: 1; }
+
+.bayes-ball-widget .bb-result.d-connected {
+  color: var(--bb-open);
+  border: 2px solid var(--bb-open);
+}
+
+.bayes-ball-widget .bb-result.d-separated {
+  color: var(--bb-blocked);
+  border: 2px solid var(--bb-blocked);
+}
+
+</style>
+
+<script>
+// === Bayes Ball Widget =====================================================
+// Interactive d-separation tool for RevealJS slides.
+// Circle nodes with teal labels, solid arrowheads, click-to-condition,
+// animated ball traversal.
+//
+// Node data: { "id": "Z", "label": "Z", "x": 300, "y": 80 }
+// Edge data: [["Z","X"], ["Z","Y"]]
+// =========================================================================
+
+(function () {
+  "use strict";
+
+  var ANIM_DURATION = 350;
+  var NODE_R = 46;
+  var SVG_PAD = 20;
+  var ARROW_OFFSET = 6;
+
+  // ── Bayes Ball algorithm ────────────────────────────────────────────────
+  function bayesBall(nodes, edges, observed, sourceId, targetId) {
+    var children = {}, parents = {};
+    nodes.forEach(function (n) { children[n.id] = []; parents[n.id] = []; });
+    edges.forEach(function (e) {
+      children[e[0]].push(e[1]);
+      parents[e[1]].push(e[0]);
+    });
+
+    var observedSet = new Set(observed);
+    var hasObservedDescendant = new Set();
+    function markAncestors(nodeId) {
+      parents[nodeId].forEach(function (p) {
+        if (!hasObservedDescendant.has(p)) {
+          hasObservedDescendant.add(p);
+          markAncestors(p);
+        }
+      });
+    }
+    observed.forEach(function (o) {
+      hasObservedDescendant.add(o);
+      markAncestors(o);
+    });
+
+    var queue = [[sourceId, "up"], [sourceId, "down"]];
+    var visited = new Set();
+    var edgeTraversed = {};
+
+    while (queue.length > 0) {
+      var item = queue.shift();
+      var nodeId = item[0], direction = item[1];
+      var key = nodeId + "-" + direction;
+      if (visited.has(key)) continue;
+      visited.add(key);
+      var isObs = observedSet.has(nodeId);
+
+      if (!isObs && direction === "up") {
+        parents[nodeId].forEach(function (p) {
+          edgeTraversed[nodeId + "->" + p] = true;
+          queue.push([p, "up"]);
+        });
+        children[nodeId].forEach(function (c) {
+          edgeTraversed[nodeId + "->" + c] = true;
+          queue.push([c, "down"]);
+        });
+      }
+      if (!isObs && direction === "down") {
+        children[nodeId].forEach(function (c) {
+          edgeTraversed[nodeId + "->" + c] = true;
+          queue.push([c, "down"]);
+        });
+      }
+      if (isObs && direction === "up") {
+        // Observed, ball from child → pass to parents (explaining away)
+        parents[nodeId].forEach(function (p) {
+          edgeTraversed[nodeId + "->" + p] = true;
+          queue.push([p, "up"]);
+        });
+      }
+      if (isObs && direction === "down") {
+        // Observed, ball from parent → bounce UP to parents only
+        // This activates colliders: Z observed in X→Z←Y lets ball
+        // reach Y via Z's parents. Does NOT pass to children, so
+        // chains/forks with observed nodes stay correctly blocked.
+        parents[nodeId].forEach(function (p) {
+          edgeTraversed[nodeId + "->" + p] = true;
+          queue.push([p, "up"]);
+        });
+      }
+    }
+
+    var reachable = visited.has(targetId + "-up") || visited.has(targetId + "-down");
+    var edgeStatus = {};
+    edges.forEach(function (e) {
+      var fwd = e[0] + "->" + e[1], bwd = e[1] + "->" + e[0];
+      edgeStatus[fwd] = (edgeTraversed[fwd] || edgeTraversed[bwd]) ? "open" : "blocked";
+    });
+    return { reachable: reachable, visited: visited, edgeStatus: edgeStatus };
+  }
+
+  // ── Circle edge point ──────────────────────────────────────────────────
+  function circleEdgePoint(cx, cy, r, tx, ty) {
+    var dx = tx - cx, dy = ty - cy;
+    var dist = Math.sqrt(dx * dx + dy * dy);
+    if (dist === 0) return { x: cx, y: cy };
+    return { x: cx + (dx / dist) * r, y: cy + (dy / dist) * r };
+  }
+
+  // ── SVG creation ────────────────────────────────────────────────────────
+  function createWidget(widget) {
+    var nodesData = JSON.parse(widget.dataset.nodes);
+    var edgesData = JSON.parse(widget.dataset.edges);
+    var sourceId = widget.dataset.source;
+    var targetId = widget.dataset.target;
+
+    nodesData.forEach(function (n) {
+      n.r = n.r || NODE_R;
+      n.label = n.label || n.id;
+    });
+
+    // SVG bounds
+    var minX = Infinity, minY = Infinity, maxX = 0, maxY = 0;
+    nodesData.forEach(function (n) {
+      if (n.x - n.r - SVG_PAD < minX) minX = n.x - n.r - SVG_PAD;
+      if (n.y - n.r - SVG_PAD < minY) minY = n.y - n.r - SVG_PAD;
+      if (n.x + n.r + SVG_PAD > maxX) maxX = n.x + n.r + SVG_PAD;
+      if (n.y + n.r + SVG_PAD > maxY) maxY = n.y + n.r + SVG_PAD;
+    });
+    var svgW = maxX - minX, svgH = maxY - minY;
+
+    var ns = "http://www.w3.org/2000/svg";
+    var svg = document.createElementNS(ns, "svg");
+    svg.setAttribute("viewBox", minX + " " + minY + " " + svgW + " " + svgH);
+    svg.style.width = "100%";
+    svg.style.maxWidth = svgW + "px";
+
+    var uid = "bb-" + Math.random().toString(36).slice(2, 8);
+    var defs = document.createElementNS(ns, "defs");
+
+    function makeMarker(id, color) {
+      var m = document.createElementNS(ns, "marker");
+      m.setAttribute("id", id);
+      m.setAttribute("viewBox", "0 0 10 10");
+      m.setAttribute("refX", "7");
+      m.setAttribute("refY", "5");
+      m.setAttribute("markerWidth", "9");
+      m.setAttribute("markerHeight", "9");
+      m.setAttribute("orient", "auto-start-reverse");
+      var p = document.createElementNS(ns, "path");
+      p.setAttribute("d", "M 0 0 L 10 5 L 0 10 z");
+      p.setAttribute("fill", color);
+      m.appendChild(p);
+      return m;
+    }
+    defs.appendChild(makeMarker(uid, "#222"));
+    defs.appendChild(makeMarker(uid + "-open", "#009E73"));
+    defs.appendChild(makeMarker(uid + "-blocked", "#D55E00"));
+    svg.appendChild(defs);
+
+    var nodeMap = {};
+    nodesData.forEach(function (n) { nodeMap[n.id] = n; });
+
+    // Draw edges
+    var edgeElements = {};
+    edgesData.forEach(function (e) {
+      var from = nodeMap[e[0]], to = nodeMap[e[1]];
+      var p1 = circleEdgePoint(from.x, from.y, from.r, to.x, to.y);
+      var p2 = circleEdgePoint(to.x, to.y, to.r, from.x, from.y);
+      var dx = p2.x - p1.x, dy = p2.y - p1.y;
+      var dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist > 0) {
+        p2.x -= (dx / dist) * ARROW_OFFSET;
+        p2.y -= (dy / dist) * ARROW_OFFSET;
+      }
+
+      var line = document.createElementNS(ns, "line");
+      line.setAttribute("x1", p1.x);
+      line.setAttribute("y1", p1.y);
+      line.setAttribute("x2", p2.x);
+      line.setAttribute("y2", p2.y);
+      line.classList.add("bb-edge");
+      line.setAttribute("marker-end", "url(#" + uid + ")");
+      line.dataset.uid = uid;
+      svg.appendChild(line);
+      edgeElements[e[0] + "->" + e[1]] = line;
+    });
+
+    // Draw nodes
+    var nodeElements = {};
+    nodesData.forEach(function (n) {
+      var g = document.createElementNS(ns, "g");
+
+      var circle = document.createElementNS(ns, "circle");
+      circle.setAttribute("cx", n.x);
+      circle.setAttribute("cy", n.y);
+      circle.setAttribute("r", n.r);
+      circle.classList.add("bb-node");
+      g.appendChild(circle);
+
+      var label = document.createElementNS(ns, "text");
+      label.setAttribute("x", n.x);
+      label.setAttribute("y", n.y);
+      label.classList.add("bb-node-label");
+      label.textContent = n.label;
+      g.appendChild(label);
+
+      svg.appendChild(g);
+      nodeElements[n.id] = circle;
+    });
+
+    // Ball
+    var ball = document.createElementNS(ns, "circle");
+    ball.classList.add("bb-ball");
+    ball.setAttribute("r", "12");
+    ball.setAttribute("cx", nodeMap[sourceId].x);
+    ball.setAttribute("cy", nodeMap[sourceId].y);
+    svg.appendChild(ball);
+
+    // Controls
+    var controls = document.createElement("div");
+    controls.className = "bb-controls";
+
+    var runBtn = document.createElement("button");
+    runBtn.className = "bb-btn";
+    runBtn.textContent = "Run";
+
+    var resetBtn = document.createElement("button");
+    resetBtn.className = "bb-btn";
+    resetBtn.textContent = "Reset";
+
+    var result = document.createElement("span");
+    result.className = "bb-result";
+
+    controls.appendChild(runBtn);
+    controls.appendChild(resetBtn);
+
+    widget.appendChild(svg);
+    widget.appendChild(controls);
+    widget.appendChild(result);
+
+    // State
+    var observed = new Set();
+    var animating = false;
+
+    nodesData.forEach(function (n) {
+      nodeElements[n.id].addEventListener("click", function () {
+        if (animating) return;
+        clearResult();
+        if (observed.has(n.id)) {
+          observed.delete(n.id);
+          nodeElements[n.id].classList.remove("observed");
+        } else {
+          observed.add(n.id);
+          nodeElements[n.id].classList.add("observed");
+        }
+      });
+    });
+
+    function clearResult() {
+      result.className = "bb-result";
+      result.textContent = "";
+      Object.keys(edgeElements).forEach(function (k) {
+        var el = edgeElements[k];
+        el.classList.remove("path-open", "path-blocked");
+        el.setAttribute("marker-end", "url(#" + uid + ")");
+      });
+      ball.style.opacity = "0";
+    }
+
+    resetBtn.addEventListener("click", function () {
+      if (animating) return;
+      observed.clear();
+      nodesData.forEach(function (n) {
+        nodeElements[n.id].classList.remove("observed");
+      });
+      clearResult();
+    });
+
+    runBtn.addEventListener("click", function () {
+      if (animating) return;
+      animating = true;
+      runBtn.disabled = true;
+      clearResult();
+
+      var allPaths = enumeratePaths(nodesData, edgesData, sourceId, targetId);
+      var openPaths = [];
+      var blockedPaths = [];
+      allPaths.forEach(function (path) {
+        var result = isPathOpen(path, edgesData, Array.from(observed), nodesData);
+        if (result.open) {
+          openPaths.push(path);
+        } else {
+          // Truncate to stop at the blocking node
+          blockedPaths.push(path.slice(0, result.blockIdx + 1));
+        }
+      });
+
+      var isConnected = openPaths.length > 0;
+      var pathsToAnimate = isConnected ? openPaths : [blockedPaths[0] || [sourceId]];
+
+      animatePathSequence(ball, pathsToAnimate, nodeMap, edgeElements, edgesData, uid, isConnected, 0, function () {
+        if (isConnected) {
+          result.textContent = openPaths.length + " open path" + (openPaths.length > 1 ? "s" : "") + " — d-connected";
+          result.className = "bb-result show d-connected";
+        } else {
+          result.textContent = "all paths blocked — d-separated";
+          result.className = "bb-result show d-separated";
+        }
+        animating = false;
+        runBtn.disabled = false;
+      });
+    });
+  }
+
+  // ── Path enumeration ────────────────────────────────────────────────────
+
+  // Find ALL simple paths from source to target in the undirected skeleton.
+  function enumeratePaths(nodes, edges, sourceId, targetId) {
+    var adj = {};
+    nodes.forEach(function (n) { adj[n.id] = []; });
+    edges.forEach(function (e) {
+      adj[e[0]].push(e[1]);
+      adj[e[1]].push(e[0]);
+    });
+
+    var results = [];
+    var visited = new Set([sourceId]);
+
+    function dfs(current, path) {
+      if (current === targetId) { results.push(path.slice()); return; }
+      adj[current].forEach(function (nb) {
+        if (!visited.has(nb)) {
+          visited.add(nb);
+          path.push(nb);
+          dfs(nb, path);
+          path.pop();
+          visited.delete(nb);
+        }
+      });
+    }
+
+    dfs(sourceId, [sourceId]);
+    // Sort by length (shortest first)
+    results.sort(function (a, b) { return a.length - b.length; });
+    return results;
+  }
+
+  // Check whether a specific path is d-connected given observed set.
+  // A path is blocked if ANY intermediate node blocks it:
+  //   - Non-collider (on this path) that IS observed → blocks
+  //   - Collider (on this path) where NEITHER it NOR any descendant is observed → blocks
+  function isPathOpen(path, edges, observed, nodes) {
+    if (path.length <= 2) return { open: true, blockIdx: null }; // direct edge, always open
+
+    var observedSet = new Set(observed);
+
+    // Build directed children map for descendant lookup
+    var childrenMap = {};
+    nodes.forEach(function (n) { childrenMap[n.id] = []; });
+    edges.forEach(function (e) { childrenMap[e[0]].push(e[1]); });
+
+    // Build directed parent set for edge direction lookup
+    var parentSet = {};
+    nodes.forEach(function (n) { parentSet[n.id] = new Set(); });
+    edges.forEach(function (e) { parentSet[e[1]].add(e[0]); });
+
+    function hasObservedDescendant(nodeId) {
+      var stack = [nodeId];
+      var seen = new Set();
+      while (stack.length > 0) {
+        var n = stack.pop();
+        if (seen.has(n)) continue;
+        seen.add(n);
+        if (observedSet.has(n)) return true;
+        childrenMap[n].forEach(function (c) { stack.push(c); });
+      }
+      return false;
+    }
+
+    // Check each intermediate node (not first or last)
+    for (var i = 1; i < path.length - 1; i++) {
+      var prev = path[i - 1];
+      var node = path[i];
+      var next = path[i + 1];
+
+      // Is this node a collider on this path?
+      // Collider: both edges point INTO the node (prev→node←next)
+      var prevPointsIn = parentSet[node].has(prev); // prev is parent of node
+      var nextPointsIn = parentSet[node].has(next); // next is parent of node
+      var isCollider = prevPointsIn && nextPointsIn;
+
+      if (isCollider) {
+        // Collider: path open only if node or a descendant is observed
+        if (!hasObservedDescendant(node)) return { open: false, blockIdx: i };
+      } else {
+        // Non-collider: path open only if node is NOT observed
+        if (observedSet.has(node)) return { open: false, blockIdx: i };
+      }
+    }
+    return { open: true, blockIdx: null };
+  }
+
+  // ── Animation ──────────────────────────────────────────────────────────
+
+  // Highlight edges along a path
+  function highlightPathEdges(path, edgeElements, edges, uid, isOpen) {
+    var cls = isOpen ? "path-open" : "path-blocked";
+    var markerSuffix = isOpen ? "-open" : "-blocked";
+
+    for (var i = 0; i < path.length - 1; i++) {
+      var a = path[i], b = path[i + 1];
+      // Find the directed edge key (could be a→b or b→a)
+      var fwd = a + "->" + b, bwd = b + "->" + a;
+      var key = edgeElements[fwd] ? fwd : bwd;
+      if (edgeElements[key]) {
+        edgeElements[key].classList.add(cls);
+        edgeElements[key].setAttribute("marker-end", "url(#" + uid + markerSuffix + ")");
+      }
+    }
+  }
+
+  // Animate ball along a single path, then call done
+  function animateBall(ball, hops, nodeMap, idx, done) {
+    if (idx >= hops.length) { done(); return; }
+    var node = nodeMap[hops[idx]];
+    ball.style.opacity = "1";
+    ball.style.transition = "cx " + ANIM_DURATION + "ms ease-in-out, cy " + ANIM_DURATION + "ms ease-in-out";
+    ball.setAttribute("cx", node.x);
+    ball.setAttribute("cy", node.y);
+    setTimeout(function () { animateBall(ball, hops, nodeMap, idx + 1, done); }, ANIM_DURATION);
+  }
+
+  // Animate multiple paths sequentially — one ball per path
+  function animatePathSequence(ball, paths, nodeMap, edgeElements, edges, uid, isOpen, pathIdx, done) {
+    if (pathIdx >= paths.length) { done(); return; }
+
+    var path = paths[pathIdx];
+    var isLastPath = (pathIdx === paths.length - 1);
+
+    // Reset ball to source position instantly
+    ball.style.transition = "none";
+    ball.setAttribute("cx", nodeMap[path[0]].x);
+    ball.setAttribute("cy", nodeMap[path[0]].y);
+    ball.style.opacity = "1";
+
+    // Small delay to allow transition reset
+    setTimeout(function () {
+      animateBall(ball, path, nodeMap, 0, function () {
+        // After ball reaches end, highlight the path edges
+        highlightPathEdges(path, edgeElements, edges, uid, isOpen);
+
+        if (isLastPath) {
+          // Last path: ball stays visible, no fade
+          done();
+        } else {
+          // Linger 500ms at stop position, then fade out, then next path
+          setTimeout(function () {
+            ball.style.transition = "opacity 200ms ease-out";
+            ball.style.opacity = "0";
+            setTimeout(function () {
+              animatePathSequence(ball, paths, nodeMap, edgeElements, edges, uid, isOpen, pathIdx + 1, done);
+            }, 200);
+          }, 500);
+        }
+      });
+    }, 50);
+  }
+
+  // ── Init ────────────────────────────────────────────────────────────────
+  function initAll() {
+    document.querySelectorAll(".bayes-ball-widget").forEach(function (w) {
+      if (!w.dataset.bbInit) {
+        w.dataset.bbInit = "true";
+        createWidget(w);
+      }
+    });
+  }
+
+  if (typeof Reveal !== "undefined") {
+    if (Reveal.isReady()) { initAll(); } else { Reveal.on("ready", initAll); }
+    Reveal.on("slidechanged", initAll);
+  } else {
+    document.addEventListener("DOMContentLoaded", initAll);
+  }
+})();
+</script>

@@ -1,0 +1,99 @@
+<script>
+// Per-slide citation overlays pinned to viewport corners.
+//
+// Architecture:
+// - The .citation-lower-left / .citation-lower-right divs inside each slide
+//   are hidden (display:none). They contain Pandoc-rendered @citation markup.
+// - On slide change, this script extracts cite keys + text from those divs
+//   and builds NEW elements in position:fixed overlays appended to .reveal
+//   (outside the .slides CSS-transform context).
+// - A CSS-only tooltip (.cite-tooltip) shows the full bibliography entry on
+//   hover, pulling content from Quarto's #ref-<key> elements.
+
+function setupCitationOverlay() {
+  function cleanWebCitation(text) {
+    text = text.replace(/\s*\(n\.d\.\)/g, "");
+    text = text.replace(/\s*n\.d\.\s*/g, " ");
+    text = text.replace(/\s*Accessed\s+\w+\s+\d{1,2},\s+\d{4}\.\s*/g, " ");
+    text = text.replace(/\(\s*\)/g, "");
+    text = text.replace(/\s{2,}/g, " ");
+    return text.trim();
+  }
+
+  // Create one overlay div per position and attach to .reveal
+  function makeOverlay(id) {
+    var el = document.createElement("div");
+    el.id = id;
+    document.querySelector(".reveal").appendChild(el);
+    return el;
+  }
+
+  var overlays = {
+    left:  makeOverlay("citation-lower-left-overlay"),
+    right: makeOverlay("citation-lower-right-overlay"),
+  };
+
+  function updateOverlay(overlay, divClass) {
+    overlay.innerHTML = "";
+    overlay.style.display = "none";
+
+    var slide = Reveal.getCurrentSlide();
+    if (!slide) return;
+
+    var cite = slide.querySelector("." + divClass);
+    if (!cite) return;
+
+    var citeSpan = cite.querySelector("[data-cites]");
+    var citeKeys = citeSpan ? citeSpan.dataset.cites.split(" ") : [];
+    var isWebsite = cite.classList.contains("website");
+
+    var citeText = document.createElement("span");
+    citeText.className = "cite-text";
+    var visibleText = cite.textContent.trim();
+    if (isWebsite) { visibleText = cleanWebCitation(visibleText); }
+    citeText.textContent = visibleText;
+    overlay.appendChild(citeText);
+
+    if (citeKeys.length > 0) {
+      var tooltip = document.createElement("div");
+      tooltip.className = "cite-tooltip";
+      var hasContent = false;
+
+      citeKeys.forEach(function (key) {
+        var refEl = document.getElementById("ref-" + key);
+        if (refEl) {
+          var entry = document.createElement("div");
+          entry.className = "csl-entry";
+          var html = refEl.innerHTML;
+          if (isWebsite) { html = cleanWebCitation(html); }
+          entry.innerHTML = html;
+          tooltip.appendChild(entry);
+          hasContent = true;
+        }
+      });
+
+      if (hasContent) { overlay.appendChild(tooltip); }
+    }
+
+    overlay.style.display = "block";
+  }
+
+  function updateAll() {
+    updateOverlay(overlays.left,  "citation-lower-left");
+    updateOverlay(overlays.right, "citation-lower-right");
+  }
+
+  Reveal.on("slidechanged", updateAll);
+  updateAll();
+}
+
+if (typeof Reveal !== "undefined") {
+  if (Reveal.isReady()) {
+    setupCitationOverlay();
+  } else {
+    Reveal.on("ready", setupCitationOverlay);
+  }
+} else {
+  document.addEventListener("DOMContentLoaded", setupCitationOverlay);
+}
+</script>
