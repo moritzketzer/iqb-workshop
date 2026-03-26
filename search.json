@@ -1,0 +1,1164 @@
+[
+  {
+    "objectID": "further-reading.html",
+    "href": "further-reading.html",
+    "title": "Further Reading",
+    "section": "",
+    "text": "A curated reading list organized by topic. This list will grow as the workshop preparation continues — check back for updates."
+  },
+  {
+    "objectID": "further-reading.html#foundations-of-causal-inference",
+    "href": "further-reading.html#foundations-of-causal-inference",
+    "title": "Further Reading",
+    "section": "Foundations of Causal Inference",
+    "text": "Foundations of Causal Inference\n\nTextbooks & Overviews\n\nKline, R. B. (2023). Principles and Practice of Structural Equation Modeling (5th ed.). The Guilford Press. — Covers covariance-based SEM, Pearl’s nonparametric SEM, and composite SEM. Accessible introduction to causal reasoning from an SEM perspective.\n\n\n\nThe Interventionist Account of Causation\nThe philosophical foundations of the manipulationist/interventionist framework underlying graphical causal inference.\n\nWoodward, J. (2003). Making Things Happen: A Theory of Causal Explanation. Oxford University Press.\nWoodward, J. (2001/2022). Causation and manipulability. In The Stanford Encyclopedia of Philosophy. https://plato.stanford.edu/entries/causation-mani/\nReutlinger, A. (2012). Getting rid of interventions. Studies in History and Philosophy of Science Part C, 43(4), 787–795. https://doi.org/10.1016/j.shpsc.2012.05.006\n\n\n\nWhy Causal Thinking? — Advocacy & Motivation\n\nHernán, M. A. (2018). The C-word: Scientific euphemisms do not improve causal inference from observational data. American Journal of Public Health, 108(5), 616–619. https://doi.org/10.2105/AJPH.2018.304337\nAhern, J. (2018). Start with the “C-word,” follow the roadmap for causal inference. American Journal of Public Health, 108(5), 621. https://doi.org/10.2105/AJPH.2018.304358\nGrosz, M. P., Rohrer, J. M., & Thoemmes, F. (2020). The taboo against explicit causal inference in nonexperimental psychology. Perspectives on Psychological Science, 15(5), 1243–1255. https://doi.org/10.1177/1745691620921521\nRohrer, J. M. (2018). Thinking clearly about correlations and causation: Graphical causal models for observational data. Advances in Methods and Practices in Psychological Science, 1(1), 27–42. https://doi.org/10.1177/2515245917745629\nRohrer, J. M. (2024). Causal inference for psychologists who think that causal inference is not for them. Social and Personality Psychology Compass, 18(3), e12948. https://doi.org/10.1111/spc3.12948\n\n\n\nCase Study: Income and Happiness\nA contemporary example of how causal assumptions matter — even in high-profile adversarial collaborations published in PNAS.\n\nKillingsworth, M. A., Kahneman, D., & Mellers, B. (2023). Income and emotional well-being: A conflict resolved. Proceedings of the National Academy of Sciences, 120(10). https://doi.org/10.1073/pnas.2208661120\nRohrer, J. M. & Wenz, S. E. (2024). Inappropriate causal assumptions underlie Killingsworth, Kahneman, and Mellers’ conclusions. Proceedings of the National Academy of Sciences, 121(46). https://doi.org/10.1073/pnas.2313712121\nKillingsworth, M. A., Kahneman, D., & Mellers, B. (2024). Reply to Rohrer and Wenz and Arslan: The association between income and emotional well-being. Proceedings of the National Academy of Sciences, 121(46). https://doi.org/10.1073/pnas.2322160121"
+  },
+  {
+    "objectID": "further-reading.html#structural-causal-models-dags",
+    "href": "further-reading.html#structural-causal-models-dags",
+    "title": "Further Reading",
+    "section": "Structural Causal Models & DAGs",
+    "text": "Structural Causal Models & DAGs\n\nPearl, J. (2009). Causality: Models, Reasoning, and Inference (2nd ed.). Cambridge University Press.\nPearl, J., Glymour, M., & Jewell, N. P. (2016). Causal Inference in Statistics: A Primer. Wiley.\nElwert, F. (2013). Graphical causal models. In S. L. Morgan (Ed.), Handbook of Causal Analysis for Social Research (pp. 245–273). Springer. https://doi.org/10.1007/978-94-007-6094-3_13\nTextor, J., van der Zander, B., Gilthorpe, M. S., Liskiewicz, M., & Ellison, G. T. H. (2016). Robust causal inference using directed acyclic graphs: The R package dagitty. International Journal of Epidemiology, 45(6), 1887–1894. https://doi.org/10.1093/ije/dyw341\nPearl, J. (2009). Causal inference in statistics: An overview. Statistics Surveys, 3, 96–146. https://doi.org/10.1214/09-SS057"
+  },
+  {
+    "objectID": "further-reading.html#paradoxes",
+    "href": "further-reading.html#paradoxes",
+    "title": "Further Reading",
+    "section": "Paradoxes",
+    "text": "Paradoxes\nSimpson’s paradox and Lord’s paradox both arise when conditioning on a variable reverses or changes an association. Tu et al. (2008) show they are manifestations of the same underlying phenomenon — the reversal paradox. Understanding these paradoxes through the lens of causal graphs is central to the workshop.\n\nSimpson’s Paradox\n\nPearl, J. (2013). Understanding Simpson’s paradox. SSRN Electronic Journal. https://doi.org/10.2139/ssrn.2343788\nKievit, R. A., Frankenhuis, W. E., Waldorp, L. J., & Borsboom, D. (2013). Simpson’s paradox in psychological science: a practical guide. Frontiers in Psychology, 4, 513. https://www.frontiersin.org/articles/10.3389/fpsyg.2013.00513/full\nSprenger, J. & Weinberger, N. (2021). Simpson’s paradox. Stanford Encyclopedia of Philosophy. https://plato.stanford.edu/archives/spr2024/entries/paradox-simpson/\n\n\n\nLord’s Paradox & Change Scores\n\nTennant, P. W. G., Arnold, K. F., Ellison, G. T. H., & Gilthorpe, M. S. (2022). Analyses of ‘change scores’ do not estimate causal effects in observational data. International Journal of Epidemiology, 51(5), 1604–1615. https://academic.oup.com/ije/article-abstract/51/5/1604/6294759\nPopham, F. (2022). Definition yes, analysis no: a comment on ‘analyses of “change scores” do not estimate causal effects in observational data’. International Journal of Epidemiology, 51(5), 1691–1692. https://doi.org/10.1093/ije/dyab202\nTennant, P. W. G., Tomova, G. D., Murray, E. J., Arnold, K. F., Fox, M. P., & Gilthorpe, M. S. (2023). Lord’s ‘paradox’ explained: the 50-year warning on the use of ‘change scores’ in observational data. arXiv:2302.01822. http://arxiv.org/abs/2302.01822\n\n\n\nThe Reversal Paradox — Unifying Simpson’s and Lord’s\n\nTu, Y.-K., Gunnell, D., & Gilthorpe, M. S. (2008). Simpson’s paradox, Lord’s paradox, and suppression effects are the same phenomenon — the reversal paradox. Emerging Themes in Epidemiology, 5(1), 2. https://doi.org/10.1186/1742-7622-5-2"
+  },
+  {
+    "objectID": "further-reading.html#identification-adjustment",
+    "href": "further-reading.html#identification-adjustment",
+    "title": "Further Reading",
+    "section": "Identification & Adjustment",
+    "text": "Identification & Adjustment\n\nBackdoor Criterion & Covariate Selection\n\nCinelli, C., Forney, A., & Pearl, J. (2024). A crash course in good and bad controls. Sociological Methods & Research, 53(3), 1071–1104. https://doi.org/10.1177/00491241221099552\n\n\n\nThe Do-Calculus\n\nPearl, J. (1995). Causal diagrams for empirical research. Biometrika, 82(4), 669–688. https://doi.org/10.1093/biomet/82.4.669\nPearl, J. (2009). Causality: Models, Reasoning, and Inference (2nd ed.). Cambridge University Press.\nShpitser, I., & Pearl, J. (2006). Identification of joint interventional distributions in recursive semi-Markovian causal models. In Proceedings of the 21st National Conference on Artificial Intelligence (AAAI-06) (pp. 1219–1226). https://cdn.aaai.org/AAAI/2006/AAAI06-191.pdf"
+  },
+  {
+    "objectID": "further-reading.html#mediation-analysis",
+    "href": "further-reading.html#mediation-analysis",
+    "title": "Further Reading",
+    "section": "Mediation Analysis",
+    "text": "Mediation Analysis\nCausal approaches to mediation, direct and indirect effects, and the graphical perspective on mediation.\n\nCritiques of Traditional Mediation\n\nKline, R. B. (2015). The mediation myth. Basic and Applied Social Psychology, 37(4), 202–213. https://doi.org/10.1080/01973533.2015.1049349\nBullock, J. G., Green, D. P., & Ha, S. E. (2010). Yes, but what’s the mechanism? (Don’t expect an easy answer). Journal of Personality and Social Psychology, 98(4), 550–558. https://doi.org/10.1037/a0018933\n\n\n\nCausal Mediation Analysis\n\nPearl, J. (2001). Direct and indirect effects. In Proceedings of the 17th Conference on Uncertainty in Artificial Intelligence (pp. 411–420). Morgan Kaufmann. https://ftp.cs.ucla.edu/pub/stat_ser/R273-U.pdf\nImai, K., Keele, L., & Tingley, D. (2010). A general approach to causal mediation analysis. Psychological Methods, 15(4), 309–334. https://doi.org/10.1037/a0020761\nImai, K., Keele, L., & Yamamoto, T. (2010). Identification, inference and sensitivity analysis for causal mediation effects. Statistical Science, 25(1), 51–71. https://doi.org/10.1214/10-STS321\nVanderWeele, T. J. (2015). Explanation in Causal Inference: Methods for Mediation and Interaction. Oxford University Press.\nNguyen, T. Q., Schmid, I., & Stuart, E. A. (2021). Clarifying causal mediation analysis for the applied researcher: Defining effects based on what we want to learn. Psychological Methods, 26(2), 255–271. https://doi.org/10.1037/met0000299\nFritz, M. S. & MacKinnon, D. P. (2008). A graphical representation of the mediated effect. Behavior Research Methods, 40(1), 55–60. https://doi.org/10.3758/brm.40.1.55"
+  },
+  {
+    "objectID": "further-reading.html#causal-moderation-interaction",
+    "href": "further-reading.html#causal-moderation-interaction",
+    "title": "Further Reading",
+    "section": "Causal Moderation & Interaction",
+    "text": "Causal Moderation & Interaction\n\nBansak, K. (2021). Estimating causal moderation effects with randomized treatments and non-randomized moderators. Journal of the Royal Statistical Society: Series A, 184(1), 65–86. https://doi.org/10.1111/rssa.12614\nVanderWeele, T. J. (2009). On the distinction between interaction and effect modification. Epidemiology, 20(6), 863–871. https://doi.org/10.1097/EDE.0b013e3181ba333c\nVanderWeele, T. J., & Knol, M. J. (2014). A tutorial on interaction. Epidemiologic Methods, 3(1), 33–72. https://doi.org/10.1515/em-2013-0005"
+  },
+  {
+    "objectID": "further-reading.html#causal-graphs-for-missing-data",
+    "href": "further-reading.html#causal-graphs-for-missing-data",
+    "title": "Further Reading",
+    "section": "Causal Graphs for Missing Data",
+    "text": "Causal Graphs for Missing Data\nUsing DAGs to reason about missing data mechanisms and their implications for identification and estimation.\n\nDaniel, R. M., Kenward, M. G., Cousens, S. N., & De Stavola, B. L. (2012). Using causal diagrams to guide analysis in missing data problems. Statistical Methods in Medical Research, 21(3), 243–256. https://doi.org/10.1177/0962280210394469\nThoemmes, F., & Mohan, K. (2015). Graphical representation of missing data problems. Structural Equation Modeling: A Multidisciplinary Journal, 22(4), 631–642. https://doi.org/10.1080/10705511.2014.937378\nMohan, K., & Pearl, J. (2021). Graphical models for processing missing data. Journal of the American Statistical Association, 116(534), 1023–1037. https://doi.org/10.1080/01621459.2021.1874961\nMoreno-Betancur, M., Lee, K. J., Leacy, F. P., White, I. R., Simpson, J. A., & Carlin, J. B. (2018). Canonical causal diagrams to guide the treatment of missing data in epidemiologic studies. American Journal of Epidemiology, 187(12), 2705–2715. https://doi.org/10.1093/aje/kwy173"
+  },
+  {
+    "objectID": "further-reading.html#multilevel-clustered-data",
+    "href": "further-reading.html#multilevel-clustered-data",
+    "title": "Further Reading",
+    "section": "Multilevel & Clustered Data",
+    "text": "Multilevel & Clustered Data\n\nMcNeish, D., & Kelley, K. (2019). Fixed effects models versus mixed effects models for clustered data: Reviewing the approaches, disentangling the differences, and making recommendations. Psychological Methods, 24(1), 20–35. https://doi.org/10.1037/met0000182\nMcNeish, D. (2023). A practical guide to selecting and blending approaches for clustered data: Clustered errors, multilevel models, and fixed-effect models. Psychological Methods. https://doi.org/10.1037/met0000620\nHong, G., & Raudenbush, S. W. (2006). Evaluating kindergarten retention policy: A case study of causal inference for multilevel observational data. Journal of the American Statistical Association, 101(475), 901–910. https://doi.org/10.1198/016214506000000447\nHazlett, C., & Wainstein, L. (2022). Understanding, choosing, and unifying multilevel and fixed effect approaches. Political Analysis, 30(1), 46–65. https://doi.org/10.1017/pan.2020.41\nSobel, M. E. (2006). What do randomized studies of housing mobility demonstrate? Causal inference in the face of interference. Journal of the American Statistical Association, 101(476), 1398–1407. https://doi.org/10.1198/016214506000000636"
+  },
+  {
+    "objectID": "further-reading.html#longitudinal-panel-data",
+    "href": "further-reading.html#longitudinal-panel-data",
+    "title": "Further Reading",
+    "section": "Longitudinal & Panel Data",
+    "text": "Longitudinal & Panel Data\n\nDynamic Models & Cross-Lagged Panel Models\n\nHamaker, E. L., Kuiper, R. M., & Grasman, R. P. P. P. (2015). A critique of the cross-lagged panel model. Psychological Methods, 20(1), 102–116. https://doi.org/10.1037/a0038889\nCurran, P. J., Howard, A. L., Bainter, S. A., Lane, S. T., & McGinley, J. S. (2014). The separation of between-person and within-person components of individual change over time: A latent curve model with structured residuals. Journal of Consulting and Clinical Psychology, 82(5), 879–894. https://doi.org/10.1037/a0035297\nUsami, S., Murayama, K., & Hamaker, E. L. (2019). A unified framework of longitudinal models to examine reciprocal relations. Psychological Methods, 24(5), 637–657. https://doi.org/10.1037/met0000210\nMund, M., & Nestler, S. (2019). Beyond the cross-lagged panel model: Next-generation statistical tools for analyzing interdependencies across the life course. Advances in Life Course Research, 41, 100249. https://doi.org/10.1016/j.alcr.2018.10.002\nMulder, J. D., & Hamaker, E. L. (2021). Three extensions of the random intercept cross-lagged panel model. Structural Equation Modeling: A Multidisciplinary Journal, 28(4), 638–648. https://doi.org/10.1080/10705511.2020.1784738\nRohrer, J. M., & Murayama, K. (2023). These are not the effects you are looking for: Causality and the within-/between-persons distinction in longitudinal data analysis. Advances in Methods and Practices in Psychological Science, 6(1). https://doi.org/10.1177/25152459221140842\nQuintana, R. (2021). Thinking within-persons: Using unit fixed-effects models to describe causal mechanisms. Methods in Psychology, 5, 100076. https://doi.org/10.1016/j.metip.2021.100076\nHelske, J., & Tikka, S. (2024). Estimating causal effects from panel data with dynamic multivariate panel models. Advances in Life Course Research, 60, 100617. https://doi.org/10.1016/j.alcr.2024.100617"
+  },
+  {
+    "objectID": "further-reading.html#causal-discovery-llms",
+    "href": "further-reading.html#causal-discovery-llms",
+    "title": "Further Reading",
+    "section": "Causal Discovery & LLMs",
+    "text": "Causal Discovery & LLMs\n\nKıcıman, E., Ness, R., Sharma, A., & Tan, C. (2024). Causal reasoning and large language models: Opening a new frontier for causality. Transactions on Machine Learning Research. https://arxiv.org/abs/2305.00050\nDarvariu, V.-A., Hailes, S., & Musolesi, M. (2024). Large language models are effective priors for causal graph discovery. arXiv:2405.13551. https://arxiv.org/abs/2405.13551\nSurvey: LLMs for causal discovery — current landscape and future directions (2025). arXiv:2402.11068. https://arxiv.org/abs/2402.11068"
+  },
+  {
+    "objectID": "further-reading.html#tools-software",
+    "href": "further-reading.html#tools-software",
+    "title": "Further Reading",
+    "section": "Tools & Software",
+    "text": "Tools & Software\n\nDAGitty — Browser-based tool for drawing and analyzing causal graphs\nBarrett, M., D’Agostino McGowan, L., & Gerke, T. (2024). Causal Inference in R. https://www.r-causal.org — Free online book; applied, code-focused companion to DAG-based causal inference.\nD’Agostino McGowan, L., Gerke, T., & Barrett, M. (2023). Causal inference is not just a statistics problem. Journal of Statistics and Data Science Education, 31(3), 291–300. https://doi.org/10.1080/26939169.2023.2276446 — Introduces the “causal quartet”: four datasets with identical associations but different causal structures.\nR packages from the r-causal project: ggdag (DAG visualization), quartets (causal quartet datasets), tipr (tipping-point sensitivity analysis), halfmoon (propensity score diagnostics)."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section",
+    "href": "day1-fundamentals.html#section",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "one sentence on who you are\n\nstudied psychology\nlast year phd in psych methods"
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-1",
+    "href": "day1-fundamentals.html#section-1",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "one or two sentences on the goal of the workshop\n\naccessible introduction to (graphical) causal inference\n\nset tone:\n\nlets be interactive\nno pressure\nwe go slow\nyou have time\nask all kinds of questions\neverybody benefits from every question\nthis is difficult material\n\ndont expect to understand everything\ngive yourself time\nif you are confused, it means you are paying attention\n\n\nyou get all of the material\nyou get further reading material"
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-2",
+    "href": "day1-fundamentals.html#section-2",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "name, role, context (research / practice)\nwhat outcome/topic they care about\nwhat they hope to take away"
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-3",
+    "href": "day1-fundamentals.html#section-3",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Walk through the website together: Zoom info, presentations, RStudio server setup, resources."
+  },
+  {
+    "objectID": "day1-fundamentals.html#workshop-website-and-rstudio-server-setup",
+    "href": "day1-fundamentals.html#workshop-website-and-rstudio-server-setup",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Workshop Website and RStudio Server Setup",
+    "text": "Workshop Website and RStudio Server Setup\nmoritzketzer.github.io/iqb-workshop\n\n\nopen the workshop website — type the URL or click the link\nunder “RStudio Server”: first claim a login, then open RStudio\nyou get a username from a famous statistician or causal inference researcher\npassword is changeme\nhello-world.R is in your home directory — run it to check everything works\nwe will use this for the R exercises later"
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-4",
+    "href": "day1-fundamentals.html#section-4",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Messerli (2012)"
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-5",
+    "href": "day1-fundamentals.html#section-5",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Descriptive\n\nPredictive\n\nExplanatory"
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-9",
+    "href": "day1-fundamentals.html#section-9",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "“Spurious Correlations” (n.d.)"
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-10",
+    "href": "day1-fundamentals.html#section-10",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "“Spurious Scholar” (n.d.)"
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-11",
+    "href": "day1-fundamentals.html#section-11",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Shmueli (2010)"
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-12",
+    "href": "day1-fundamentals.html#section-12",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Editorial (2021)"
+  },
+  {
+    "objectID": "day1-fundamentals.html#kidney-stones",
+    "href": "day1-fundamentals.html#kidney-stones",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Kidney Stones",
+    "text": "Kidney Stones\n\nTwo treatments\n\nWhich one is better?\n\n\nCharig et al. (1986)\n\n\nTransition from spurious correlations → what about non-obvious cases? Real data. Open surgery (A) vs less invasive (B). 700 patients."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-13",
+    "href": "day1-fundamentals.html#section-13",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Stone size\nTreatment A\nTreatment B\n\n\n\n\nSmall\n81 / 87 (93%)\n234 / 270 (87%)\n\n\nLarge\n192 / 263 (73%)\n55 / 80 (69%)\n\n\nTotal\n273 / 350 (78%)\n289 / 350 (83%)\n\n\n\n\n\n\n\n\nTable has the full story already. Don’t spoil — let them read. A wins both subgroups, B wins overall. Paradox."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-14",
+    "href": "day1-fundamentals.html#section-14",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Treatment A (open surgery): 78%. Treatment B (less invasive): 83%. B looks better. Should we recommend B?"
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-15",
+    "href": "day1-fundamentals.html#section-15",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "By stone size: - Small: A 93% vs B 87% - Large: A 73% vs B 69% A wins BOTH. Overall was misleading → Simpson’s paradox."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-16",
+    "href": "day1-fundamentals.html#section-16",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Panel sizes = allocation. A got mostly large (hard), B got mostly small (easy). Severity drove assignment AND outcome → confounding. Stratify → A genuinely better. But how do we know when to stratify?\n\n\nPearl (2013); Kievit et al. (2013)"
+  },
+  {
+    "objectID": "day1-fundamentals.html#why",
+    "href": "day1-fundamentals.html#why",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Why?",
+    "text": "Why?\n\nStone size influences both which treatment you get and how well you recover."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-17",
+    "href": "day1-fundamentals.html#section-17",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "✓ Stratify!"
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-18",
+    "href": "day1-fundamentals.html#section-18",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Blood pressure(measured after)\nDrug\nNo drug\n\n\n\n\nLow BP\n81 / 87 (93%)\n234 / 270 (87%)\n\n\nHigh BP\n192 / 263 (73%)\n55 / 80 (69%)\n\n\nTotal\n273 / 350 (78%)\n289 / 350 (83%)\n\n\n\n\n\n\n\n\nIdentical numbers — just relabeled. BP measured AFTER treatment → consequence of drug, not prior cause. Drug wins both BP subgroups. No drug wins overall. Same paradox, opposite correct answer."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-19",
+    "href": "day1-fundamentals.html#section-19",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "✗ Don’t stratify!\n\n\nBP on causal path, not common cause. Chain, not fork. Stratify by BP → filter out mechanism → drug looks useless. Aggregate correct here: drug helps THROUGH lowering BP."
+  },
+  {
+    "objectID": "day1-fundamentals.html#same-data.-opposite-answers.",
+    "href": "day1-fundamentals.html#same-data.-opposite-answers.",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Same data. Opposite answers.",
+    "text": "Same data. Opposite answers.\n\nThe statistics are identical.\nOnly the causal story changed.\n\n\nKey slide. Kidney: common cause → stratify. BP: consequence → don’t stratify. Same table, opposite correct answers. Statistics alone can’t resolve this. Need causal structure → transition to “what IS causal inference?”"
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-20",
+    "href": "day1-fundamentals.html#section-20",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Pearl (2009); Pearl and Mackenzie (2018)\n\n\nLargely because of this guy — Judea Pearl. “Causality” (2009, technical) and “The Book of Why” (2018, accessible). Pearl formalized the graphical approach: encode causal assumptions in a graph, then read off what’s identifiable."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-21",
+    "href": "day1-fundamentals.html#section-21",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Pearl and Mackenzie (2018, fig. 1.2)\n\n\nThree rungs: seeing, doing, imagining. Can’t climb with data alone. Dog: “Owners are happier” → “Would getting one make ME happier?” → “Would I still be happy WITHOUT it?” Today: rung 1 → 2. But first, rung 3 — why it’s hard."
+  },
+  {
+    "objectID": "day1-fundamentals.html#rung-3-imagining",
+    "href": "day1-fundamentals.html#rung-3-imagining",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Rung 3: Imagining",
+    "text": "Rung 3: Imagining\n\nYou got a dog. You’re happy.\nY_i(\\text{dog}) = 1 \\quad \\checkmark\n\n\nWould you have been happy without the dog?\nY_i(\\text{no dog}) = \\; ?\n\n\nTwo scenarios: Y(no dog)=1 → dog didn’t matter. Y(no dog)=0 → dog caused it. Can’t rewind time. Every causal question has this structure."
+  },
+  {
+    "objectID": "day1-fundamentals.html#the-individual-treatment-effect",
+    "href": "day1-fundamentals.html#the-individual-treatment-effect",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "The Individual Treatment Effect",
+    "text": "The Individual Treatment Effect\n\nRubin (1974)\n\n\n\\tau_i = Y_i(1) - Y_i(0)\n\n\nWe can never observe both for the same person.\n\n\nHolland (1986): fundamental problem of causal inference. Not statistics — metaphysics. Can’t be in two states at once."
+  },
+  {
+    "objectID": "day1-fundamentals.html#the-fundamental-problem-of-causal-inference",
+    "href": "day1-fundamentals.html#the-fundamental-problem-of-causal-inference",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "The Fundamental Problem of Causal Inference",
+    "text": "The Fundamental Problem of Causal Inference\n\n\n\ni\nT\nY\nY(1)\nY(0)\n\\tau_i\n\n\n\n\n1\n0\n0\n?\n0\n?\n\n\n2\n1\n1\n1\n?\n?\n\n\n3\n1\n0\n0\n?\n?\n\n\n4\n0\n0\n?\n0\n?\n\n\n5\n0\n1\n?\n1\n?\n\n\n6\n1\n1\n1\n?\n?\n\n\n\n\nMissing data problem — not measurement failure, but metaphysics. Half the table always missing. So what CAN we do?\n\n\nHolland (1986)"
+  },
+  {
+    "objectID": "day1-fundamentals.html#from-individual-to-average",
+    "href": "day1-fundamentals.html#from-individual-to-average",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "From Individual to Average",
+    "text": "From Individual to Average\nWe can’t know \\tau_i for any single person.\n\nBut we can ask about the average across many people:\n\\begin{aligned}\nATE &= \\mathbb{E}[Y(1) - Y(0)] \\\\\n    &= \\mathbb{E}[Y(1)] - \\mathbb{E}[Y(0)]\n\\end{aligned}\n\n\nRung 3 → Rung 2\n\n\nGive up on individual → ask about the average. This is what RCTs target. Distribute expectation → two population means we can estimate separately. Key question: how do we estimate this from observational data?"
+  },
+  {
+    "objectID": "day1-fundamentals.html#observing-vs-intervening",
+    "href": "day1-fundamentals.html#observing-vs-intervening",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Observational\n\n\\mathbb{E}[Y \\mid X = x]\n\n“What Y do we see when X = x?”\n\nInterventional\n\\mathbb{E}[Y \\mid \\text{do}(X = x)]\n“What Y do we get when we set X = x?”\n\n\nWhen are these equal?\n\n\nLeft = rung 1, right = rung 2. Differ whenever there’s confounding. Dog: owners are happier ≠ getting a dog makes you happier. Maybe happy people get dogs. This question drives everything today."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-22",
+    "href": "day1-fundamentals.html#section-22",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Neal (n.d., fig. 4.2)\n\n\nConditioning = filter operation. Pick the subgroup where T=1 — self-selected, may differ systematically. Intervening = force everyone into treatment. No self-selection. Conditioning ≠ intervening when there’s confounding."
+  },
+  {
+    "objectID": "day1-fundamentals.html#structural-causal-models",
+    "href": "day1-fundamentals.html#structural-causal-models",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Structural Causal Models",
+    "text": "Structural Causal Models\n\nPearl et al. (2016)\n\n\\mathcal{M} = \\langle U, V, F, P(U) \\rangle\n\n\n\n\n\n\n\n\n\nV\nendogenous variables (what we model)\n\n\nU\nexogenous variables (background factors, error terms)\n\n\nF\nstructural functions (how each V is determined by its parents + U)\n\n\nP(U)\nprobability distribution over the exogenous variables\n\n\n\n\n\n\n“The causal story has a formal name” (Pearl, Glymour & Jewell 2016). All four parts in kidney stones:\n— V: treatment, stone size, recovery. — U: patient genetics, lifestyle, surgeon skill — everything else. — F: how stone size determines treatment assignment, how both determine recovery. — P(U): distribution over background factors — makes the model probabilistic.\nEvery SCM implies a DAG -&gt; tells us what to adjust for.\nFor SEM users: SEM is an SCM with linear F and normal U. Same object, specific assumptions."
+  },
+  {
+    "objectID": "day1-fundamentals.html#an-scm-example",
+    "href": "day1-fundamentals.html#an-scm-example",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "An SCM Example",
+    "text": "An SCM Example\n\n\nStructural Equations\n\n\\begin{aligned}\nZ &\\leftarrow f_Z(U_Z) \\\\\nX &\\leftarrow f_X(Z, U_X) \\\\\nY &\\leftarrow f_Y(Z, X, U_Y)\n\\end{aligned}\n\nDistributional Assumptions\n\nU_Z, U_X, U_Y \\overset{\\text{ind.}}{\\sim} P(U)\n\n\n\n\n\nConcrete example: Z confounder, X treatment, Y outcome. Each has its own U. U’s usually omitted from DAGs — shown here to connect to formal definition."
+  },
+  {
+    "objectID": "day1-fundamentals.html#graph-surgery",
+    "href": "day1-fundamentals.html#graph-surgery",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Graph Surgery",
+    "text": "Graph Surgery\n\n\nStructural Equations\n\n\\begin{aligned}\nZ &\\leftarrow f_Z(U_Z) \\\\\nX &\\leftarrow \\color{#107895}{x} \\\\\nY &\\leftarrow f_Y(Z, \\textcolor{#107895}{x}, U_Y)\n\\end{aligned}\n\nDistributional Assumptions\n\nU_Z, \\textcolor{lightgray}{U_X}, U_Y \\overset{\\text{ind.}}{\\sim} P(U)\n\n\n\n\n\ndo-operator = graph surgery. Replace X’s equation with a constant, cut incoming arrows. Downstream (Y) keeps its equation. Upstream (Z) unaffected. U_X irrelevant. Key: this is NOT conditioning — conditioning doesn’t remove arrows. ATE: E[Y|do(X=1)] - E[Y|do(X=0)] = “what happens when we surgically set X to 1 vs 0?”"
+  },
+  {
+    "objectID": "day1-fundamentals.html#a-linear-scm",
+    "href": "day1-fundamentals.html#a-linear-scm",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "A Linear SCM",
+    "text": "A Linear SCM\n\n\nStructural Equations\n\n\\begin{aligned}\nZ &= U_Z \\\\\nX &= \\beta^{XZ} Z + U_X \\\\\nY &= \\beta^{YX} X + \\beta^{YZ} Z + U_Y\n\\end{aligned}\n\nDistributional Assumptions\n\n\\begin{pmatrix} U_Z \\\\ U_X \\\\ U_Y \\end{pmatrix} \\sim \\mathcal{N}\\left(\\begin{pmatrix} 0 \\\\ 0 \\\\ 0 \\end{pmatrix}, \\begin{pmatrix} \\sigma^2_Z & 0 & 0 \\\\ 0 & \\sigma^2_X & 0 \\\\ 0 & 0 & \\sigma^2_Y \\end{pmatrix}\\right)\n\n\n\n\n\nSpecial case SEM users know. β’s ARE the causal effects. Diagonal covariance = independent errors = no unmeasured common causes beyond what’s modeled."
+  },
+  {
+    "objectID": "day1-fundamentals.html#graph-surgery-linear-case",
+    "href": "day1-fundamentals.html#graph-surgery-linear-case",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Graph Surgery: Linear Case",
+    "text": "Graph Surgery: Linear Case\n\n\nStructural Equations\n\n\\begin{aligned}\nZ &= U_Z \\\\\nX &= \\color{#107895}{x} \\\\\nY &= \\beta^{YX} \\textcolor{#107895}{x} + \\beta^{YZ} Z + U_Y\n\\end{aligned}\n\nDistributional Assumptions\n\n\\begin{pmatrix} U_Z \\\\ \\textcolor{lightgray}{U_X} \\\\ U_Y \\end{pmatrix} \\sim \\mathcal{N}\\left(\\begin{pmatrix} 0 \\\\ \\textcolor{lightgray}{0} \\\\ 0 \\end{pmatrix}, \\begin{pmatrix} \\sigma^2_Z & 0 & 0 \\\\ 0 & \\textcolor{lightgray}{\\sigma^2_X} & 0 \\\\ 0 & 0 & \\sigma^2_Y \\end{pmatrix}\\right)\n\n\n\n\n\nATE in linear SCM = β^{YX}. The path coefficient IS the causal effect. SEM users have been estimating causal effects all along — just needed the graph to justify it."
+  },
+  {
+    "objectID": "day1-fundamentals.html#estimand-in-do-notation",
+    "href": "day1-fundamentals.html#estimand-in-do-notation",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Estimand in do notation",
+    "text": "Estimand in do notation\nATE = \\mathbb{E}[Y \\mid do(X=1)] - \\mathbb{E}[Y \\mid do(X=0)]\n\ndo(X=1) = “set X to 1”, not “observe X = 1”. Same target as E[Y(1)-Y(0)], different notation. Pearl connects to graphs, Rubin to experiments."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-23",
+    "href": "day1-fundamentals.html#section-23",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Binary case — textbook RCT. ATE = difference in group means under intervention."
+  },
+  {
+    "objectID": "day1-fundamentals.html#estimand-in-do-notation-1",
+    "href": "day1-fundamentals.html#estimand-in-do-notation-1",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Estimand in do notation",
+    "text": "Estimand in do notation\nATE = \\mathbb{E}[Y \\mid do(X=x')] - \\mathbb{E}[Y \\mid do(X=x)]\n\nGeneralized: any two values x’ vs x, not just 0/1."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-24",
+    "href": "day1-fundamentals.html#section-24",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Continuous X, linear effect. Slope = β from the linear SCM. One number everywhere."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-25",
+    "href": "day1-fundamentals.html#section-25",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Nonlinear: effect depends on where you are. No single number. do-operator still well-defined — just varies by location."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-26",
+    "href": "day1-fundamentals.html#section-26",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Linear projection = weighted average of local effects. Hides heterogeneity. We work linear today — framework is more general than models we fit."
+  },
+  {
+    "objectID": "day1-fundamentals.html#two-frameworks-one-estimand",
+    "href": "day1-fundamentals.html#two-frameworks-one-estimand",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Two Frameworks, One Estimand",
+    "text": "Two Frameworks, One Estimand\n\n\nPotential Outcomes (Rubin)\n\nATE = \\mathbb{E}[Y_i(1) - Y_i(0)]\n\n\n\nStructural Causal Model (Pearl)\n\nATE = \\mathbb{E}[Y \\mid do(X=1)] - \\mathbb{E}[Y \\mid do(X=0)]\n\n\nTwo traditions, same target."
+  },
+  {
+    "objectID": "day1-fundamentals.html#one-estimand-three-expressions",
+    "href": "day1-fundamentals.html#one-estimand-three-expressions",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "One Estimand, three expressions",
+    "text": "One Estimand, three expressions\n\n\\begin{aligned}\nATE &= \\mathbb{E}[Y_i(1) - Y_i(0)] \\\\\n    &= \\mathbb{E}[f_Y(1, \\mathbf{U}_i) - f_Y(0, \\mathbf{U}_i)] \\\\\n    &= \\mathbb{E}[Y \\mid do(X=1)] - \\mathbb{E}[Y \\mid do(X=0)]\n\\end{aligned}\n\n\nPotential outcomes = structural equations evaluated in the mutilated model. Y_i(x) = f_Y(x, U_i) — that’s the middle line. Linear case: everything cancels, ATE = β^{YX}."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-27",
+    "href": "day1-fundamentals.html#section-27",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Wright (1920, fig. 1)\n\n\nSewall Wright, 1920 — the first path diagram. Guinea pig coat color. If you’ve drawn a path diagram, you’ve already drawn a DAG."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-28",
+    "href": "day1-fundamentals.html#section-28",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Wright (1934)\n\n\nWright formalized path coefficients in 1934. Direct ancestor of SEM. Pearl added the formal rules for what you can and can’t conclude. Now: three building blocks."
+  },
+  {
+    "objectID": "day1-fundamentals.html#fork-common-cause",
+    "href": "day1-fundamentals.html#fork-common-cause",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Fork (Common Cause)",
+    "text": "Fork (Common Cause)\n\nTitle slide — name the structure, then advance to the interactive demo. Fork: Z causes both X and Y. Spurious association disappears when you condition on Z."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-29",
+    "href": "day1-fundamentals.html#section-29",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Interactive fork demo. Default: run → d-connected (ball passes through unobserved Z). Condition on Z → d-separated (ball blocked by observed non-collider). Key: this is why we “control for confounders.”"
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-30",
+    "href": "day1-fundamentals.html#section-30",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Simulated data from a fork SCM. Looks like one homogeneous cloud. Ask: “What’s the relationship between X and Y?” Let them say “negative.” Then advance."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-31",
+    "href": "day1-fundamentals.html#section-31",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Same data — split Z at the median into two groups. Within each group: positive slope. Aggregate: still negative. Simpson’s paradox appears. But two bins is coarse."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-32",
+    "href": "day1-fundamentals.html#section-32",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Pattern solidifies — all three upward. Aggregate is the outlier."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-33",
+    "href": "day1-fundamentals.html#section-33",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Same story, finer bins. Building toward the limit."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-34",
+    "href": "day1-fundamentals.html#section-34",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Five bins, all positive. Finer conditioning, same result."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-35",
+    "href": "day1-fundamentals.html#section-35",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Dense fan of positive slopes. Aggregate still negative — that’s the confounding."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-36",
+    "href": "day1-fundamentals.html#section-36",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Z &lt;- runif(n, 0, 10)\nX &lt;- 0.6 * Z + rnorm(n, mean = 0, sd = 2)\nY &lt;- 1.0 * X - 2.0 * Z\n    + rnorm(n, mean = 0, sd = 1.5)\n\n\nConditioning taken to the limit. At any fixed Z, X-Y positive. Aggregate trend = confounding. “Controlling for confounder” = comparing within Z-slices."
+  },
+  {
+    "objectID": "day1-fundamentals.html#chain-mediator",
+    "href": "day1-fundamentals.html#chain-mediator",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Chain (Mediator)",
+    "text": "Chain (Mediator)\n\nTitle slide — name the structure, then advance to the interactive demo. Chain: X causes Z causes Y. Conditioning on Z blocks the causal path."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-37",
+    "href": "day1-fundamentals.html#section-37",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Interactive chain demo. Default: run → d-connected (causal path is open). Condition on Z → d-separated (blocking the mediator). Key: controlling for a mediator removes the causal effect — don’t do it."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-38",
+    "href": "day1-fundamentals.html#section-38",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "tutoring &lt;- rnorm(n, mean = 5, sd = 2)\nhomework &lt;- rbinom(n, 1,\n    plogis(tutoring - 5))\nscores &lt;- 20 * homework\n        + rnorm(n, mean = 50, sd = 8)\n\n\nTutoring → Homework → Scores. Aggregate: positive slope. Ask: “Homework correlates with both. Should we control for it?” They’ll say yes — it’s a trap."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-39",
+    "href": "day1-fundamentals.html#section-39",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "tutoring &lt;- rnorm(n, mean = 5, sd = 2)\nhomework &lt;- rbinom(n, 1,\n    plogis(tutoring - 5))\nscores &lt;- 20 * homework\n        + rnorm(n, mean = 50, sd = 8)\n\n\nControlling for homework: within each group, flat. Tutoring works THROUGH homework. Dashed = total effect. Controlling killed it. This is overcontrol bias."
+  },
+  {
+    "objectID": "day1-fundamentals.html#collider",
+    "href": "day1-fundamentals.html#collider",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Collider",
+    "text": "Collider\n\nElwert and Winship (2014)\n\n\nTitle slide — name the structure, then advance to the interactive demo. Collider: both X and Y cause Z. Conditioning OPENS a spurious path."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-40",
+    "href": "day1-fundamentals.html#section-40",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Interactive collider demo. Default: run → d-separated (no path between independent causes). Condition on Z → d-connected (collider bias — conditioning opens the path). The counterintuitive case. Let audience verify it themselves."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-41",
+    "href": "day1-fundamentals.html#section-41",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "talent   &lt;- rnorm(n, mean = 0, sd = 1)\nbeauty   &lt;- rnorm(n, mean = 0, sd = 1)\ncelebrity &lt;- talent + beauty\n\n\nTalent and beauty independent in population. Flat line. Ask: “What if we only look at celebrities?”"
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-42",
+    "href": "day1-fundamentals.html#section-42",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "talent   &lt;- rnorm(n, mean = 0, sd = 1)\nbeauty   &lt;- rnorm(n, mean = 0, sd = 1)\ncelebrity &lt;- talent + beauty\n# Top 15% become famous\nceleb &lt;- celebrity &gt; P85\n\n\nAmong celebrities: strong negative slope. “Famous but can’t act — must be the looks.” Explaining away. Phantom association — doesn’t exist in the population."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-43",
+    "href": "day1-fundamentals.html#section-43",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "talent   &lt;- rnorm(n, mean = 0, sd = 1)\nbeauty   &lt;- rnorm(n, mean = 0, sd = 1)\ncelebrity &lt;- talent + beauty\n\n\nNot a threshold artifact — structural. At every level of fame, negative association."
+  },
+  {
+    "objectID": "day1-fundamentals.html#collider-descendant",
+    "href": "day1-fundamentals.html#collider-descendant",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Collider (Descendant)",
+    "text": "Collider (Descendant)\n\nSame collider, but now: what about something DOWNSTREAM of the collider? You know not to condition on Celebrity. But what about Instagram followers?"
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-44",
+    "href": "day1-fundamentals.html#section-44",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Condition on W (not Z!) → still d-connected. W = Followers, a consequence of Celebrity. Conditioning still partially opens the path."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-45",
+    "href": "day1-fundamentals.html#section-45",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "talent   &lt;- rnorm(n, mean = 0, sd = 1)\nbeauty   &lt;- rnorm(n, mean = 0, sd = 1)\ncelebrity &lt;- talent + beauty\nfollowers &lt;- 0.8 * celebrity\n            + rnorm(n, mean = 0, sd = 1.2)\n\n\n“You just study actors with &gt;100k followers.” Noisy proxy for Celebrity. Negative slope weaker but still there. Bias attenuated, not eliminated."
+  },
+  {
+    "objectID": "day1-fundamentals.html#putting-it-together",
+    "href": "day1-fundamentals.html#putting-it-together",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Putting It Together",
+    "text": "Putting It Together\n\nTitle slide — transition from elemental structures to a realistic graph where multiple structures overlap and interact."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-46",
+    "href": "day1-fundamentals.html#section-46",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Multiple paths from X to Y. Let them explore: which nodes to condition on? This is where intuition needs algorithms."
+  },
+  {
+    "objectID": "day1-fundamentals.html#directed-separation",
+    "href": "day1-fundamentals.html#directed-separation",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Directed Separation",
+    "text": "Directed Separation\nA path between X and Y is blocked given a conditioning set Z if it contains:\n\n\n\n\n\n\n\n\n\n\na non-collider (fork or chain) that is in Z\n\n\n\na collider that is not in Z (and has no descendant in Z)\n\n\n\n\n\n\nX and Y are d-separated given Z if every path between them is blocked.\n\n\nTwo rules, that’s it. They already used them on the widget. Descendant clause: conditioning on a child of collider partially opens path too."
+  },
+  {
+    "objectID": "day1-fundamentals.html#from-surgery-to-statistics",
+    "href": "day1-fundamentals.html#from-surgery-to-statistics",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "From Surgery to Statistics",
+    "text": "From Surgery to Statistics\n\nGraph surgery — physically cut arrows into X\n\n\nBackdoor adjustment — statistically neutralize them\n\n\nP(Y \\mid do(X = x)) = \\sum_z P(Y \\mid X = x, Z = z) \\; P(Z = z)\n\n\nLeft side: causal (rung 2). Right side: observable (rung 1).\n\n\nSurgery = thought experiment. Backdoor adjustment = the computable version. Condition on Z → X “as if randomized” within each stratum. That’s the fork plots. “Controlling for Z” simulates an intervention. Works when Z satisfies backdoor criterion, fails otherwise (collider, mediator)."
+  },
+  {
+    "objectID": "day1-fundamentals.html#exercise-the-causal-quartet",
+    "href": "day1-fundamentals.html#exercise-the-causal-quartet",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Exercise: The Causal Quartet",
+    "text": "Exercise: The Causal Quartet\n\nD’Agostino McGowan et al. (2024)\n\n\nSame association, different causal structures → different answers. Don’t spoil — let them discover it."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-47",
+    "href": "day1-fundamentals.html#section-47",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "moritzketzer.github.io/iqb-workshop\nOpen causal-quartet.R\nBreakout rooms in pairs (~30 min), then 5 min break before debrief.\n\nScript guides: (1) explore + discover equivalence, (2) predict from DAGs, (3) verify with adjusted lm, (4) reflect. DAG PNGs in their home directory. Walk around, help with R issues, don’t give away the punchline. If stuck on (4) M-bias: “Trace the paths. What happens when you condition on Z?”"
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-48",
+    "href": "day1-fundamentals.html#section-48",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Debrief. Let THEM explain what they see — they know this from the code now. “All four datasets, same slope, same scatter. So same answer for all four?”"
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-49",
+    "href": "day1-fundamentals.html#section-49",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "“But the underlying structures are different. You looked at these DAGs — four different roles for Z.” Walk through briefly: collider, confounder, mediator, M-bias. “Who predicted all four correctly?” Hands up."
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-50",
+    "href": "day1-fundamentals.html#section-50",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Dashed = unadjusted (all ~1). Teal = adjusted for Z. (1) Collider: 1.0 → 0.55 — adjusting introduced bias. (2) Confounder: 1.0 → 0.5 — only case where controlling helps. (3) Mediator: 1.0 → 0.0 — blocked the mechanism. (4) M-bias: 1.0 → 0.88 — Z is a collider on a backdoor path, conditioning opens it. “Who was surprised by at least one?”"
+  },
+  {
+    "objectID": "day1-fundamentals.html#section-51",
+    "href": "day1-fundamentals.html#section-51",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Adapted from Bareinboim et al. (2022, fig. 27.4)\n\n\nTwo-DAG identification diagram. Relevant for identification theory. Could follow the backdoor criterion section if there’s time."
+  },
+  {
+    "objectID": "day1-fundamentals.html#can-you-prove-mediation",
+    "href": "day1-fundamentals.html#can-you-prove-mediation",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Can you prove mediation?",
+    "text": "Can you prove mediation?\n\nKline (2015)\n\n\nLet the question sit 30 seconds. Open the floor. Mediator dataset (3) statistically indistinguishable from confounder (2). Same slopes, same correlations. Baron & Kenny tests patterns consistent with mediation — also consistent with confounding. Kline (2015) “The Mediation Myth” — the Baron & Kenny procedure doesn’t test mediation, it tests a pattern equally consistent with confounding. No statistical test can distinguish a chain from a fork. “Mediation is a causal claim. You can estimate it under assumptions. You cannot test it.” For those interested: see the Mediation Analysis section in the further reading list — Imai et al. (2010) show what nonparametric identification of mediation actually requires, and it’s a lot."
+  },
+  {
+    "objectID": "day1-fundamentals.html#today",
+    "href": "day1-fundamentals.html#today",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Today",
+    "text": "Today\n\nQuick recap of what we covered:\n\nSimpson’s paradox and the kidney stone example — correlation flips depending on how you slice the data\nStructural Causal Models — equations + graph = a model of the data-generating process\nThree elementary structures: fork, chain, collider — and why they matter for conditioning\nd-separation — reading off conditional independencies from the graph\nThe do-operator and graph surgery — turning observation into intervention\nThe Causal Quartet — same ATE, radically different data stories\ndagitty exercise — building a DAG for Open Science, finding adjustment sets, seeing what goes wrong when you control for everything\n\nOpen floor:\n\nQuestions about anything from today?\nAnything unclear or surprising?\nFeedback — pace, level of detail, exercises?"
+  },
+  {
+    "objectID": "day1-fundamentals.html#tomorrow",
+    "href": "day1-fundamentals.html#tomorrow",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Tomorrow",
+    "text": "Tomorrow\n\nPreview of Day 2 — we go deeper:\n\nWhat happens when the causal effect isn’t the same for everyone? Heterogeneous treatment effects, CATE\nHow functional form connects to DAGs — linear SCMs, interactions, what the graph can and can’t tell you\nMultilevel models as causal models — varying intercepts and slopes, the BFLPE as a running example\nDirected Acyclic Mixed Graphs (DAMGs) — how to draw multilevel DAGs properly\nGroup-mean centering and the Mundlak device — why centering is a causal operation\nConfounding in multilevel settings — between-cluster vs within-cluster confounding\nIf time: dynamic SCMs and longitudinal panel models (CLPM)\n\nOpen floor:\n\nWishes for tomorrow? Topics you’d like more depth on?\nAnything from your own research you’d like to map onto a DAG?\nInterests we can try to weave in — no promises, but good to know"
+  },
+  {
+    "objectID": "day1-fundamentals.html#optional-dag-your-research",
+    "href": "day1-fundamentals.html#optional-dag-your-research",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Optional: DAG your Research",
+    "text": "Optional: DAG your Research"
+  },
+  {
+    "objectID": "day1-fundamentals.html#references",
+    "href": "day1-fundamentals.html#references",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "References",
+    "text": "References\n\n\nBareinboim, Elias, Juan D. Correa, Duligur Ibeling, and Thomas Icard. 2022. “On Pearl’s Hierarchy and the Foundations of Causal Inference.” In Probabilistic and Causal Inference, 1st ed., edited by Hector Geffner, Rina Dechter, and Joseph Y. Halpern. ACM. https://doi.org/10.1145/3501714.3501743.\n\n\nCharig, C. R., D. R. Webb, S. R. Payne, and J. E. Wickham. 1986. “Comparison of Treatment of Renal Calculi by Open Surgery, Percutaneous Nephrolithotomy, and Extracorporeal Shockwave Lithotripsy.” Br Med J (Clin Res Ed) 292 (6524): 879–82. https://doi.org/10.1136/bmj.292.6524.879.\n\n\nD’Agostino McGowan, Lucy, Travis Gerke, and Malcolm Barrett. 2024. “Causal Inference Is Not Just a Statistics Problem.” Journal of Statistics and Data Science Education 32 (2): 150–55. https://doi.org/10.1080/26939169.2023.2276446.\n\n\nEditorial. 2021. “Description, Prediction, Explanation.” Nature Human Behaviour 5 (10): 1261–61. https://doi.org/10.1038/s41562-021-01230-5.\n\n\nElwert, Felix, and Christopher Winship. 2014. “Endogenous Selection Bias: The Problem of Conditioning on a Collider Variable.” Annual Review of Sociology 40 (July): 31–53. https://doi.org/10.1146/annurev-soc-071913-043455.\n\n\nHolland, Paul W. 1986. “Statistics and Causal Inference.” Journal of the American Statistical Association 81 (396): 945–60. https://doi.org/10.1080/01621459.1986.10478354.\n\n\nKievit, Rogier A., Willem E. Frankenhuis, Lourens J. Waldorp, and Denny Borsboom. 2013. “Simpson’s Paradox in Psychological Science: A Practical Guide.” Frontiers in Psychology 4: 513. https://www.frontiersin.org/articles/10.3389/fpsyg.2013.00513/full.\n\n\nKline, Rex B. 2015. “The Mediation Myth.” Basic and Applied Social Psychology 37 (4): 202–13. https://doi.org/10.1080/01973533.2015.1049349.\n\n\nMesserli, Franz H. 2012. “Chocolate Consumption, Cognitive Function, and Nobel Laureates.” New England Journal of Medicine 367 (16): 1562–64. https://doi.org/10.1056/NEJMon1211064.\n\n\nNeal, Brady. n.d. “Introduction to Causal Inference.” Accessed March 7, 2026. https://www.bradyneal.com/causal-inference-course.\n\n\nPearl, Judea. 2009. Causality: Models, Reasoning, and Inference. Second edition, reprinted with corrections. Cambridge University Press.\n\n\nPearl, Judea. 2013. “Understanding Simpson’s Paradox.” SSRN Electronic Journal, ahead of print. https://doi.org/10.2139/ssrn.2343788.\n\n\nPearl, Judea, Madelyn Glymour, and Nicholas P. Jewell. 2016. Causal Inference in Statistics: A Primer. 1. edition. Wiley.\n\n\nPearl, Judea, and Dana Mackenzie. 2018. The Book of Why: The New Science of Cause and Effect. First edition. Basic Books.\n\n\nRubin, Donald B. 1974. “Estimating Causal Effects of Treatments in Randomized and Nonrandomized Studies.” Journal of Educational Psychology 66 (5): 688. https://psycnet.apa.org/record/1975-06502-001.\n\n\nShmueli, Galit. 2010. “To Explain or to Predict?” Statistical Science 25 (3): 289–310. https://www.jstor.org/stable/41058949.\n\n\n“Spurious Correlations.” n.d. Accessed February 27, 2026. https://tylervigen.com/spurious-correlations.\n\n\n“Spurious Scholar.” n.d. Accessed February 27, 2026. https://tylervigen.com/spurious-scholar.\n\n\nWright, Sewall. 1920. “The Relative Importance of Heredity and Environment in Determining the Piebald Pattern of Guinea-Pigs.” Proceedings of the National Academy of Sciences 6 (6): 320–32. https://doi.org/10.1073/pnas.6.6.320.\n\n\nWright, Sewall. 1934. “The Method of Path Coefficients.” The Annals of Mathematical Statistics 5 (3): 161–215. https://www.jstor.org/stable/2957502?casa_token=W2Rnt77K4xEAAAAA:OIfplx9Qlg2_3chSeXIWMD6DNY6o0MpQ52AEhlHD-q_gRNSON3XE4zckyozxyl9IbLP-PyOOdYTcvpKNzCFr7xYWRyL5pdWwZ53q_uktbvmSb5oiWAg."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "IQB Workshop — Graphical Causal Inference",
+    "section": "",
+    "text": "Day 1 — Fundamentals\n\nLadder of Causation, Graphs, Do-Operator, Causal Estimands, Identification\n\nDay 2 — Advanced Topics\n\nMultilevel Causal Graphs, Longitudinal Graphs, CLPM"
+  },
+  {
+    "objectID": "index.html#presentations",
+    "href": "index.html#presentations",
+    "title": "IQB Workshop — Graphical Causal Inference",
+    "section": "",
+    "text": "Day 1 — Fundamentals\n\nLadder of Causation, Graphs, Do-Operator, Causal Estimands, Identification\n\nDay 2 — Advanced Topics\n\nMultilevel Causal Graphs, Longitudinal Graphs, CLPM"
+  },
+  {
+    "objectID": "index.html#rstudio-server",
+    "href": "index.html#rstudio-server",
+    "title": "IQB Workshop — Graphical Causal Inference",
+    "section": "RStudio Server",
+    "text": "RStudio Server\nNo local R installation needed — use our shared server:\n\nClaim your login — pick a researcher name as your username\nOpen RStudio — log in with your username and password changeme\nDAG Gallery — live view of all submitted causal graphs"
+  },
+  {
+    "objectID": "index.html#resources",
+    "href": "index.html#resources",
+    "title": "IQB Workshop — Graphical Causal Inference",
+    "section": "Resources",
+    "text": "Resources\n\nFurther Reading\n\nCurated reading list organized by topic"
+  },
+  {
+    "objectID": "day2-advanced.html#section",
+    "href": "day2-advanced.html#section",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Adapted from Watson et al. (2025, fig. 1)\n\n\nStep 0: Theorize Causal Explanations. “Causal inference begins with theory, not data.” You already have domain knowledge — you study science, you know how Open Data, Rigour, Field, Novelty, and Citations might relate. Yesterday you used that knowledge implicitly when you discussed kidney stones and the quartet. Today we make it explicit. Running example: Does sharing data openly lead to more citations?"
+  },
+  {
+    "objectID": "day2-advanced.html#what-do-we-know-about-open-science",
+    "href": "day2-advanced.html#what-do-we-know-about-open-science",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "What do we know about Open Science?",
+    "text": "What do we know about Open Science?\n\n\n\n\n\n\n\n\nVariable\nWhat the literature tells us\n\n\n\n\nOpen Data\nIncentives and mandates drive sharing (Woods and Pinfield 2022)\n\n\nCitations\nData sharing associated with citation advantage (Piwowar et al. 2007)\n\n\nReproducibility\nOpen data enables verification — but evidence is mixed (Hardwicke et al. 2021)\n\n\nPublished\nJournal mandates link data sharing to publication (Ross-Hellauer et al. 2022)\n\n\nRigour\nPeer review quality varies substantially (Goodman et al. 1994)\n\n\nNovelty\nNovel contributions get reused and cited more\n\n\nData Reuse\nReuse of shared data leads to citation of originals\n\n\nField\nCitation norms and data sharing culture differ across disciplines (Waltman and Van Eck 2019)\n\n\n\n\n\nKlebel and Traag (2024)\n\n\nStep 0 in practice — we read the literature and identify the variables that might matter. No arrows yet. Just the pieces on the table. This is what humans are good at — domain expertise, reading papers, knowing the field. The DAG comes in Step 3. All of this from Klebel & Traag (2024) who built this exact example."
+  },
+  {
+    "objectID": "day2-advanced.html#section-1",
+    "href": "day2-advanced.html#section-1",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Adapted from Watson et al. (2025, fig. 1)\n\n\nStep 1: Define the Causal Question. Exposure: Open Data (binary — shared or not). Outcome: Citations (count). Watson et al.: specify where on the continuum from well-defined intervention to realized exposure. Open Data is closer to a realized exposure — we can’t cleanly randomize it, but we can ask retrospectively whether sharing caused more citations."
+  },
+  {
+    "objectID": "day2-advanced.html#define-the-causal-question",
+    "href": "day2-advanced.html#define-the-causal-question",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Define the Causal Question",
+    "text": "Define the Causal Question\n\nDoes sharing data openly cause more citations?\n\n\n\nExposure\nOpen Data\nbinary: shared or not\n\n\n  \n    \n      \n    \n  \n  \n\n\nOutcome\nCitations\ncount\n\n\nKlebel and Traag (2024)\n\n\nWe pick one question from the system. Not “how does science work” — that’s too broad. Exposure is binary: did you share your data or not? Outcome is continuous: how many citations? This is a realized exposure, not a well-defined intervention — we can’t randomize data sharing. Journals mandate it, rigorous researchers self-select into it. But we can still ask the causal question and be explicit about our assumptions."
+  },
+  {
+    "objectID": "day2-advanced.html#section-2",
+    "href": "day2-advanced.html#section-2",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Adapted from Watson et al. (2025, fig. 1)\n\n\nStep 2: Specify the Theoretical Estimand. Before we draw a single arrow — what do we WANT to know? ψ = E[Y_i(open) - Y_i(not open)] — the average causal effect of sharing data on citations, in the population of published studies. Two components (Lundberg et al. 2021): the unit-specific quantity (individual causal effect) and the target population (published studies). Notice: no DAG yet, no model yet. The theoretical estimand is prior to the graph. Maybe the effect differs by field — psychology vs physics have very different data-sharing norms. That would be a CATE. We’ll come back to this after the exercise."
+  },
+  {
+    "objectID": "day2-advanced.html#specify-the-theoretical-estimand",
+    "href": "day2-advanced.html#specify-the-theoretical-estimand",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Specify the Theoretical Estimand",
+    "text": "Specify the Theoretical Estimand\n\nIndividual causal effect\n\\text{ITE} \\;=\\; \\tau_i \\;=\\; Y_i(\\text{open}) \\;-\\; Y_i(\\text{not open})\n\n\\downarrow average over population\n\\text{ATE} \\;=\\; \\tau \\;=\\; \\mathbb{E}\\big[Y_i(\\text{open}) \\;-\\; Y_i(\\text{not open})\\big]\n\n\n\n\n\nUnit-specific quantity\nHow many more citations if this study shared data?\n\nTarget population\nAll published studies? Only in psychology?\n\n\n\nLundberg, Johnson & Stewart (2021)\n\n\nNo DAG yet, no model yet. The theoretical estimand comes BEFORE the graph. Lundberg et al. (2021): most studies never state their target quantity — they jump straight to a regression. Two components: what causal contrast at the individual level, and over whom do you average? The population choice matters — conditioning on “published” is itself a collider issue (Klebel & Traag show this in their case study C). Maybe the effect differs by field — psychology vs physics have very different data-sharing norms. That would be a CATE. We come back to this after the exercise when we talk about heterogeneity."
+  },
+  {
+    "objectID": "day2-advanced.html#section-3",
+    "href": "day2-advanced.html#section-3",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Adapted from Watson et al. (2025, fig. 1)\n\n\nStep 3: Draw a Causal DAG. “Now we encode our assumptions in a graph.” This is what you’re about to do in the exercise — draw the DAG for the Open Science system. 8 variables: Novelty, Rigour, Open Data, Published, Data Reuse, Reproducibility, Field, Citations. Your arrows are your assumptions. Different pairs will draw different DAGs — that’s the point. The exercise script walks you through Steps 3-6 of the roadmap. Let’s go."
+  },
+  {
+    "objectID": "day2-advanced.html#exercise-dagitty",
+    "href": "day2-advanced.html#exercise-dagitty",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Exercise: DAGitty",
+    "text": "Exercise: DAGitty\n\nTextor et al. (2016); Klebel and Traag (2024)\n\n\nSteps 0-2 are done — you have the question, the estimand, and the variables. Now you walk Steps 3-6 hands-on: draw the DAG, assess assumptions, find the adjustment set, estimate. The script maps each step to the roadmap."
+  },
+  {
+    "objectID": "day2-advanced.html#section-4",
+    "href": "day2-advanced.html#section-4",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "moritzketzer.github.io/iqb-workshop\nOpen dagitty-open-science.R\nBreakout rooms in pairs (~30 min), then 5 min break before debrief.\n\nExercise: “Does Open Science lead to more citations?” Build a DAG with 8 variables in dagitty.net. The script walks them through roadmap Steps 3-6. Step 3: Draw the DAG — 8 nodes, discuss arrows with partner. No right answer. Step 4: Set exposure/outcome, experiment with adjusting — watch bias appear/disappear. Step 5: Load DAG into R, adjustmentSets() — this IS the empirical estimand. Step 6: Simulate data, compare naive vs DAG-informed vs causal salad. Submit DAG + bias plot to gallery. Walk around, help with dagitty.net UI. Key friction: exact node names so R code works."
+  },
+  {
+    "objectID": "day2-advanced.html#section-5",
+    "href": "day2-advanced.html#section-5",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Adapted from Watson et al. (2025, fig. 1)\n\n\nStep 7: Interpret with Transparency. Welcome back. You’ve walked Steps 3-6 — drew a DAG, found adjustment sets, estimated effects. Now: what do your assumptions mean for interpretation? Different pairs drew different DAGs → different adjustment sets → different estimates. All from the same data. The estimate is only as good as the DAG. If exchangeability doesn’t hold — unmeasured confounders — the estimate is biased."
+  },
+  {
+    "objectID": "day2-advanced.html#section-6",
+    "href": "day2-advanced.html#section-6",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Gallery — live view of submitted DAGs and bias plots. Auto-refreshes every 5 seconds. Scroll through, discuss interesting differences between pairs. Key question: where did DAGs differ? Which arrows were controversial? Different arrows → different adjustment sets → different conclusions from the same data."
+  },
+  {
+    "objectID": "day2-advanced.html#section-7",
+    "href": "day2-advanced.html#section-7",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Example pair result. DAG-informed adjustment (Field + Rigour) recovers true effect (~5.4). Naive overestimates (confounding), causal salad underestimates (mediator bias via Data Reuse). The DAG tells you what to control for — and what not to. This is Step 7 in action: interpreting with transparency means stating your assumptions and showing what happens when they differ."
+  },
+  {
+    "objectID": "day2-advanced.html#section-8",
+    "href": "day2-advanced.html#section-8",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Adapted from Watson et al. (2025, fig. 1)\n\n\nStep 8: Revisit Theory with Evidence. Does the estimate align with what theory predicted? If not — revise the DAG, revise the theory. The roadmap is a cycle, not a one-shot pipeline. You just completed one full pass through the roadmap. Now we go deeper."
+  },
+  {
+    "objectID": "day2-advanced.html#section-9",
+    "href": "day2-advanced.html#section-9",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Adapted from Watson et al. (2025, fig. 1)\n\n\nThe whole roadmap is inference to the best explanation. You never prove causation — you build the strongest case you can, then stress-test it. Every pass through the roadmap sharpens your causal story."
+  },
+  {
+    "objectID": "day2-advanced.html#section-10",
+    "href": "day2-advanced.html#section-10",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Gelman et al. (2023)\n\n\nReveal: four panels, all with ATE = 0.1 (dashed line). Each dot is one person’s true individual treatment effect — the thing we can’t observe. Top-left: Constant — everyone gets ~0.1. The implicit default. Top-right: Low variation — always positive, mild spread. Plausible. Bottom-left: High variation — some people are HARMED. Average hides conflict. Bottom-right: Occasional large effects — zero for most, huge for a few. Minority drives ATE. Walk through each. “Which feels most realistic for an educational intervention?”"
+  },
+  {
+    "objectID": "day2-advanced.html#a-linear-scm-with-interaction",
+    "href": "day2-advanced.html#a-linear-scm-with-interaction",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "A Linear SCM with Interaction",
+    "text": "A Linear SCM with Interaction\n\n\nStructural Equations\n\n\\begin{aligned}\nZ &= U_Z \\\\\nX &= \\beta^{XZ} Z + U_X \\\\\nY &= \\beta^{YX} X + \\beta^{YZ} Z + \\textcolor{#D55E00}{\\beta^{YXZ} XZ} + U_Y\n\\end{aligned}\n\nDistributional Assumptions\n\n\\begin{pmatrix} U_Z \\\\ U_X \\\\ U_Y \\end{pmatrix} \\sim \\mathcal{N}\\left(\\begin{pmatrix} 0 \\\\ 0 \\\\ 0 \\end{pmatrix}, \\begin{pmatrix} \\sigma^2_Z & 0 & 0 \\\\ 0 & \\sigma^2_X & 0 \\\\ 0 & 0 & \\sigma^2_Y \\end{pmatrix}\\right)"
+  },
+  {
+    "objectID": "day2-advanced.html#graph-surgery-interaction-case",
+    "href": "day2-advanced.html#graph-surgery-interaction-case",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Graph Surgery: Interaction Case",
+    "text": "Graph Surgery: Interaction Case\n\n\nStructural Equations\n\n\\begin{aligned}\nZ &= U_Z \\\\\nX &= \\color{#107895}{x} \\\\\nY &= \\beta^{YX} \\textcolor{#107895}{x} + \\beta^{YZ} Z + \\textcolor{#D55E00}{\\beta^{YXZ} \\textcolor{#107895}{x} Z} + U_Y\n\\end{aligned}\n\nDistributional Assumptions\n\n\\begin{pmatrix} U_Z \\\\ \\textcolor{lightgray}{U_X} \\\\ U_Y \\end{pmatrix} \\sim \\mathcal{N}\\left(\\begin{pmatrix} 0 \\\\ \\textcolor{lightgray}{0} \\\\ 0 \\end{pmatrix}, \\begin{pmatrix} \\sigma^2_Z & 0 & 0 \\\\ 0 & \\textcolor{lightgray}{\\sigma^2_X} & 0 \\\\ 0 & 0 & \\sigma^2_Y \\end{pmatrix}\\right)"
+  },
+  {
+    "objectID": "day2-advanced.html#section-11",
+    "href": "day2-advanced.html#section-11",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Same visual technique — color by Z, look within strata. But now the lines AREN’T parallel. They fan out. Low Z (purple): flat or negative slope. High Z (yellow): steep positive slope. The dashed line is the average — the ATE. It hides the variation. Same DAG. Same do-operator. But the answer depends on Z."
+  },
+  {
+    "objectID": "day2-advanced.html#section-12",
+    "href": "day2-advanced.html#section-12",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "CATE = \\mathbb{E}[Y \\mid do(X = x), Z = z] - \\mathbb{E}[Y \\mid do(X = x'), Z = z]"
+  },
+  {
+    "objectID": "day2-advanced.html#section-13",
+    "href": "day2-advanced.html#section-13",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "CATE = \\textcolor{#107895}{\\beta^{YX}} + \\textcolor{#D55E00}{\\beta^{YXZ}} z\n\n\n\n\n\n\n\n\n\nEstimand\n\n\n\n\n\n\nATE\nAverage over all Z\n\\textcolor{#107895}{\\beta^{YX}}\n\n\nCATE\nAt a specific Z = z\n\\textcolor{#107895}{\\beta^{YX}} + \\textcolor{#D55E00}{\\beta^{YXZ}} z\n\n\n\n\nNow we can name what we saw. The CATE keeps Z visible instead of averaging over it. The ATE is the average of all CATEs, weighted by the distribution of Z. At Z = 0, they coincide. Away from zero, they diverge. The ATE of β^YX hides the fact that some people are harmed and others helped a lot."
+  },
+  {
+    "objectID": "day2-advanced.html#section-14",
+    "href": "day2-advanced.html#section-14",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Gelman et al. (2023)\n\n\nEarlier we saw the same ATE hiding four patterns of individual effects — random variation around the average. Now the variation is systematic. The causal effect changes as a function of a covariate — that’s exactly the CATE we just defined. Top-left: Linear interaction — this IS the β^YX + β^YXZ·z model we just worked through. The line we drew. Top-right: No effect then increase — treatment only kicks in above a threshold. A linear model would miss this. Bottom-left: Plateau — effect saturates, ceiling on what treatment can do. Bottom-right: Sweet spot — only works for intermediate values. Nothing at extremes. All four produce the same ATE. A linear interaction model would fit only the first. “Which shape best describes your intervention?”"
+  },
+  {
+    "objectID": "day2-advanced.html#section-15",
+    "href": "day2-advanced.html#section-15",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "So far Z was continuous. But the most common source of heterogeneity in your data isn’t continuous — it’s grouping. Students in schools. Each school gets its own regression line — its own effect of X on Y. Some steep, some flat, one slightly negative. The dashed line is the ATE — the average across all schools. This is the same fanning-slopes pattern, just discrete.\nKey intuition: MLM is the inverse of conditioning. Conditioning = filter to one school, narrow the distribution. Pooling = combine across schools, expand it back. The population (schools) is implicit in the DAG — not drawn, but structurally present."
+  },
+  {
+    "objectID": "day2-advanced.html#section-16",
+    "href": "day2-advanced.html#section-16",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Estimand\nPopulation\nAverages over\n\n\n\n\n\nATE\n= E[\\beta_j]\nAll schools\nSchool differences\n\n\nCATE(j)\n= \\beta_j\nSchool j\nNothing — school-specific\n\n\n\n\nSame framework as before. The ATE averages over all schools. The CATE keeps the school visible. Some schools show strong effects, others nothing. The ATE hides that — same story as continuous Z, just discrete."
+  },
+  {
+    "objectID": "day2-advanced.html#section-17",
+    "href": "day2-advanced.html#section-17",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Backdoor criterion: condition on Z. Done?\n\nBut Z = school is not a variable — it’s a cluster.\n\n\nCallback to the DAG they already know. d-separation says block the path through Z → condition on school. But what does “condition on school” mean in a regression? School isn’t a column in the data — it’s a grouping structure that generates shared variation in X and Y. One circle hides multiple causal pathways."
+  },
+  {
+    "objectID": "day2-advanced.html#section-18",
+    "href": "day2-advanced.html#section-18",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Random Intercept Model\n\n\\begin{aligned}\ny_{ij} &= \\eta_{0j} + e_{ij} \\\\\n\\eta_{0j} &= \\mu + u_{0j}\n\\end{aligned}"
+  },
+  {
+    "objectID": "day2-advanced.html#section-19",
+    "href": "day2-advanced.html#section-19",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Random Intercept Model\n\n\\begin{aligned}\ny_{ij} &= \\mu + u_{0j} + e_{ij}\n\\end{aligned}"
+  },
+  {
+    "objectID": "day2-advanced.html#section-20",
+    "href": "day2-advanced.html#section-20",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Random Intercept Model\n\n\\begin{aligned}\ny_{ij} &= \\color{#009E73}{\\mu}\\color{black} + \\color{#D55E00}{u_{0j}}\\color{black} + \\color{#107895}{e_{ij}}\\color{black}\n\\end{aligned}"
+  },
+  {
+    "objectID": "day2-advanced.html#exercise-what-do-the-error-terms-mean",
+    "href": "day2-advanced.html#exercise-what-do-the-error-terms-mean",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Exercise: What Do the Error Terms Mean?",
+    "text": "Exercise: What Do the Error Terms Mean?\n\nPair discussion, ~5 min. Just had the random intercept equation — now make them think causally about it."
+  },
+  {
+    "objectID": "day2-advanced.html#section-21",
+    "href": "day2-advanced.html#section-21",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Look at the Random Intercept Model:\n\n\ny_{ij} = \\color{#009E73}{\\mu}\\color{black} + \\color{#D55E00}{u_{0j}}\\color{black} + \\color{#107895}{e_{ij}}\\color{black}\n\n\nDiscuss with your neighbor:\n\nWhat do \\color{#D55E00}{u_{0j}} and \\color{#107895}{e_{ij}} represent from a Structural Causal Model perspective?\nCan you name concrete examples of what these unobserved causes could be?\nTry to sketch the simplest possible DAG for this model — one observed node, two latent error nodes.\nWhat does it mean that we split “unobserved causes” into a between-cluster and a within-cluster component?\n\n\n~5 min pair discussion, ~5 min debrief. Goal: bridge statistical notation ↔︎ causal thinking. Even the simplest MLM embeds causal assumptions. u₀ⱼ = unobserved cluster-level causes (school resources, culture, neighborhood). eᵢⱼ = unobserved individual-level causes (motivation, family, prior knowledge). Splitting error into two levels = assuming two distinct sets of unobserved causes. The DAG they should arrive at: Y ← u₀ⱼ, Y ← eᵢⱼ — one observed node, two latent nodes. That’s already a causal model."
+  },
+  {
+    "objectID": "day2-advanced.html#section-22",
+    "href": "day2-advanced.html#section-22",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "(Illustration of the Big Fish Little Pond Effect based on simulated data, cf. Marsh et al. 2008)\n\n\nBFLPE: self-concept depends on own ability AND peers’ ability. Big fish in little pond → higher self-concept.\nBetween: selective school → lower self-esteem (negative). Within: outperform peers → higher self-esteem (positive). Sign flip between levels."
+  },
+  {
+    "objectID": "day2-advanced.html#section-23",
+    "href": "day2-advanced.html#section-23",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "(Illustration of the Big Fish Little Pond Effect based on simulated data, cf. Marsh et al. 2008)\n\n\nPrevious was stylized — in practice, expect effect heterogeneity across schools."
+  },
+  {
+    "objectID": "day2-advanced.html#section-24",
+    "href": "day2-advanced.html#section-24",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "(Illustration of the Big Fish Little Pond Effect based on simulated data, cf. Marsh et al. 2008)\n\n\nRed = naive OLS (ignoring clusters). Grey dashed = true average within effect. Black dashed = between effect. Gap red↔︎grey = bias. OLS pulled toward between (negative)."
+  },
+  {
+    "objectID": "day2-advanced.html#section-25",
+    "href": "day2-advanced.html#section-25",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Multi-Level Notation\n\n\\begin{aligned}\ny_{ij} &= \\eta_{0j} + \\eta_{1j}x_{ij} + e_{ij} \\\\\n\\eta_{0j} &= \\mu + u_{0j} \\\\\n\\eta_{1j} &= \\beta + u_{1j}\n\\end{aligned}\n\n\n\nLeft: per-school slopes (effect heterogeneity). Right: equations. u_{1j} = random slope, u_{0j} = random intercept."
+  },
+  {
+    "objectID": "day2-advanced.html#multi-level-regression-notation-1",
+    "href": "day2-advanced.html#multi-level-regression-notation-1",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Multi-Level Regression Notation",
+    "text": "Multi-Level Regression Notation\n\n\\begin{aligned}\ny_{ij} &= \\eta_{0j} + \\eta_{1j}x_{ij} + e_{ij} \\\\\n\\eta_{0j} &= \\mu + u_{0j} \\\\\n\\eta_{1j} &= \\beta + u_{1j}\n\\end{aligned}"
+  },
+  {
+    "objectID": "day2-advanced.html#mixed-model-notation",
+    "href": "day2-advanced.html#mixed-model-notation",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Mixed-Model Notation",
+    "text": "Mixed-Model Notation\n\ny_{ij} = \\color{#D55E00}(\\mu + u_{0j})\\color{black} + \\color{#D55E00}(\\beta + u_{1j})\\color{black} x_{ij} + e_{ij}"
+  },
+  {
+    "objectID": "day2-advanced.html#mixed-model-notation-1",
+    "href": "day2-advanced.html#mixed-model-notation-1",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Mixed-Model Notation",
+    "text": "Mixed-Model Notation\n\ny_{ij} = \\mu + \\beta x_{ij} + u_{1j}x_{ij} + u_{0j} + e_{ij}"
+  },
+  {
+    "objectID": "day2-advanced.html#distributional-assumptions-2",
+    "href": "day2-advanced.html#distributional-assumptions-2",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Distributional Assumptions",
+    "text": "Distributional Assumptions\n\n\\begin{aligned}\n\\begin{bmatrix}\nu_{0j}\\\\\nu_{1j}\n\\end{bmatrix} &\\sim N\\left (\\begin{bmatrix}\n0\\\\\n0\n\\end{bmatrix},\n\\begin{bmatrix}\n\\psi_{11} \\\\\n\\psi_{21} & \\psi_{22}\n\\end{bmatrix}\\right ) \\\\\n\\begin{bmatrix}\ne_{ij}\n\\end{bmatrix} &\\sim N(0,\\sigma^2_e)\n\\end{aligned}"
+  },
+  {
+    "objectID": "day2-advanced.html#section-26",
+    "href": "day2-advanced.html#section-26",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "(adapted from Curran and Bauer 2007)"
+  },
+  {
+    "objectID": "day2-advanced.html#section-27",
+    "href": "day2-advanced.html#section-27",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "(adapted from Muthén and Muthén 2017)"
+  },
+  {
+    "objectID": "day2-advanced.html#section-28",
+    "href": "day2-advanced.html#section-28",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "(adapted from Mehta and Neale 2005)"
+  },
+  {
+    "objectID": "day2-advanced.html#section-29",
+    "href": "day2-advanced.html#section-29",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "(adapted from Skrondal and Rabe-Hesketh 2004)"
+  },
+  {
+    "objectID": "day2-advanced.html#section-30",
+    "href": "day2-advanced.html#section-30",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "\\begin{array}{c}\n\\text{(Multi-level) SCM} = (\\mathcal S, \\mathcal P, \\mathcal G)\n\\end{array}\n\n\n\\mathcal S = Set of (Multilevel) Structural Equations\n\\mathcal P = Probability distribution over the exogenous variables\n\\mathcal G = Graph (DAG or DAMG)\n\n\n\nBridge: MLM = SEM = parametric SCM. Add SCM semantics → rigorous causal multilevel framework."
+  },
+  {
+    "objectID": "day2-advanced.html#back-to-our-example",
+    "href": "day2-advanced.html#back-to-our-example",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Back to our example",
+    "text": "Back to our example\n\n\nStructural Equations\n\n\\begin{aligned}\nZ &= U_Z \\\\\nX &= \\beta^{XZ} Z + U_X \\\\\nY &= \\beta^{YX} X + \\beta^{YZ} Z + U_Y\n\\end{aligned}\n\nDistributional Assumptions\n\n\\begin{pmatrix} U_Z \\\\ U_X \\\\ U_Y \\end{pmatrix} \\sim \\mathcal{N}\\left(\\begin{pmatrix} 0 \\\\ 0 \\\\ 0 \\end{pmatrix}, \\begin{pmatrix} \\sigma^2_Z & 0 & 0 \\\\ 0 & \\sigma^2_X & 0 \\\\ 0 & 0 & \\sigma^2_Y \\end{pmatrix}\\right)"
+  },
+  {
+    "objectID": "day2-advanced.html#what-if-z-is-unobserved",
+    "href": "day2-advanced.html#what-if-z-is-unobserved",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "What if Z is unobserved?",
+    "text": "What if Z is unobserved?\n\n\nStructural Equations\n\n\\begin{aligned}\n\\color{lightgray} Z &\\color{lightgray}= U_Z \\\\\nX &= \\beta^{XZ} \\textcolor{lightgray}{Z} + U_X \\\\\nY &= \\beta^{YX} X + \\beta^{YZ} \\textcolor{lightgray}{Z} + U_Y\n\\end{aligned}\n\nDistributional Assumptions\n\n\\begin{pmatrix} \\textcolor{lightgray}{U_Z} \\\\ U_X \\\\ U_Y \\end{pmatrix} \\sim \\mathcal{N}\\left(\\begin{pmatrix} \\textcolor{lightgray}{0} \\\\ 0 \\\\ 0 \\end{pmatrix}, \\begin{pmatrix} \\textcolor{lightgray}{\\sigma^2_Z} & 0 & 0 \\\\ 0 & \\sigma^2_X & 0 \\\\ 0 & 0 & \\sigma^2_Y \\end{pmatrix}\\right)\n\n\n\n\n\nThe SCM is unchanged. Z is still endogenous — it still has its own equation, it still causes X and Y. But we can no longer condition on it. Grey = unobserved, not absent. The confounding path through Z is still there, just unblockable."
+  },
+  {
+    "objectID": "day2-advanced.html#directed-acyclic-mixed-graphs",
+    "href": "day2-advanced.html#directed-acyclic-mixed-graphs",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Directed Acyclic Mixed Graphs",
+    "text": "Directed Acyclic Mixed Graphs\n\n\nStructural Equations\n\n\\begin{aligned}\nX &= E^X \\\\\nY &= \\beta^{YX} X + E^Y\n\\end{aligned}\n\nDistributional Assumptions\n\n\\begin{pmatrix} E^X \\\\ E^Y \\end{pmatrix} \\sim \\mathcal{N}\\left(\\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix}, \\begin{pmatrix} \\sigma^2_X & \\textcolor{#D55E00}{\\sigma_{XY}} \\\\ \\textcolor{#D55E00}{\\sigma_{XY}} & \\sigma^2_Y \\end{pmatrix}\\right)\n\n\n\n\n\nSame confounding, no explicit U. Correlated errors = bidirected edge. DAMG = Directed Acyclic Mixed Graph."
+  },
+  {
+    "objectID": "day2-advanced.html#directed-acyclic-mixed-graphs-1",
+    "href": "day2-advanced.html#directed-acyclic-mixed-graphs-1",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Directed Acyclic Mixed Graphs",
+    "text": "Directed Acyclic Mixed Graphs\n\n\nStructural Equations\n\n\\begin{aligned}\nX &= E^X \\\\\nY &= \\beta^{YX} X + E^Y\n\\end{aligned}\n\nDistributional Assumptions\n\n\\begin{pmatrix} E^X \\\\ E^Y \\end{pmatrix} \\sim \\mathcal{N}\\left(\\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix}, \\begin{pmatrix} \\sigma^2_X & \\textcolor{#D55E00}{\\sigma_{XY}} \\\\ \\textcolor{#D55E00}{\\sigma_{XY}} & \\sigma^2_Y \\end{pmatrix}\\right)\n\n\n\n\n\nSame confounding, no explicit U. Correlated errors = bidirected edge. DAMG = Directed Acyclic Mixed Graph."
+  },
+  {
+    "objectID": "day2-advanced.html#multi-level-equations",
+    "href": "day2-advanced.html#multi-level-equations",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Multi-level Equations",
+    "text": "Multi-level Equations\n\n\\begin{aligned}\n\\color{#D55E00} X_{ij} &\\color{#D55E00}= \\eta_{j}^{X\\mu} + E_{ij}^{X} \\\\\nY_{ij} &= \\eta_{j}^{Y\\mu} + \\eta_{j}^{YX} X_{ij} + E_{ij}^{Y} \\\\\n\\\\\n\\color{#D55E00} \\eta_{j}^{X\\mu} &\\color{#D55E00} = \\mu^{X} + U_{j}^{X\\mu} \\\\\n\\eta_{j}^{Y\\mu} &= \\mu^{Y} + U_{j}^{Y\\mu} \\\\\n\\eta_{j}^{YX} &= \\beta^{YX} + U_{j}^{YX}\n\\end{aligned}"
+  },
+  {
+    "objectID": "day2-advanced.html#mixed-model-form-structural-form",
+    "href": "day2-advanced.html#mixed-model-form-structural-form",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Mixed-Model Form = Structural Form",
+    "text": "Mixed-Model Form = Structural Form\n\n\\begin{aligned}\nX_{ij} &= \\mu^{X} + U_{j}^{X\\mu} + E_{ij}^{X} \\\\\nY_{ij} &= (\\mu^{Y} + U_{j}^{Y\\mu}) + (\\beta^{YX} + U_{j}^{YX})X_{ij} + E_{ij}^{Y}\n\\end{aligned}"
+  },
+  {
+    "objectID": "day2-advanced.html#mixed-model-form-structural-form-1",
+    "href": "day2-advanced.html#mixed-model-form-structural-form-1",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Mixed-Model Form = Structural Form",
+    "text": "Mixed-Model Form = Structural Form\n\n\\begin{aligned}\nX_{ij} &= \\mu^{X} + U_{j}^{X\\mu} + E_{ij}^{X} \\\\\nY_{ij} &= \\mu^{Y} + \\color{#D55E00}\\beta^{YX}\\color{black} X_{ij} + U_{j}^{YX}X_{ij} + U_{j}^{Y\\mu} + E_{ij}^{Y}\n\\end{aligned}"
+  },
+  {
+    "objectID": "day2-advanced.html#plate-notation",
+    "href": "day2-advanced.html#plate-notation",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Plate Notation",
+    "text": "Plate Notation\n\n\nPanel A: plain single-level DAG. Panel B: wrap in a plate — compact shorthand for “repeat N times.” Panel C: what the plate actually means when you expand it."
+  },
+  {
+    "objectID": "day2-advanced.html#from-independent-to-dependent-units",
+    "href": "day2-advanced.html#from-independent-to-dependent-units",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "From Independent to Dependent Units",
+    "text": "From Independent to Dependent Units\n\n\nTop: expanded single-level graph — units are independent copies. Bottom: add cluster subscripts, dependence arrows between units in the same cluster, and an M plate around the whole thing. This is the multi-level DAG."
+  },
+  {
+    "objectID": "day2-advanced.html#section-31",
+    "href": "day2-advanced.html#section-31",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "\\begin{aligned}\nY_{\\color{#D55E00}1} &= \\mu^Y + \\beta^{YX} X_{1} + U^{YX} X_{1} + U^{Y\\mu} + E_{1}^Y \\\\\nX_{\\color{#D55E00}1} &= \\mu^X + U^{X\\mu} + E_{1}^X \\\\\nY_{\\color{#D55E00}2} &= \\mu^Y + \\beta^{YX} X_{2} + U^{YX} X_{2} + U^{Y\\mu} + E_{2}^Y \\\\\nX_{\\color{#D55E00}2} &= \\mu^X + U^{X\\mu} + E_{2}^X \\\\\nY_{\\color{#D55E00}3} &= \\mu^Y + \\beta^{YX} X_{3} + U^{YX} X_{3} + U^{Y\\mu} + E_{3}^Y \\\\\nX_{\\color{#D55E00}3} &= \\mu^X + U^{X\\mu} + E_{3}^X\n\\end{aligned}"
+  },
+  {
+    "objectID": "day2-advanced.html#section-32",
+    "href": "day2-advanced.html#section-32",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "\\begin{aligned}\nY_{1} &= \\color{#D55E00}f_{Y1}\\color{black}(X_{1}, U^{Y\\mu}, U^{YX}, E_{1}^Y) \\\\\nX_{1} &= \\color{#D55E00}f_{X1}\\color{black}(U^{X\\mu}, E_{1}^X) \\\\\nY_{2} &= \\color{#D55E00}f_{Y2}\\color{black}(X_{2}, U^{Y\\mu}, U^{YX}, E_{2}^Y) \\\\\nX_{2} &= \\color{#D55E00}f_{X2}\\color{black}(U^{X\\mu}, E_{2}^X) \\\\\nY_{3} &= \\color{#D55E00}f_{Y3}\\color{black}(X_{3}, U^{Y\\mu}, U^{YX}, E_{3}^Y) \\\\\nX_{3} &= \\color{#D55E00}f_{X3}\\color{black}(U^{X\\mu}, E_{3}^X)\n\\end{aligned}"
+  },
+  {
+    "objectID": "day2-advanced.html#distributional-assumptions-7",
+    "href": "day2-advanced.html#distributional-assumptions-7",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Distributional Assumptions",
+    "text": "Distributional Assumptions\n\n\\begin{aligned}\n\\begin{bmatrix}\nU_{j}^{X\\mu}\\\\\nU_{j}^{Y\\mu}\\\\\nU_{j}^{YX}\n\\end{bmatrix}\n&\\sim N\n\\left (\n\\begin{bmatrix}\n0\\\\\n0\\\\\n0\n\\end{bmatrix},\n\\begin{bmatrix}\n\\psi_{U_{j}^{X\\mu}} &  &  \\\\\n\\psi_{U_{j}^{X\\mu} U_{j}^{Y\\mu}} & \\psi_{U_{j}^{Y\\mu}} &  \\\\\n\\psi_{U_{j}^{X\\mu} U_{j}^{YX}} & \\psi_{U_{j}^{Y\\mu} U_{j}^{YX}} & \\psi_{U_{j}^{YX}}\n\\end{bmatrix}\n\\right ) \\\\\n\\begin{bmatrix}\nE_{ij}^{X} \\\\\nE_{ij}^{Y}\n\\end{bmatrix}\n&\\sim N\\left\n(\\begin{bmatrix}\n0\\\\\n0\n\\end{bmatrix},\n\\begin{bmatrix}\n\\sigma^2_{E^X} &  \\\\\n0              & \\sigma^2_{E^Y}\n\\end{bmatrix}\\right )\n\\end{aligned}"
+  },
+  {
+    "objectID": "day2-advanced.html#mixed-model-reduced-form",
+    "href": "day2-advanced.html#mixed-model-reduced-form",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Mixed-Model Reduced Form",
+    "text": "Mixed-Model Reduced Form\n\n\\begin{aligned}\n\\mathbb E[Y_{ij} \\mid X_{ij} = x_{ij}] &= \\underbrace{\\color{lightgray}{\\mathbb{E}[Y] - \\mu^X \\cdot \\text{slope}}}_{\\text{intercept}} + \\underbrace{\\left(\\color{#D55E00}\\beta^{YX}\\color{black} + \\text{bias}\\right)}_{\\text{slope}} x_{ij}\n\\end{aligned}\n\n\n\\text{bias} = \\frac{\n  \\color{#D55E00}\\psi_{U^{X\\mu} U^{Y\\mu}} + \\mu^X \\psi_{U^{X\\mu} U^{YX}} + \\sigma_{E^X E^Y}\n  }{\\psi_{U^{X\\mu}} + \\sigma^2_{E^X}}"
+  },
+  {
+    "objectID": "day2-advanced.html#mixed-model-interventional-form",
+    "href": "day2-advanced.html#mixed-model-interventional-form",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Mixed-Model Interventional Form",
+    "text": "Mixed-Model Interventional Form\n\n\\begin{aligned}\n\\mathbb E[Y_{ij} \\mid do(X_{ij} = x_{ij})] &=\n\\underbrace{\n  \\mathbb{E}[Y] - \\mu^X \\cdot \\color{#D55E00}\\beta^{YX}\\color{black}\n  }_{\n    \\text{intercept}\n  } + \\underbrace{\n    \\color{#D55E00}\\beta^{YX}\\color{black}\n  }_{\n      \\text{slope}\n  } x_{ij}\n\\end{aligned}"
+  },
+  {
+    "objectID": "day2-advanced.html#group-mean-centering",
+    "href": "day2-advanced.html#group-mean-centering",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Group-Mean Centering",
+    "text": "Group-Mean Centering\n\n\nX_{ij} - \\bar{X}_j\n\n\n\nSubtracting the group mean removes U_j^{X\\mu} \\approx \\bar{X}_j"
+  },
+  {
+    "objectID": "day2-advanced.html#multi-level-regression-with-group-mean",
+    "href": "day2-advanced.html#multi-level-regression-with-group-mean",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Multi-level Regression with Group Mean",
+    "text": "Multi-level Regression with Group Mean\n\n\n\\begin{aligned}\ny_{ij} &= \\eta_{0j} + \\eta_{1j}x_{ij} + e_{ij} \\\\\n\\eta_{0j} &= \\mu + \\color{#D55E00}\\gamma_1 \\bar x_j\\color{black} + u_{0j} \\\\\n\\eta_{1j} &= \\beta + \\color{#D55E00}\\gamma_2 \\bar x_j\\color{black} + u_{1j}\n\\end{aligned}"
+  },
+  {
+    "objectID": "day2-advanced.html#mixed-model-notation-2",
+    "href": "day2-advanced.html#mixed-model-notation-2",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Mixed-Model Notation",
+    "text": "Mixed-Model Notation\n\ny_{ij} = (\\mu + \\color{#D55E00}\\gamma_1 \\bar x_j\\color{black} + u_{0j}) + (\\beta + \\color{#D55E00}\\gamma_2 \\bar x_j\\color{black} + u_{1j}) x_{ij} + e_{ij}"
+  },
+  {
+    "objectID": "day2-advanced.html#mixed-model-notation-3",
+    "href": "day2-advanced.html#mixed-model-notation-3",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Mixed-Model Notation",
+    "text": "Mixed-Model Notation\n\ny_{ij} = \\mu + \\color{#D55E00}\\gamma_1 \\bar x_j\\color{black} + \\beta x_{ij} + \\color{#D55E00}\\gamma_2 \\bar x_j x_{ij}\\color{black} + u_{1j}x_{ij} + u_{0j} + e_{ij}"
+  },
+  {
+    "objectID": "day2-advanced.html#multi-level-location-scale-equations",
+    "href": "day2-advanced.html#multi-level-location-scale-equations",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Multi-level Location Scale Equations",
+    "text": "Multi-level Location Scale Equations\n\n\\begin{aligned}\nX_{ij} &= \\eta_{j}^{X\\mu} + \\color{#D55E00}\\eta_{j}^{X\\sigma}\\color{black} E_{ij}^{X} \\\\\nY_{ij} &= \\eta_{j}^{Y\\mu} + \\eta_{j}^{YX} X_{ij} + E_{ij}^{Y} \\\\\n\\\\\n\\eta_{j}^{X\\mu} &= \\mu^{X} + U_{j}^{X\\mu} \\\\\n\\color{#D55E00}\\eta_{j}^{X\\sigma} &\\color{#D55E00}= \\sigma^{X} + U_{j}^{X\\sigma} \\\\\n\\eta_{j}^{Y\\mu} &= \\mu^{Y} + U_{j}^{Y\\mu} \\\\\n\\eta_{j}^{YX} &= \\beta^{YX} + U_{j}^{YX}\n\\end{aligned}"
+  },
+  {
+    "objectID": "day2-advanced.html#section-41",
+    "href": "day2-advanced.html#section-41",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "HSB data. Boxplots = within-school SES distribution. Schools vary in spread → exactly what location-scale η^{Xσ}_j captures."
+  },
+  {
+    "objectID": "day2-advanced.html#distributional-assumptions-of-location-scale-model",
+    "href": "day2-advanced.html#distributional-assumptions-of-location-scale-model",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Distributional Assumptions of Location-Scale Model",
+    "text": "Distributional Assumptions of Location-Scale Model\n\n\\begin{aligned}\n\\begin{bmatrix}\nU_{j}^{X\\mu}\\\\\n\\color{#D55E00} U_{j}^{X\\sigma}\\\\\nU_{j}^{Y\\mu}\\\\\nU_{j}^{YX}\n\\end{bmatrix}\n&\\sim N\n\\left (\n\\begin{bmatrix}\n0\\\\\n0\\\\\n0\\\\\n0\n\\end{bmatrix},\n\\begin{bmatrix}\n\\psi_{U_{j}^{X\\mu}} &  &  &  \\\\\n\\color{#D55E00} \\psi_{U_{j}^{X\\mu} U_{j}^{X\\sigma}} & \\color{#D55E00} \\psi_{U_{j}^{X\\sigma}} &  &  \\\\\n\\psi_{U_{j}^{X\\mu} U_{j}^{Y\\mu}} & \\color{#D55E00} \\psi_{U_{j}^{X\\sigma} U_{j}^{Y\\mu}} & \\psi_{U_{j}^{Y\\mu}} &  \\\\\n\\psi_{U_{j}^{X\\mu} U_{j}^{YX}} & \\color{#D55E00} \\psi_{U_{j}^{X\\sigma} U_{j}^{YX}} & \\psi_{U_{j}^{Y\\mu} U_{j}^{YX}} & \\psi_{U_{j}^{YX}}\n\\end{bmatrix}\n\\right ) \\\\\n\\begin{bmatrix}\nE_{ij}^{X} \\\\\nE_{ij}^{Y}\n\\end{bmatrix}\n&\\sim N\\left\n(\\begin{bmatrix}\n0\\\\\n0\n\\end{bmatrix},\n\\begin{bmatrix}\n\\color{#D55E00}1\\color{black} &  \\\\\n0              & \\sigma^2_{E^Y}\n\\end{bmatrix}\\right )\n\\end{aligned}"
+  },
+  {
+    "objectID": "day2-advanced.html#section-43",
+    "href": "day2-advanced.html#section-43",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "(Chernozhukov et al. 2013; Bates et al. 2014)"
+  },
+  {
+    "objectID": "day2-advanced.html#exercise-multilevel-confounding",
+    "href": "day2-advanced.html#exercise-multilevel-confounding",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Exercise: Multilevel Confounding",
+    "text": "Exercise: Multilevel Confounding\n\nTheory done — now hands-on. Five models, same data, only some recover the true effect. Key insight: it’s the weighting, not the estimation method. Part 6 (brms) is optional stretch if time allows."
+  },
+  {
+    "objectID": "day2-advanced.html#section-44",
+    "href": "day2-advanced.html#section-44",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "",
+    "text": "Fit progressively complex models on simulated data. Which ones recover the true causal effect — and why?\nOpen multilevel-confounding/multilevel-confounding.R\n~30 min, then debrief.\n\nModels A–E take ~20 min. Part 6 (brms distributional model) is stretch — skip if short on time. Debrief focus: why is FE the most biased? → variance weighting."
+  },
+  {
+    "objectID": "day2-advanced.html#the-estimate-may-be-weighted-least-squares-in-disguise",
+    "href": "day2-advanced.html#the-estimate-may-be-weighted-least-squares-in-disguise",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "The estimate may be Weighted Least Squares in Disguise",
+    "text": "The estimate may be Weighted Least Squares in Disguise\n\n\\mathrm{ATE}=\\mathbb{E}[\\beta^{YX}_j]\n\\qquad\\text{but}\\qquad\n\\beta^{YX}=\\mathbb{E}[W_j\\,\\beta^{YX}_j]\n\nwhere\n\nW_j \\propto \\mathrm{Var}(X_{ij}\\mid j), \\qquad W_j &gt; 0,\n\nif\n\n\\mathrm{Cov}\\!\\left(U^{X\\sigma}_j,\\; U^{YX}_j\\right)\\neq 0.\n\n\nClusters with high variance get high weight, and those with low variance get low weight"
+  },
+  {
+    "objectID": "day2-advanced.html#with-two-crossed-fixed-effects-weights-can-go-negative",
+    "href": "day2-advanced.html#with-two-crossed-fixed-effects-weights-can-go-negative",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "With two crossed fixed effects, weights can go negative",
+    "text": "With two crossed fixed effects, weights can go negative\n\n\\beta^{YX}_{\\text{FE}}=\\sum_{j,k}W_{jk}\\;\\beta^{YX}_{jk},\n\\qquad W_{jk}\\lessgtr 0\n\nPreviously: W_j&gt;0 (unequal but positive). With two crossed grouping factors — school \\times cohort, state \\times time — weights can flip sign.\n\nThe estimate can have the opposite sign of every cell-specific effect\n\n\nDe Chaisemartin and D’Haultfœuille (2020)\n\n\nTWFE is just cross-classified FE — school x cohort structurally identical to state x time. Nothing inherently dynamic about this; it’s a property of crossed fixed effects. Homogeneous effects → weights irrelevant (weighted avg of identical values). Heterogeneous effects + imbalanced design → arbitrarily bad. de Chaisemartin & D’Haultfoeuille (AER 2020): 26 of 100 most-cited AER papers 2015-2019 used TWFE."
+  },
+  {
+    "objectID": "day2-advanced.html#medicaid-expansion-and-preterm-birth",
+    "href": "day2-advanced.html#medicaid-expansion-and-preterm-birth",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "Medicaid expansion and preterm birth",
+    "text": "Medicaid expansion and preterm birth\n\n\n\n\nEstimator\nRisk Difference\n\n\n\n\nTWFE\n+0.12 (harmful)\n\n\nGroup-time ATT\n−0.16 (protective)\n\n\nTarget trial\n−0.16 (protective)\n\n\n\n\nSame data. Sign flipped.\n\nGoin and Riddell (2023)\n\n\nGoin & Riddell (Epidemiology 2023) — brought the TWFE literature from econometrics to epidemiology. Medicaid expansion on preterm birth using National Center for Health Statistics birth records 2011-2016. TWFE estimated expansion INCREASED preterm birth risk. All corrected estimators (group-time ATT, cohort ATT, target trial) found protective or null. Root cause: staggered adoption + heterogeneous/dynamic effects → already-treated states used as controls for newly-treated → contamination → sign flip."
+  },
+  {
+    "objectID": "day2-advanced.html#references",
+    "href": "day2-advanced.html#references",
+    "title": "Introduction to Graphical Causal Inference",
+    "section": "References",
+    "text": "References\n\n\nBates, Michael David, Katherine E. Castellano, Sophia Rabe-Hesketh, and Anders Skrondal. 2014. “Handling Correlations Between Covariates and Random Slopes in Multilevel Models.” Journal of Educational and Behavioral Statistics 39 (6): 524–49. https://doi.org/10.3102/1076998614559420.\n\n\nChernozhukov, Victor, Ivan Fernandez-Val, Jinyong Hahn, and Whittney Newey. 2013. “Average and Quantile Effects in Nonseparable Panel Models.” Econometrica 81 (2): 535–80. https://doi.org/10.3982/ECTA8405.\n\n\nCurran, Patrick J., and Daniel J. Bauer. 2007. “Building Path Diagrams for Multilevel Models.” Psychological Methods 12 (3): 283–97. https://doi.org/10.1037/1082-989X.12.3.283.\n\n\nDe Chaisemartin, Clément, and Xavier D’Haultfœuille. 2020. “Two-Way Fixed Effects Estimators with Heterogeneous Treatment Effects.” American Economic Review 110 (9): 2964–96. https://doi.org/10.1257/aer.20181169.\n\n\nGelman, Andrew, Jessica Hullman, and Lauren Kennedy. 2023. “Causal Quartets: Different Ways to Attain the Same Average Treatment Effect.” Pre-published February 24. https://doi.org/10.48550/arXiv.2302.12878.\n\n\nGoin, Dana E., and Corinne A. Riddell. 2023. “Comparing Two-way Fixed Effects and New Estimators for Difference-in-Differences: A Simulation Study and Empirical Example.” Epidemiology 34 (4): 535–43. https://doi.org/10.1097/EDE.0000000000001611.\n\n\nGoodman, Steven N., Jesse Berlin, Suzanne W. Fletcher, and Robert H. Fletcher. 1994. “Manuscript Quality Before and After Peer Review and Editing at Annals of Internal Medicine.” Annals of Internal Medicine 121 (1): 11–21. https://doi.org/10.7326/0003-4819-121-1-199407010-00003.\n\n\nHardwicke, Tom E., Manuel Bohn, Kyle MacDonald, et al. 2021. “Analytic Reproducibility in Articles Receiving Open Data Badges at the Journal Psychological Science : An Observational Study.” Royal Society Open Science 8 (1): 201494. https://doi.org/10.1098/rsos.201494.\n\n\nKlebel, Thomas, and Vincent Traag. 2024. “Introduction to Causality in Science Studies.” Pre-published February 9. https://doi.org/10.31235/osf.io/4bw9e.\n\n\nMarsh, Herbert W., Marjorie Seaton, Ulrich Trautwein, et al. 2008. “The Big-fish–Little-Pond-Effect Stands Up to Critical Scrutiny: Implications for Theory, Methodology, and Future Research.” Educational Psychology Review 20 (3): 319–50. https://doi.org/10.1007/s10648-008-9075-6.\n\n\nMehta, Paras D., and Michael C. Neale. 2005. “People Are Variables Too: Multilevel Structural Equations Modeling.” Psychological Methods 10 (3): 259–84. https://doi.org/10.1037/1082-989X.10.3.259.\n\n\nMuthén, Linda K., and Bengt O. Muthén. 2017. “Mplus User’s Guide (Eighth).” Muthén & Muthén.\n\n\nPiwowar, Heather A., Roger S. Day, and Douglas B. Fridsma. 2007. “Sharing Detailed Research Data Is Associated with Increased Citation Rate.” PLoS ONE 2 (3): e308. https://doi.org/10.1371/journal.pone.0000308.\n\n\nRoss-Hellauer, Tony, Thomas Klebel, Alexandra Bannach-Brown, et al. 2022. “TIER2: Enhancing Trust, Integrity and Efficiency in Research Through Next-Level Reproducibility.” Research Ideas and Outcomes 8 (December): e98457. https://doi.org/10.3897/rio.8.e98457.\n\n\nSkrondal, Anders, and S. Rabe-Hesketh. 2004. Generalized Latent Variable Modeling: Multilevel, Longitudinal, and Structural Equation Models. Chapman & Hall/CRC Interdisciplinary Statistics Series. Chapman & Hall/CRC.\n\n\nTextor, Johannes, Benito van der Zander, Mark S Gilthorpe, Maciej Liśkiewicz, and George TH Ellison. 2016. “Robust Causal Inference Using Directed Acyclic Graphs: The R Package ‘Dagitty’.” International Journal of Epidemiology 45 (6): 1887–94. https://doi.org/10.1093/ije/dyw341.\n\n\nWaltman, Ludo, and Nees Jan Van Eck. 2019. “Field Normalization of Scientometric Indicators.” In Springer Handbook of Science and Technology Indicators, edited by Wolfgang Glänzel, Henk F. Moed, Ulrich Schmoch, and Mike Thelwall. Springer International Publishing. https://doi.org/10.1007/978-3-030-02511-3_11.\n\n\nWatson, Elijah, Delaney Glass, and Lucia Petito. 2025. “Toward New Directions in Human Biology: A Roadmap for Anthropological Causal Inference With Observational Data.” American Journal of Human Biology, ahead of print, September 22. https://doi.org/10.1002/ajhb.70149.\n\n\nWoods, Helen Buckley, and Stephen Pinfield. 2022. “Incentivising Research Data Sharing: A Scoping Review.” Wellcome Open Research 6 (April): 355. https://doi.org/10.12688/wellcomeopenres.17286.2."
+  }
+]

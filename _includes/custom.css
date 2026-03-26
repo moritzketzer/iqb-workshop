@@ -1,0 +1,485 @@
+/* ==========================================================================
+ * Global RevealJS CSS for Quarto Presentations
+ * ==========================================================================
+ *
+ * Location : ~/.config/quarto/revealjs-global.css
+ * Synced to : <project>/_includes/custom.css (via _pre-render.sh)
+ *
+ * CONVENTIONS
+ * - Every class/section MUST have a doc-comment explaining what it does,
+ *   how to use it (Quarto markup example), and WHY it works the way it does
+ *   when the mechanism is non-obvious.
+ * - Group related rules under a section header (/* === ... === *​/).
+ * - Keep classes generic — project-specific overrides belong in a separate
+ *   project CSS file, not here.
+ * ========================================================================== */
+
+
+/* ==========================================================================
+ * Logo
+ * --------------------------------------------------------------------------
+ * Override the default Reveal.js slide-logo sizing so wide logos (e.g.
+ * university wordmarks) render at their natural aspect ratio.
+ *
+ * Usage: automatic — applies to any presentation that sets `logo:` in YAML.
+ * ========================================================================== */
+
+.reveal .slide-logo {
+  height: 100px !important;
+  width: 500px !important;
+  max-width: unset !important;
+  max-height: unset !important;
+}
+
+
+/* ==========================================================================
+ * Text alignment utilities
+ * --------------------------------------------------------------------------
+ * Usage:  ::: {.center}
+ *         Centered paragraph text.
+ *         :::
+ * ========================================================================== */
+
+.center {
+  text-align: center;
+}
+
+
+/* ==========================================================================
+ * Vertical centering utilities
+ * --------------------------------------------------------------------------
+ * Two approaches for different contexts:
+ *
+ * .slide-centered — Flexbox. Wrap content in a div; the div itself is
+ *   centered within the slide.
+ *   Usage:  ::: {.slide-centered}
+ *           Content here.
+ *           :::
+ *
+ * .v-center — Vertically centers all slide content within the viewport.
+ *   Usage:  ## Slide Title {.v-center}
+ *
+ * ========================================================================== */
+
+.reveal section.v-center {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 100% !important;
+  box-sizing: border-box;
+}
+
+.slide-centered {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+}
+
+
+/* ==========================================================================
+ * Effects
+ * --------------------------------------------------------------------------
+ * .blurry-text — Renders text as an illegible blur. Useful for "reveal"
+ *   moments where you show the answer after discussion.
+ *   Usage:  [blurred answer]{.blurry-text}
+ * ========================================================================== */
+
+.blurry-text {
+  color: transparent;
+  text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+
+/* ==========================================================================
+ * Quote slides
+ * --------------------------------------------------------------------------
+ * Full-slide layouts for prominent quotations. Add the class to the slide
+ * heading to activate.
+ *
+ * .quote-slide      — Centered heading + centered blockquote, no border.
+ * .quote-slide-left — Centered heading + left-aligned blockquote with
+ *                     accent-colored left border.
+ *
+ * Usage:  ## Title {.quote-slide}
+ *
+ *         > The quoted text goes here.
+ * ========================================================================== */
+
+.reveal section.quote-slide,
+.reveal section.quote-slide-left {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 100%;
+  text-align: center;
+}
+
+.reveal section.quote-slide h2,
+.reveal section.quote-slide-left h2 {
+  text-align: center;
+  width: 100%;
+}
+
+/* Subtle divider between heading and blockquote (matches label-stack style) */
+.reveal section.quote-slide h2::after,
+.reveal section.quote-slide-left h2::after {
+  content: "";
+  display: block;
+  width: 30%;
+  border-top: 2px solid rgba(0, 0, 0, 0.15);
+  margin: 0.5em auto 0;
+}
+
+.reveal section.quote-slide blockquote {
+  border-left: none !important;
+  text-align: center;
+  max-width: 80%;
+  font-size: 1.3em;
+}
+
+.reveal section.quote-slide-left blockquote {
+  border-left: 4px solid var(--accent) !important;
+  text-align: left;
+  max-width: 80%;
+  font-size: 1.3em;
+}
+
+
+/* ==========================================================================
+ * Trifecta — vertical label stack
+ * --------------------------------------------------------------------------
+ * Three large labels stacked vertically with subtle dividers between them.
+ * Designed for colored section-style slides (e.g. Descriptive / Predictive /
+ * Explanatory).
+ *
+ * Usage (raw HTML block, typically on a colored background slide):
+ *
+ *   ```{=html}
+ *   <div class="label-stack">
+ *   <span>First</span><hr>
+ *   <span>Second</span><hr>
+ *   <span>Third</span>
+ *   </div>
+ *   ```
+ * ========================================================================== */
+
+.label-stack {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 80%;
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.label-stack hr {
+  width: 50%;
+  border: none;
+  border-top: 2px solid rgba(255, 255, 255, 0.4);
+  margin: 0.3em 0;
+}
+
+/* .label-stack-small — Compact label-stack for light-background slides (e.g.
+ * quote-slide). Uses Quarto markdown --- for <hr> dividers.
+ *
+ * Usage:  ::: {.label-stack-small}
+ *         First line
+ *
+ *         ---
+ *
+ *         Second line
+ *
+ *         ---
+ *
+ *         Third line
+ *         :::
+ */
+.label-stack-small {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 30%;
+  gap: 0.4em;
+  font-size: 1.4em;
+  color: var(--accent);
+  font-style: italic;
+}
+
+.label-stack-small p {
+  margin: 0;
+}
+
+.label-stack-small hr {
+  width: 30%;
+  border: none;
+  border-top: 2px solid rgba(0, 0, 0, 0.15);
+  margin: 0;
+}
+
+
+/* ==========================================================================
+ * Blockquote styling
+ * --------------------------------------------------------------------------
+ * Global override: all blockquotes use the accent color with a left border
+ * and no background fill.
+ * ========================================================================== */
+
+.reveal blockquote {
+  color: var(--accent) !important;
+  border-left: 4px solid var(--accent) !important;
+  background: none !important;
+  font-style: italic;
+}
+
+
+/* ==========================================================================
+ * Citations
+ * --------------------------------------------------------------------------
+ * .citation-lower-left — Per-slide citation pinned to the TRUE browser
+ *   viewport corner. The div inside the slide is hidden via display:none;
+ *   a companion JS overlay (citation-overlay.html, included via
+ *   include-after-body) copies its content into a position:fixed element
+ *   appended to .reveal — which lives OUTSIDE the .slides CSS-transform
+ *   context. This is necessary because Reveal.js applies a CSS transform
+ *   to .slides for scaling, which downgrades position:fixed to behave like
+ *   position:absolute for any descendant elements.
+ *
+ *   Requires: _includes/citation-overlay.html in include-after-body.
+ *
+ *   Usage:  ::: {.citation-lower-left}
+ *           @someCitationKey
+ *           :::
+ *
+ *   IMPORTANT: Do NOT add a bare .citation class — Pandoc wraps every @key
+ *   in <span class="citation">, so a bare selector collides and pulls
+ *   inline citations out of flow.
+ *
+ * ========================================================================== */
+
+/* ==========================================================================
+ * Footer style — unified look for all bottom-of-slide elements
+ * --------------------------------------------------------------------------
+ * One set of variables controls: citation text, slide number, issue link.
+ * Override per-deck in YAML via the custom-vars.lua filter:
+ *   css-vars:
+ *     footer-color: "#aabbcc"
+ *     footer-size:  "0.9rem"
+ *     footer-bottom: "14px"
+ * ========================================================================== */
+
+:root {
+  /* Brand accent — override per-project via a second CSS file if needed */
+  --accent:        #107895;
+
+  /* Footer */
+  --footer-color:  #7a8e99;
+  --footer-size:   1rem;
+  --footer-bottom: 10px;
+}
+
+/* ── Slide number ─────────────────────────────────────────────────────────── */
+/* reveal.css sets padding:5px, font-family:Helvetica, line-height:1 — override all */
+.reveal .slide-number {
+  bottom:           var(--footer-bottom)  !important;
+  color:            var(--footer-color)   !important;
+  font-size:        var(--footer-size)    !important;
+  background-color: transparent          !important;
+  padding:          0                    !important;
+  line-height:      1                    !important;
+  font-family:      inherit              !important;
+}
+
+/* ── Quarto built-in footer (if used) ────────────────────────────────────── */
+.reveal .footer {
+  bottom:    var(--footer-bottom) !important;
+  font-size: var(--footer-size)   !important;
+  color:     var(--footer-color)  !important;
+}
+
+/* ── Source divs — hidden inside each slide, read by citation-overlay.html ── */
+.reveal .slides .citation-lower-left,
+.reveal .slides .citation-lower-right {
+  display: none;
+}
+
+/* ── Citation text overlays ───────────────────────────────────────────────── */
+#citation-lower-left-overlay {
+  position:    fixed;
+  bottom:      var(--footer-bottom);
+  left:        10px;
+  font-style:  normal;
+  font-weight: 400;
+  line-height: 1;
+  color:       var(--footer-color) !important;
+  font-size:   var(--footer-size)  !important;
+  z-index:     110;
+  cursor:      default;
+}
+
+/* Lower-right is occupied by slide numbers — never use .citation-lower-right */
+#citation-lower-right-overlay { display: none; }
+
+#citation-lower-left-overlay:hover .cite-text {
+  color: var(--accent);
+}
+
+/* ── Hover tooltip — custom white card ───────────────────────────────────── */
+#citation-lower-left-overlay .cite-tooltip {
+  display:       none;
+  position:      absolute;
+  bottom:        calc(100% + 6px);
+  left:          0;
+  background:    white;
+  border:        1px solid #ddd;
+  border-radius: 4px;
+  padding:       0.5em 0.75em;
+  font-style:    normal;
+  color:         #333;
+  box-shadow:    0 2px 8px rgba(0, 0, 0, 0.15);
+  white-space:   normal;
+  line-height:   1.4;
+}
+
+#citation-lower-left-overlay:hover .cite-tooltip {
+  display: block;
+}
+
+#citation-lower-left-overlay .cite-tooltip a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+
+/* ==========================================================================
+ * Title slide — corner-positioned content
+ * --------------------------------------------------------------------------
+ * Fixed-position element on the title slide for links, QR codes, etc.
+ * Combine with a corner modifier: .bottom-right, .bottom-left, .top-right,
+ * .top-left.
+ *
+ * Usage:  ::: {.title-slide-inset .bottom-right}
+ *         [Link text](https://example.com)
+ *         :::
+ * ========================================================================== */
+
+.reveal .slides section#title-slide .title-slide-inset {
+  position: absolute;
+  right: 6%;
+  bottom: 3%;
+  text-align: right;
+}
+
+.title-slide-inset {
+  position: absolute;
+  font-size: 1.9rem;
+  opacity: .95;
+}
+
+.title-slide-inset.bottom-right { right: 1.2rem; bottom: 1.2rem; }
+.title-slide-inset.bottom-left  { left: 1.2rem;  bottom: 1.2rem; }
+.title-slide-inset.top-right    { right: 1.2rem; top: 1.2rem; }
+.title-slide-inset.top-left     { left: 1.2rem;  top: 1.2rem; }
+
+.title-slide-inset a {
+  text-decoration: none;
+  padding: .2rem .5rem;
+  border-radius: .5rem;
+  background: rgba(0,0,0,.06);
+}
+
+.reveal .slides section#title-slide .title-slide-inset .qr {
+  width: 90px;
+  height: auto;
+}
+
+
+/* ==========================================================================
+ * Layout containers
+ * --------------------------------------------------------------------------
+ * .books-container — Side-by-side display for book cover images, absolutely
+ *   centered on the slide. Images scale to fit without overflow.
+ *
+ *   Usage:  ::: {.books-container}
+ *           ![](book1.png) ![](book2.png)
+ *           :::
+ *
+ * .dag-container — Right-aligned flex container for DAG diagrams in split
+ *   layouts (e.g. DAG on the right, text on the left).
+ *
+ *   Usage:  ::: {.dag-container}
+ *           ![](dag.png)
+ *           :::
+ * ========================================================================== */
+
+.books-container {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 3em;
+  width: 90%;
+}
+
+.books-container img {
+  max-height: 65vh;
+  width: auto;
+}
+
+.dag-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  height: 100%;
+  padding-right: 2em;
+}
+
+
+/* ==========================================================================
+ * Quarto columns — vertical alignment fixes
+ * --------------------------------------------------------------------------
+ * By default Quarto's .columns use flex but don't expose alignment control.
+ * These rules set a sensible baseline (top-aligned) and provide a per-slide
+ * override for vertical centering.
+ *
+ * .centered-columns — Add to the slide heading to vertically center all column
+ *   content within that slide.
+ *
+ *   Usage:  ## Slide Title {.centered-columns}
+ *
+ *           :::: {.columns}
+ *           ::: {.column width="50%"}
+ *           Left content (vertically centered)
+ *           :::
+ *           ::: {.column width="50%"}
+ *           Right content (vertically centered)
+ *           :::
+ *           ::::
+ * ========================================================================== */
+
+.reveal .columns {
+  display: flex !important;
+  align-items: flex-start !important;
+}
+
+.reveal .column {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+}
+
+.reveal section.centered-columns .columns {
+  align-items: center !important;
+  height: 85%;
+}
+
+.reveal section.centered-columns .column {
+  justify-content: center !important;
+}

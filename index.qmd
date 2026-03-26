@@ -1,0 +1,25 @@
+---
+title: "IQB Workshop — Graphical Causal Inference"
+---
+
+
+## Presentations
+
+[Day 1 — Fundamentals](day1-fundamentals.qmd)
+: Ladder of Causation, Graphs, Do-Operator, Causal Estimands, Identification
+
+[Day 2 — Advanced Topics](day2-advanced.qmd)
+: Multilevel Causal Graphs, Longitudinal Graphs, CLPM
+
+## RStudio Server
+
+No local R installation needed — use our shared server:
+
+1. [Claim your login](http://your-server-ip){target="_blank"} — pick a researcher name as your username
+2. [Open RStudio](http://your-server-ip:8787){target="_blank"} — log in with your username and password `changeme`
+3. [DAG Gallery](http://your-server-ip/gallery){target="_blank"} — live view of all submitted causal graphs
+
+## Resources
+
+[Further Reading](further-reading.qmd)
+: Curated reading list organized by topic

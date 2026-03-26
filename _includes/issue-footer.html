@@ -1,0 +1,56 @@
+<script>
+// Per-slide "Report issue" footer link for GitHub Issues
+// Creates its own fixed-position element and updates it on slide change
+// with pre-filled issue title containing deck name, slide number, and title.
+
+function setupIssueFooter() {
+  const repoUrl = "https://github.com/moritzketzer/iqb-workshop";
+  const pathParts = window.location.pathname.split("/");
+  const filename = pathParts[pathParts.length - 1].replace(".html", "");
+
+  const deckLabel =
+    filename === "day1-fundamentals"
+      ? "Day 1"
+      : filename === "day2-advanced"
+        ? "Day 2"
+        : filename;
+
+  // Create our own footer element instead of relying on Quarto's
+  const issueFooter = document.createElement("div");
+  issueFooter.id = "issue-footer";
+  issueFooter.style.cssText =
+    "position: fixed; bottom: var(--footer-bottom, 10px); left: 0; right: 0; z-index: 100; font-size: var(--footer-size, 1rem); line-height: 1; color: var(--footer-color, #7a8e99); text-align: center;";
+  document.querySelector(".reveal").appendChild(issueFooter);
+
+  function updateFooter() {
+    const slide = Reveal.getCurrentSlide();
+    if (!slide) return;
+
+    const heading = slide.querySelector("h1, h2, h3");
+    const slideTitle = heading ? heading.textContent.trim() : "Untitled";
+    const indices = Reveal.getIndices();
+    const slideNumber = indices.h + 1;
+
+    const issueTitle = `[${deckLabel}] Slide ${slideNumber}: ${slideTitle}`;
+    const issueBody = `**Deck**: ${deckLabel} (${filename}.qmd)\n**Slide**: ${slideNumber} — ${slideTitle}\n\n---\n\n_Describe the issue, question, or suggestion:_\n`;
+    const issueUrl = `${repoUrl}/issues/new?title=${encodeURIComponent(issueTitle)}&body=${encodeURIComponent(issueBody)}`;
+
+    issueFooter.innerHTML = `<a href="${issueUrl}" target="_blank" style="text-decoration: none; color: inherit;">Spotted a mistake? Question? Comment? Let me know →</a>`;
+  }
+
+  Reveal.on("slidechanged", updateFooter);
+  Reveal.on("ready", updateFooter);
+}
+
+if (typeof Reveal !== "undefined") {
+  if (Reveal.isReady()) {
+    setupIssueFooter();
+  } else {
+    Reveal.on("ready", setupIssueFooter);
+  }
+} else {
+  document.addEventListener("DOMContentLoaded", function () {
+    setupIssueFooter();
+  });
+}
+</script>
