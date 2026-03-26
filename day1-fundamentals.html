@@ -1,0 +1,4244 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.36">
+
+  <meta name="author" content="Moritz Ketzer">
+  <meta name="dcterms.date" content="2026-03-09">
+  <title>IQB Workshop — Graphical Causal Inference – Introduction to Graphical Causal Inference</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-6bff393244ca46d5fcdf4c90e70ff38c.css">
+  <link rel="stylesheet" href="_includes/custom.css">
+  <link rel="stylesheet" href="_includes/project.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet"><style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <style>:root { --citation-lower-left-size: 1.5rem; }</style>
+</head>
+<body class="quarto-light">
+<script src="mathjax-config.js"></script>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Introduction to Graphical Causal Inference</h1>
+  <p class="subtitle">Getting Started</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Moritz Ketzer <a href="https://orcid.org/0000-0002-2403-5297" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
+</div>
+<div class="quarto-title-author-email">
+<a href="mailto:moritz.ketzer@hu-berlin.de">moritz.ketzer@hu-berlin.de</a>
+</div>
+        <p class="quarto-title-affiliation">
+            Humboldt-Universität zu Berlin
+          </p>
+    </div>
+</div>
+
+  <p class="date">March 9, 2026</p>
+</section>
+<section>
+<section id="welcome" class="title-slide slide level1 section-slide center" data-background-color="#107895">
+<h1>Welcome</h1>
+<aside class="notes">
+<ul>
+<li>welcome everyone</li>
+<li>thank them for being there</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section" class="slide level2" data-background-image="images/illustrations-undraw/undraw_online-meeting_qe61.svg" data-background-size="contain" data-bg-padding="15">
+<h2></h2>
+<aside class="notes">
+<ul>
+<li>one sentence on who you are
+<ul>
+<li>studied psychology</li>
+<li>last year phd in psych methods</li>
+</ul></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-1" class="slide level2" data-background-image="images/illustrations-undraw/undraw_goal_rulh.svg" data-background-size="contain" data-bg-padding="15">
+<h2></h2>
+<aside class="notes">
+<ul>
+<li>one or two sentences on the goal of the workshop
+<ul>
+<li>accessible introduction to (graphical) causal inference</li>
+</ul></li>
+<li>set tone:
+<ul>
+<li>lets be interactive</li>
+<li>no pressure</li>
+<li>we go slow</li>
+<li>you have time</li>
+<li>ask all kinds of questions</li>
+<li>everybody benefits from every question</li>
+<li>this is difficult material
+<ul>
+<li>dont expect to understand everything</li>
+<li>give yourself time</li>
+<li>if you are confused, it means you are paying attention</li>
+</ul></li>
+</ul></li>
+<li>you get all of the material</li>
+<li>you get further reading material</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-2" class="slide level2" data-background-image="images/illustrations-undraw/undraw_conversation_15p8.svg" data-background-size="contain" data-bg-padding="15">
+<h2></h2>
+<aside class="notes">
+<ul>
+<li>name, role, context (research / practice)</li>
+<li>what outcome/topic they care about</li>
+<li>what they hope to take away</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-3" class="slide level2" data-background-iframe="https://moritzketzer.github.io/iqb-workshop/" data-background-interactive="true">
+<h2></h2>
+<aside class="notes">
+<p>Walk through the website together: Zoom info, presentations, RStudio server setup, resources.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="workshop-website-and-rstudio-server-setup" class="slide level2 v-center">
+<h2>Workshop Website and RStudio Server Setup</h2>
+<p><a href="https://moritzketzer.github.io/iqb-workshop/" target="_blank"><strong>moritzketzer.github.io/iqb-workshop</strong></a></p>
+<aside class="notes">
+<ul>
+<li>open the workshop website — type the URL or click the link</li>
+<li>under “RStudio Server”: first claim a login, then open RStudio</li>
+<li>you get a username from a famous statistician or causal inference researcher</li>
+<li>password is changeme</li>
+<li>hello-world.R is in your home directory — run it to check everything works</li>
+<li>we will use this for the R exercises later</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="why-bother-with-causal-inference" class="title-slide slide level1 section-slide center" data-background-color="#107895">
+<h1>Why bother with Causal Inference?</h1>
+
+</section>
+<section id="section-4" class="slide level2" data-background-image="images/papershots/messerli-2012-nejm-p1563-chocolate-nobel-scatterplot.png" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+<div class="citation-lower-left">
+<p><span class="citation" data-cites="messerliChocolateConsumptionCognitive2012">Messerli (<a href="#/references" role="doc-biblioref" onclick="">2012</a>)</span></p>
+</div>
+</section>
+<section id="section-5" class="slide level2" data-background-color="#107895">
+<h2></h2>
+<div class="label-stack">
+<span>Descriptive</span>
+<hr>
+<span>Predictive</span>
+<hr>
+<span>Explanatory</span>
+</div>
+</section>
+<section id="section-6" class="slide level2" data-background-image="images/plots/chocolate-nobel-describe.png" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+</section>
+<section id="section-7" class="slide level2" data-background-image="images/plots/chocolate-nobel-predict.png" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+</section>
+<section id="section-8" class="slide level2" data-background-image="images/plots/chocolate-nobel-explain.png" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+</section>
+<section id="section-9" class="slide level2" data-background-image="images/papershots/vigen-spurious-correlations-margot-robbie-firefighters.png" data-background-size="contain" data-bg-padding="4">
+<h2></h2>
+<div class="citation-lower-left website">
+<p><span class="citation" data-cites="SpuriousCorrelations"><span>“Spurious <span>Correlations</span>”</span> (<a href="#/references" role="doc-biblioref" onclick="">n.d.</a>)</span></p>
+</div>
+</section>
+<section id="section-10" class="slide level2" data-background-image="images/papershots/vigen-spurious-scholar-ballad-of-bailey.png" data-background-size="contain" data-bg-padding="4">
+<h2></h2>
+<div class="citation-lower-left website">
+<p><span class="citation" data-cites="SpuriousScholar"><span>“Spurious <span>Scholar</span>”</span> (<a href="#/references" role="doc-biblioref" onclick="">n.d.</a>)</span></p>
+</div>
+</section>
+<section id="section-11" class="slide level2" data-background-image="images/papershots/shmueli-2010-tep-p289-title-abstract.png" data-background-size="contain" data-bg-padding="10">
+<h2></h2>
+<div class="citation-lower-left">
+<p><span class="citation" data-cites="shmueliExplainPredict2010a">Shmueli (<a href="#/references" role="doc-biblioref" onclick="">2010</a>)</span></p>
+</div>
+</section>
+<section id="section-12" class="slide level2" data-background-image="images/papershots/editorial-2021-nhb-v5-p1261-description-prediction-explanation.png" data-background-size="contain" data-bg-padding="2">
+<h2></h2>
+<div class="citation-lower-left">
+<p><span class="citation" data-cites="DescriptionPredictionExplanation2021">Editorial (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></p>
+</div>
+</section>
+<section id="kidney-stones" class="slide level2 quote-slide">
+<h2>Kidney Stones</h2>
+<div class="label-stack-small">
+<p>Two treatments</p>
+<hr>
+<p>Which one is better?</p>
+</div>
+<div class="citation-lower-left">
+<p><span class="citation" data-cites="charigComparisonTreatmentRenal1986">Charig et al. (<a href="#/references" role="doc-biblioref" onclick="">1986</a>)</span></p>
+</div>
+<aside class="notes">
+<p>Transition from spurious correlations → what about non-obvious cases? Real data. Open surgery (A) vs less invasive (B). 700 patients.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-13" class="slide level2 center">
+<h2></h2>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fgdzemtrwc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fgdzemtrwc table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#fgdzemtrwc thead, #fgdzemtrwc tbody, #fgdzemtrwc tfoot, #fgdzemtrwc tr, #fgdzemtrwc td, #fgdzemtrwc th {
+  border-style: none;
+}
+
+#fgdzemtrwc p {
+  margin: 0;
+  padding: 0;
+}
+
+#fgdzemtrwc .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 32px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: 80%;
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#fgdzemtrwc .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#fgdzemtrwc .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#fgdzemtrwc .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#fgdzemtrwc .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fgdzemtrwc .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fgdzemtrwc .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #7F7F7F;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fgdzemtrwc .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 28px;
+  font-weight: bold;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#fgdzemtrwc .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 28px;
+  font-weight: bold;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#fgdzemtrwc .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#fgdzemtrwc .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#fgdzemtrwc .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #7F7F7F;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#fgdzemtrwc .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#fgdzemtrwc .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#fgdzemtrwc .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#fgdzemtrwc .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#fgdzemtrwc .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#fgdzemtrwc .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: none;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#fgdzemtrwc .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fgdzemtrwc .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#fgdzemtrwc .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#fgdzemtrwc .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#fgdzemtrwc .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fgdzemtrwc .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#fgdzemtrwc .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#fgdzemtrwc .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fgdzemtrwc .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fgdzemtrwc .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#fgdzemtrwc .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fgdzemtrwc .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#fgdzemtrwc .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fgdzemtrwc .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fgdzemtrwc .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fgdzemtrwc .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fgdzemtrwc .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fgdzemtrwc .gt_left {
+  text-align: left;
+}
+
+#fgdzemtrwc .gt_center {
+  text-align: center;
+}
+
+#fgdzemtrwc .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#fgdzemtrwc .gt_font_normal {
+  font-weight: normal;
+}
+
+#fgdzemtrwc .gt_font_bold {
+  font-weight: bold;
+}
+
+#fgdzemtrwc .gt_font_italic {
+  font-style: italic;
+}
+
+#fgdzemtrwc .gt_super {
+  font-size: 65%;
+}
+
+#fgdzemtrwc .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#fgdzemtrwc .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#fgdzemtrwc .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#fgdzemtrwc .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#fgdzemtrwc .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#fgdzemtrwc .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#fgdzemtrwc .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#fgdzemtrwc .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#fgdzemtrwc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="size" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Stone size</th>
+<th id="trt_a" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Treatment A</th>
+<th id="trt_b" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Treatment B</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="size">Small</td>
+<td class="gt_row gt_right" headers="trt_a">81 / 87 (93%)</td>
+<td class="gt_row gt_right" headers="trt_b">234 / 270 (87%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="size">Large</td>
+<td class="gt_row gt_right" headers="trt_a">192 / 263 (73%)</td>
+<td class="gt_row gt_right" headers="trt_b">55 / 80 (69%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="size" style="border-top-width: 1.5px; border-top-style: solid; border-top-color: grey50; font-weight: bold">Total</td>
+<td class="gt_row gt_right" headers="trt_a" style="border-top-width: 1.5px; border-top-style: solid; border-top-color: grey50; font-weight: bold">273 / 350 (78%)</td>
+<td class="gt_row gt_right" headers="trt_b" style="border-top-width: 1.5px; border-top-style: solid; border-top-color: grey50; font-weight: bold">289 / 350 (83%)</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Table has the full story already. Don’t spoil — let them read. A wins both subgroups, B wins overall. Paradox.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-14" class="slide level2" data-background-image="images/plots/kidney-bars-overall.png" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+<aside class="notes">
+<p>Treatment A (open surgery): 78%. Treatment B (less invasive): 83%. B looks better. Should we recommend B?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-15" class="slide level2" data-background-image="images/plots/kidney-bars-by-size.png" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+<aside class="notes">
+<p>By stone size: - Small: A 93% vs B 87% - Large: A 73% vs B 69% A wins BOTH. Overall was misleading → Simpson’s paradox.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-16" class="slide level2" data-background-image="images/plots/kidney-waffle.png" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+<aside class="notes">
+<p>Panel sizes = allocation. A got mostly large (hard), B got mostly small (easy). Severity drove assignment AND outcome → confounding. Stratify → A genuinely better. But how do we <em>know</em> when to stratify?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="citation-lower-left">
+<p><span class="citation" data-cites="pearlUnderstandingSimpsonsParadox2013">Pearl (<a href="#/references" role="doc-biblioref" onclick="">2013</a>)</span>; <span class="citation" data-cites="kievitSimpsonsParadoxPsychological2013">Kievit et al. (<a href="#/references" role="doc-biblioref" onclick="">2013</a>)</span></p>
+</div>
+</section>
+<section id="why" class="slide level2 quote-slide">
+<h2>Why?</h2>
+<blockquote>
+<p>Stone size influences <strong>both</strong> which treatment you get <strong>and</strong> how well you recover.</p>
+</blockquote>
+</section>
+<section id="section-17" class="slide level2" data-background-image="images/dags/dag-fork-confounder.svg" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+<div class="fragment absolute" style="text-align: center;left: 0%; bottom: 5%; right: 0%; ">
+<p><span style="background:#009E73; color:white; padding:0.3em 1.4em; border-radius:6px; font-size:1.6em;"><strong>✓ Stratify!</strong></span></p>
+</div>
+</section>
+<section id="section-18" class="slide level2 center">
+<h2></h2>
+<div class="cell">
+<div class="cell-output-display">
+<div id="qdfbznfqaj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qdfbznfqaj table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#qdfbznfqaj thead, #qdfbznfqaj tbody, #qdfbznfqaj tfoot, #qdfbznfqaj tr, #qdfbznfqaj td, #qdfbznfqaj th {
+  border-style: none;
+}
+
+#qdfbznfqaj p {
+  margin: 0;
+  padding: 0;
+}
+
+#qdfbznfqaj .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 32px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: 80%;
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#qdfbznfqaj .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#qdfbznfqaj .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#qdfbznfqaj .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#qdfbznfqaj .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#qdfbznfqaj .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qdfbznfqaj .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #7F7F7F;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#qdfbznfqaj .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 28px;
+  font-weight: bold;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#qdfbznfqaj .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 28px;
+  font-weight: bold;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#qdfbznfqaj .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#qdfbznfqaj .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#qdfbznfqaj .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #7F7F7F;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#qdfbznfqaj .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#qdfbznfqaj .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#qdfbznfqaj .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#qdfbznfqaj .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#qdfbznfqaj .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#qdfbznfqaj .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: none;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#qdfbznfqaj .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qdfbznfqaj .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#qdfbznfqaj .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#qdfbznfqaj .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#qdfbznfqaj .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qdfbznfqaj .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#qdfbznfqaj .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#qdfbznfqaj .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qdfbznfqaj .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qdfbznfqaj .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#qdfbznfqaj .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qdfbznfqaj .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#qdfbznfqaj .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qdfbznfqaj .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#qdfbznfqaj .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qdfbznfqaj .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#qdfbznfqaj .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qdfbznfqaj .gt_left {
+  text-align: left;
+}
+
+#qdfbznfqaj .gt_center {
+  text-align: center;
+}
+
+#qdfbznfqaj .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#qdfbznfqaj .gt_font_normal {
+  font-weight: normal;
+}
+
+#qdfbznfqaj .gt_font_bold {
+  font-weight: bold;
+}
+
+#qdfbznfqaj .gt_font_italic {
+  font-style: italic;
+}
+
+#qdfbznfqaj .gt_super {
+  font-size: 65%;
+}
+
+#qdfbznfqaj .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#qdfbznfqaj .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#qdfbznfqaj .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#qdfbznfqaj .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#qdfbznfqaj .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#qdfbznfqaj .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#qdfbznfqaj .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#qdfbznfqaj .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#qdfbznfqaj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="gt_col_headings header">
+<th id="bp" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Blood pressure<br><em>(measured after)</em></th>
+<th id="drug" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Drug</th>
+<th id="nodrug" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">No drug</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="bp">Low BP</td>
+<td class="gt_row gt_right" headers="drug">81 / 87 (93%)</td>
+<td class="gt_row gt_right" headers="nodrug">234 / 270 (87%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="bp">High BP</td>
+<td class="gt_row gt_right" headers="drug">192 / 263 (73%)</td>
+<td class="gt_row gt_right" headers="nodrug">55 / 80 (69%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="bp" style="border-top-width: 1.5px; border-top-style: solid; border-top-color: grey50; font-weight: bold">Total</td>
+<td class="gt_row gt_right" headers="drug" style="border-top-width: 1.5px; border-top-style: solid; border-top-color: grey50; font-weight: bold">273 / 350 (78%)</td>
+<td class="gt_row gt_right" headers="nodrug" style="border-top-width: 1.5px; border-top-style: solid; border-top-color: grey50; font-weight: bold">289 / 350 (83%)</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Identical numbers — just relabeled. BP measured AFTER treatment → consequence of drug, not prior cause. Drug wins both BP subgroups. No drug wins overall. Same paradox, opposite correct answer.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-19" class="slide level2" data-background-image="images/dags/dag-chain-mediator.svg" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+<div class="fragment absolute" style="text-align: center;left: 0%; bottom: 5%; right: 0%; ">
+<p><span style="background:#D55E00; color:white; padding:0.3em 1.4em; border-radius:6px; font-size:1.6em;"><strong>✗ Don’t stratify!</strong></span></p>
+</div>
+<aside class="notes">
+<p>BP on causal path, not common cause. Chain, not fork. Stratify by BP → filter out mechanism → drug looks useless. Aggregate correct here: drug helps THROUGH lowering BP.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="same-data.-opposite-answers." class="slide level2 quote-slide">
+<h2>Same data. Opposite answers.</h2>
+<blockquote>
+<p>The statistics are identical.</p>
+<p>Only the <strong>causal story</strong> changed.</p>
+</blockquote>
+<aside class="notes">
+<p>Key slide. Kidney: common cause → stratify. BP: consequence → don’t stratify. Same table, opposite correct answers. Statistics alone can’t resolve this. Need causal structure → transition to “what IS causal inference?”</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- μ-reset: Stand up, stretch, breathe. Let the kidney stones example settle. Same numbers — opposite conclusions. What was the difference? Let your mind wander. Any questions forming? -->
+</section>
+<section id="section-20" class="slide level2">
+<h2></h2>
+<div class="books-container">
+<p><img data-src="images/pearl_causality.jpg"></p>
+<p><img data-src="images/pearl_book-of-why.jpg"></p>
+</div>
+<div class="citation-lower-left">
+<p><span class="citation" data-cites="pearlCausalityModelsReasoning2009">Pearl (<a href="#/references" role="doc-biblioref" onclick="">2009</a>)</span>; <span class="citation" data-cites="pearlBookWhyNew2018">Pearl and Mackenzie (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span></p>
+</div>
+<aside class="notes">
+<p>Largely because of this guy — Judea Pearl. “Causality” (2009, technical) and “The Book of Why” (2018, accessible). Pearl formalized the graphical approach: encode causal assumptions in a graph, then read off what’s identifiable.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-21" class="slide level2" data-background-image="images/illustrations/pearl-2018-bow-fig1-2-ladder-of-causation.png" data-background-size="contain" data-bg-padding="2">
+<h2></h2>
+<div class="citation-lower-left">
+<p><span class="citation" data-cites="pearlBookWhyNew2018">Pearl and Mackenzie (<a href="#/references" role="doc-biblioref" onclick="">2018, fig. 1.2</a>)</span></p>
+</div>
+<aside class="notes">
+<p>Three rungs: seeing, doing, imagining. Can’t climb with data alone. Dog: “Owners are happier” → “Would getting one make ME happier?” → “Would I still be happy WITHOUT it?” Today: rung 1 → 2. But first, rung 3 — why it’s hard.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="rung-3-imagining" class="slide level2 center">
+<h2>Rung 3: Imagining</h2>
+<div class="fragment">
+<p>You got a dog. You’re happy.</p>
+<p><span class="math display">Y_i(\text{dog}) = 1 \quad \checkmark</span></p>
+</div>
+<div class="fragment">
+<p>Would you have been happy <span class="red">without</span> the dog?</p>
+<p><span class="math display">Y_i(\text{no dog}) = \; ?</span></p>
+</div>
+<aside class="notes">
+<p>Two scenarios: Y(no dog)=1 → dog didn’t matter. Y(no dog)=0 → dog caused it. Can’t rewind time. Every causal question has this structure.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="the-individual-treatment-effect" class="slide level2 center">
+<h2>The Individual Treatment Effect</h2>
+<div class="citation-lower-left">
+<p><span class="citation" data-cites="rubinEstimatingCausalEffects1974">Rubin (<a href="#/references" role="doc-biblioref" onclick="">1974</a>)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\tau_i = Y_i(1) - Y_i(0)</span></p>
+</div>
+<div class="fragment" style="text-align:center; margin-top:1.5em;">
+<p><span style="background:var(--iqb-accent); color:white; padding:0.3em 1.4em; border-radius:6px; font-size:1.1em;"><strong>We can never observe both for the same person.</strong></span></p>
+</div>
+<aside class="notes">
+<p>Holland (1986): fundamental problem of causal inference. Not statistics — metaphysics. Can’t be in two states at once.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="the-fundamental-problem-of-causal-inference" class="slide level2 center">
+<h2>The Fundamental Problem of Causal Inference</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">i</span></th>
+<th style="text-align: center;"><span class="math inline">T</span></th>
+<th style="text-align: center;"><span class="math inline">Y</span></th>
+<th style="text-align: center;"><span class="math inline">Y(1)</span></th>
+<th style="text-align: center;"><span class="math inline">Y(0)</span></th>
+<th style="text-align: center;"><span class="math inline">\tau_i</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>Missing data problem — not measurement failure, but metaphysics. Half the table always missing. So what CAN we do?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="citation-lower-left">
+<p><span class="citation" data-cites="hollandStatisticsCausalInference1986">Holland (<a href="#/references" role="doc-biblioref" onclick="">1986</a>)</span></p>
+</div>
+</section>
+<section id="from-individual-to-average" class="slide level2 quote-slide">
+<h2>From Individual to Average</h2>
+<p>We <span style="color:var(--iqb-accent);"><strong>can’t know</strong></span> <span class="math inline">\tau_i</span> for any single person.</p>
+<div class="fragment" style="margin-top:0.5em;">
+<p>But we can ask about the <span style="color:var(--iqb-accent);"><strong>average</strong></span> across many people:</p>
+<p><span class="math display">\begin{aligned}
+ATE &amp;= \mathbb{E}[Y(1) - Y(0)] \\
+    &amp;= \mathbb{E}[Y(1)] - \mathbb{E}[Y(0)]
+\end{aligned}</span></p>
+</div>
+<div class="fragment" style="text-align:center; margin-top:0.5em;">
+<p><span style="background:var(--iqb-accent); color:white; padding:0.3em 1.4em; border-radius:6px; font-size:1.1em;">Rung 3 → Rung 2</span></p>
+</div>
+<aside class="notes">
+<p>Give up on individual → ask about the average. This is what RCTs target. Distribute expectation → two population means we can estimate separately. Key question: how do we estimate this from observational data?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="observing-vs-intervening" class="slide level2 center">
+<h2></h2>
+<div class="columns" style="justify-content:center; gap:3em; margin-top:2em;">
+<div class="column" style="width:46%; text-align:center; border:2px solid var(--iqb-accent); border-radius:10px; background:var(--iqb-accent-soft); padding:1em 1.5em;">
+<p><span style="font-size:1.1em; color:var(--iqb-accent); text-transform:uppercase; letter-spacing:0.08em; display:block; border-bottom:2px solid var(--iqb-accent); padding:0.35em 0; margin-bottom:0.3em;">Observational</span></p>
+<p><span class="math display">
+\mathbb{E}[Y \mid X = x]
+</span></p>
+<p><span style="font-size:0.85em; color:var(--iqb-muted);">“What <span class="math inline">Y</span> do we <strong>see</strong> when <span class="math inline">X = x</span>?”</span></p>
+</div><div class="column" style="width:46%; text-align:center; border:2px solid var(--iqb-accent); border-radius:10px; background:var(--iqb-accent-soft); padding:1em 1.5em;">
+<p><span style="font-size:1.1em; color:var(--iqb-accent); text-transform:uppercase; letter-spacing:0.08em; display:block; border-bottom:2px solid var(--iqb-accent); padding:0.35em 0; margin-bottom:0.3em;">Interventional</span></p>
+<p><span class="math display">\mathbb{E}[Y \mid \text{do}(X = x)]</span></p>
+<p><span style="font-size:0.85em; color:var(--iqb-muted);">“What <span class="math inline">Y</span> do we <strong>get</strong> when we <strong>set</strong> <span class="math inline">X = x</span>?”</span></p>
+</div></div>
+<div class="fragment" style="text-align:center; margin-top:2em;">
+<p><span style="background:var(--iqb-accent); color:white; padding:0.3em 1.6em; border-radius:6px; font-size:1.3em;"><strong>When are these equal?</strong></span></p>
+</div>
+<aside class="notes">
+<p>Left = rung 1, right = rung 2. Differ whenever there’s confounding. Dog: owners are happier ≠ getting a dog makes you happier. Maybe happy people get dogs. This question drives everything today.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-22" class="slide level2" data-background-image="images/illustrations-custom/neal-2020-fig4-2-conditioning-vs-intervening.svg" data-background-size="contain" data-bg-padding="2">
+<h2></h2>
+<div class="citation-lower-left">
+<p><span class="citation" data-cites="nealIntroductionCausalInferencea">Neal (<a href="#/references" role="doc-biblioref" onclick="">n.d., fig. 4.2</a>)</span></p>
+</div>
+<aside class="notes">
+<p>Conditioning = filter operation. Pick the subgroup where T=1 — self-selected, may differ systematically. Intervening = force everyone into treatment. No self-selection. Conditioning ≠ intervening when there’s confounding.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="structural-causal-models" class="slide level2 center">
+<h2>Structural Causal Models</h2>
+<div class="citation-lower-left">
+<p><span class="citation" data-cites="pearlCausalInferenceStatistics2016">Pearl et al. (<a href="#/references" role="doc-biblioref" onclick="">2016</a>)</span></p>
+</div>
+<p><span class="math display">\mathcal{M} = \langle U, V, F, P(U) \rangle</span></p>
+<div class="fragment">
+<div class="scm-box">
+<table class="caption-top">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 85%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">V</span></td>
+<td style="text-align: left;">endogenous variables (what we model)</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">U</span></td>
+<td style="text-align: left;">exogenous variables (background factors, error terms)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">F</span></td>
+<td style="text-align: left;">structural functions (how each <span class="math inline">V</span> is determined by its parents + <span class="math inline">U</span>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">P(U)</span></td>
+<td style="text-align: left;">probability distribution over the exogenous variables</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<aside class="notes">
+<p>“The causal story has a formal name” (Pearl, Glymour &amp; Jewell 2016). All four parts in kidney stones:</p>
+<p>— V: treatment, stone size, recovery. — U: patient genetics, lifestyle, surgeon skill — everything else. — F: how stone size determines treatment assignment, how both determine recovery. — P(U): distribution over background factors — makes the model probabilistic.</p>
+<p>Every SCM implies a DAG -&gt; tells us what to adjust for.</p>
+<p>For SEM users: SEM is an SCM with linear F and normal U. Same object, specific assumptions.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="an-scm-example" class="slide level2">
+<h2>An SCM Example</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="structural-equations">Structural Equations</h3>
+<p><span class="math display">
+\begin{aligned}
+Z &amp;\leftarrow f_Z(U_Z) \\
+X &amp;\leftarrow f_X(Z, U_X) \\
+Y &amp;\leftarrow f_Y(Z, X, U_Y)
+\end{aligned}
+</span></p>
+<h3 id="distributional-assumptions">Distributional Assumptions</h3>
+<p><span class="math display">
+U_Z, U_X, U_Y \overset{\text{ind.}}{\sim} P(U)
+</span></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/dags/scm-example-full.svg" class="absolute" style="top: 30px; right: 5px; height: 400px; "></p>
+</div></div>
+<aside class="notes">
+<p>Concrete example: Z confounder, X treatment, Y outcome. Each has its own U. U’s usually omitted from DAGs — shown here to connect to formal definition.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="graph-surgery" class="slide level2">
+<h2>Graph Surgery</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="structural-equations-1">Structural Equations</h3>
+<p><span class="math display">
+\begin{aligned}
+Z &amp;\leftarrow f_Z(U_Z) \\
+X &amp;\leftarrow \color{#107895}{x} \\
+Y &amp;\leftarrow f_Y(Z, \textcolor{#107895}{x}, U_Y)
+\end{aligned}
+</span></p>
+<h3 id="distributional-assumptions-1">Distributional Assumptions</h3>
+<p><span class="math display">
+U_Z, \textcolor{lightgray}{U_X}, U_Y \overset{\text{ind.}}{\sim} P(U)
+</span></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/dags/scm-example-do-x.svg" class="absolute" style="top: 30px; right: 5px; height: 400px; "></p>
+</div></div>
+<aside class="notes">
+<p>do-operator = graph surgery. Replace X’s equation with a constant, cut incoming arrows. Downstream (Y) keeps its equation. Upstream (Z) unaffected. U_X irrelevant. Key: this is NOT conditioning — conditioning doesn’t remove arrows. ATE: E[Y|do(X=1)] - E[Y|do(X=0)] = “what happens when we surgically set X to 1 vs 0?”</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="a-linear-scm" class="slide level2">
+<h2>A Linear SCM</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="structural-equations-2">Structural Equations</h3>
+<p><span class="math display">
+\begin{aligned}
+Z &amp;= U_Z \\
+X &amp;= \beta^{XZ} Z + U_X \\
+Y &amp;= \beta^{YX} X + \beta^{YZ} Z + U_Y
+\end{aligned}
+</span></p>
+<h3 id="distributional-assumptions-2">Distributional Assumptions</h3>
+<p><span class="math display">
+\begin{pmatrix} U_Z \\ U_X \\ U_Y \end{pmatrix} \sim \mathcal{N}\left(\begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} \sigma^2_Z &amp; 0 &amp; 0 \\ 0 &amp; \sigma^2_X &amp; 0 \\ 0 &amp; 0 &amp; \sigma^2_Y \end{pmatrix}\right)
+</span></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/dags/scm-example-full.svg" class="absolute" style="top: 30px; right: 5px; height: 400px; "></p>
+</div></div>
+<aside class="notes">
+<p>Special case SEM users know. β’s ARE the causal effects. Diagonal covariance = independent errors = no unmeasured common causes beyond what’s modeled.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="graph-surgery-linear-case" class="slide level2">
+<h2>Graph Surgery: Linear Case</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="structural-equations-3">Structural Equations</h3>
+<p><span class="math display">
+\begin{aligned}
+Z &amp;= U_Z \\
+X &amp;= \color{#107895}{x} \\
+Y &amp;= \beta^{YX} \textcolor{#107895}{x} + \beta^{YZ} Z + U_Y
+\end{aligned}
+</span></p>
+<h3 id="distributional-assumptions-3">Distributional Assumptions</h3>
+<p><span class="math display">
+\begin{pmatrix} U_Z \\ \textcolor{lightgray}{U_X} \\ U_Y \end{pmatrix} \sim \mathcal{N}\left(\begin{pmatrix} 0 \\ \textcolor{lightgray}{0} \\ 0 \end{pmatrix}, \begin{pmatrix} \sigma^2_Z &amp; 0 &amp; 0 \\ 0 &amp; \textcolor{lightgray}{\sigma^2_X} &amp; 0 \\ 0 &amp; 0 &amp; \sigma^2_Y \end{pmatrix}\right)
+</span></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/dags/scm-example-do-x.svg" class="absolute" style="top: 30px; right: 5px; height: 400px; "></p>
+</div></div>
+<aside class="notes">
+<p>ATE in linear SCM = β^{YX}. The path coefficient IS the causal effect. SEM users have been estimating causal effects all along — just needed the graph to justify it.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="estimand-in-do-notation" class="slide level2 center">
+<h2>Estimand in do notation</h2>
+<p><span class="math display">ATE = \mathbb{E}[Y \mid do(X=1)] - \mathbb{E}[Y \mid do(X=0)]</span></p>
+<aside class="notes">
+<p>do(X=1) = “set X to 1”, not “observe X = 1”. Same target as E[Y(1)-Y(0)], different notation. Pearl connects to graphs, Rubin to experiments.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-23" class="slide level2" data-background-image="images/plots/ate-generality-binary.png" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+<aside class="notes">
+<p>Binary case — textbook RCT. ATE = difference in group means under intervention.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="estimand-in-do-notation-1" class="slide level2 center">
+<h2>Estimand in do notation</h2>
+<p><span class="math display">ATE = \mathbb{E}[Y \mid do(X=x')] - \mathbb{E}[Y \mid do(X=x)]</span></p>
+<aside class="notes">
+<p>Generalized: any two values x’ vs x, not just 0/1.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-24" class="slide level2" data-background-image="images/plots/ate-generality-linear.png" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+<aside class="notes">
+<p>Continuous X, linear effect. Slope = β from the linear SCM. One number everywhere.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-25" class="slide level2" data-background-image="images/plots/ate-generality-nonlinear.png" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+<aside class="notes">
+<p>Nonlinear: effect depends on where you are. No single number. do-operator still well-defined — just varies by location.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-26" class="slide level2" data-background-image="images/plots/ate-generality-projection.png" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+<aside class="notes">
+<p>Linear projection = weighted average of local effects. Hides heterogeneity. We work linear today — framework is more general than models we fit.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="two-frameworks-one-estimand" class="slide level2 center">
+<h2>Two Frameworks, One Estimand</h2>
+<p><br>
+</p>
+<h3 id="potential-outcomes-rubin">Potential Outcomes (Rubin)</h3>
+<p><span class="math display">
+ATE = \mathbb{E}[Y_i(1) - Y_i(0)]
+</span></p>
+<p><br>
+</p>
+<h3 id="structural-causal-model-pearl">Structural Causal Model (Pearl)</h3>
+<p><span class="math display">
+ATE = \mathbb{E}[Y \mid do(X=1)] - \mathbb{E}[Y \mid do(X=0)]
+</span></p>
+<aside class="notes">
+<p>Two traditions, same target.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="one-estimand-three-expressions" class="slide level2 center">
+<h2>One Estimand, three expressions</h2>
+<p><span class="math display">
+\begin{aligned}
+ATE &amp;= \mathbb{E}[Y_i(1) - Y_i(0)] \\
+    &amp;= \mathbb{E}[f_Y(1, \mathbf{U}_i) - f_Y(0, \mathbf{U}_i)] \\
+    &amp;= \mathbb{E}[Y \mid do(X=1)] - \mathbb{E}[Y \mid do(X=0)]
+\end{aligned}
+</span></p>
+<aside class="notes">
+<p>Potential outcomes = structural equations evaluated in the mutilated model. Y_i(x) = f_Y(x, U_i) — that’s the middle line. Linear case: everything cancels, ATE = β^{YX}.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="directed-acyclic-graphs-dags" class="title-slide slide level1 section-slide center" data-background-color="#107895">
+<h1>Directed Acyclic Graphs (DAGs)</h1>
+<aside class="notes">
+<p>Nodes = variables. Arrows = direct causal effects. Acyclic = no loops. Encodes assumptions — including what’s NOT connected. Absence of arrow = no direct effect.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-27" class="slide level2" data-background-image="images/papershots/wright-1920-pnas-fig1-piebald-guinea-pig-path-diagram.png" data-background-size="contain" data-bg-padding="2">
+<h2></h2>
+<div class="citation-lower-left">
+<p><span class="citation" data-cites="wrightRelativeImportanceHeredity1920">Wright (<a href="#/references" role="doc-biblioref" onclick="">1920, fig. 1</a>)</span></p>
+</div>
+<aside class="notes">
+<p>Sewall Wright, 1920 — the first path diagram. Guinea pig coat color. If you’ve drawn a path diagram, you’ve already drawn a DAG.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-28" class="slide level2" data-background-image="images/papershots/wright-1934-mpc-p1-title-page.png" data-background-size="contain" data-bg-padding="2">
+<h2></h2>
+<div class="citation-lower-left">
+<p><span class="citation" data-cites="wrightMethodPathCoefficients1934">Wright (<a href="#/references" role="doc-biblioref" onclick="">1934</a>)</span></p>
+</div>
+<aside class="notes">
+<p>Wright formalized path coefficients in 1934. Direct ancestor of SEM. Pearl added the formal rules for what you can and can’t conclude. Now: three building blocks.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="the-three-elemental-structures" class="title-slide slide level1 section-slide center" data-background-color="#107895">
+<h1>The Three Elemental Structures</h1>
+
+</section>
+<section id="fork-common-cause" class="slide level2 center section-slide" data-background-color="#107895">
+<h2>Fork (Common Cause)</h2>
+<aside class="notes">
+<p>Title slide — name the structure, then advance to the interactive demo. Fork: <span class="math inline">Z</span> causes both <span class="math inline">X</span> and <span class="math inline">Y</span>. Spurious association disappears when you condition on <span class="math inline">Z</span>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-29" class="slide level2">
+<h2></h2>
+<div class="bayes-ball-widget" data-nodes="[{&quot;id&quot;:&quot;X&quot;,&quot;label&quot;:&quot;X&quot;,&quot;x&quot;:200,&quot;y&quot;:280},{&quot;id&quot;:&quot;Z&quot;,&quot;label&quot;:&quot;Z&quot;,&quot;x&quot;:400,&quot;y&quot;:80},{&quot;id&quot;:&quot;Y&quot;,&quot;label&quot;:&quot;Y&quot;,&quot;x&quot;:600,&quot;y&quot;:280}]" data-edges="[[&quot;Z&quot;,&quot;X&quot;],[&quot;Z&quot;,&quot;Y&quot;]]" data-source="X" data-target="Y">
+</div>
+<aside class="notes">
+<p>Interactive fork demo. Default: run → d-connected (ball passes through unobserved Z). Condition on Z → d-separated (ball blocked by observed non-collider). Key: this is why we “control for confounders.”</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-30" class="slide level2" data-background-image="images/plots/fork-simpsons-aggregate.png" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+<aside class="notes">
+<p>Simulated data from a fork SCM. Looks like one homogeneous cloud. Ask: “What’s the relationship between X and Y?” Let them say “negative.” Then advance.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-31" class="slide level2" data-background-image="images/plots/fork-simpsons-2bins.png" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+<aside class="notes">
+<p>Same data — split Z at the median into two groups. Within each group: positive slope. Aggregate: still negative. Simpson’s paradox appears. But two bins is coarse.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-32" class="slide level2" data-background-image="images/plots/fork-simpsons-3bins.png" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+<aside class="notes">
+<p>Pattern solidifies — all three upward. Aggregate is the outlier.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-33" class="slide level2" data-background-image="images/plots/fork-simpsons-4bins.png" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+<aside class="notes">
+<p>Same story, finer bins. Building toward the limit.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-34" class="slide level2" data-background-image="images/plots/fork-simpsons-5bins.png" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+<aside class="notes">
+<p>Five bins, all positive. Finer conditioning, same result.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-35" class="slide level2" data-background-image="images/plots/fork-simpsons-10bins.png" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+<aside class="notes">
+<p>Dense fan of positive slopes. Aggregate still negative — that’s the confounding.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-36" class="slide level2" data-background-image="images/plots/fork-simpsons-continuous.png" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+<div class="absolute dgp-overlay" style="top: 0px; left: 0px; ">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>Z <span class="ot">&lt;-</span> <span class="fu">runif</span>(n, <span class="dv">0</span>, <span class="dv">10</span>)</span>
+<span id="cb1-2"><a></a>X <span class="ot">&lt;-</span> <span class="fl">0.6</span> <span class="sc">*</span> Z <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb1-3"><a></a>Y <span class="ot">&lt;-</span> <span class="fl">1.0</span> <span class="sc">*</span> X <span class="sc">-</span> <span class="fl">2.0</span> <span class="sc">*</span> Z</span>
+<span id="cb1-4"><a></a>    <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fl">1.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<aside class="notes">
+<p>Conditioning taken to the limit. At any fixed Z, X-Y positive. Aggregate trend = confounding. “Controlling for confounder” = comparing within Z-slices.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="chain-mediator" class="slide level2 center section-slide" data-background-color="#107895">
+<h2>Chain (Mediator)</h2>
+<aside class="notes">
+<p>Title slide — name the structure, then advance to the interactive demo. Chain: <span class="math inline">X</span> causes <span class="math inline">Z</span> causes <span class="math inline">Y</span>. Conditioning on <span class="math inline">Z</span> blocks the causal path.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-37" class="slide level2">
+<h2></h2>
+<div class="bayes-ball-widget" data-nodes="[{&quot;id&quot;:&quot;X&quot;,&quot;label&quot;:&quot;X&quot;,&quot;x&quot;:180,&quot;y&quot;:190},{&quot;id&quot;:&quot;Z&quot;,&quot;label&quot;:&quot;Z&quot;,&quot;x&quot;:400,&quot;y&quot;:190},{&quot;id&quot;:&quot;Y&quot;,&quot;label&quot;:&quot;Y&quot;,&quot;x&quot;:620,&quot;y&quot;:190}]" data-edges="[[&quot;X&quot;,&quot;Z&quot;],[&quot;Z&quot;,&quot;Y&quot;]]" data-source="X" data-target="Y">
+</div>
+<aside class="notes">
+<p>Interactive chain demo. Default: run → d-connected (causal path is open). Condition on Z → d-separated (blocking the mediator). Key: controlling for a mediator removes the causal effect — don’t do it.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-38" class="slide level2" data-background-image="images/plots/chain-binary-marginal.png" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+<div class="absolute dgp-overlay" style="top: 0px; left: 0px; ">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>tutoring <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb2-2"><a></a>homework <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="dv">1</span>,</span>
+<span id="cb2-3"><a></a>    <span class="fu">plogis</span>(tutoring <span class="sc">-</span> <span class="dv">5</span>))</span>
+<span id="cb2-4"><a></a>scores <span class="ot">&lt;-</span> <span class="dv">20</span> <span class="sc">*</span> homework</span>
+<span id="cb2-5"><a></a>        <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<aside class="notes">
+<p>Tutoring → Homework → Scores. Aggregate: positive slope. Ask: “Homework correlates with both. Should we control for it?” They’ll say yes — it’s a trap.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-39" class="slide level2" data-background-image="images/plots/chain-binary-conditioned.png" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+<div class="absolute dgp-overlay" style="top: 0px; left: 0px; ">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>tutoring <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb3-2"><a></a>homework <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="dv">1</span>,</span>
+<span id="cb3-3"><a></a>    <span class="fu">plogis</span>(tutoring <span class="sc">-</span> <span class="dv">5</span>))</span>
+<span id="cb3-4"><a></a>scores <span class="ot">&lt;-</span> <span class="dv">20</span> <span class="sc">*</span> homework</span>
+<span id="cb3-5"><a></a>        <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<aside class="notes">
+<p>Controlling for homework: within each group, flat. Tutoring works THROUGH homework. Dashed = total effect. Controlling killed it. This is overcontrol bias.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="collider" class="slide level2 center section-slide" data-background-color="#107895">
+<h2>Collider</h2>
+<div class="citation-lower-left">
+<p><span class="citation" data-cites="elwertEndogenousSelectionBias2014">Elwert and Winship (<a href="#/references" role="doc-biblioref" onclick="">2014</a>)</span></p>
+</div>
+<aside class="notes">
+<p>Title slide — name the structure, then advance to the interactive demo. Collider: both <span class="math inline">X</span> and <span class="math inline">Y</span> cause <span class="math inline">Z</span>. Conditioning OPENS a spurious path.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-40" class="slide level2">
+<h2></h2>
+<div class="bayes-ball-widget" data-nodes="[{&quot;id&quot;:&quot;X&quot;,&quot;label&quot;:&quot;X&quot;,&quot;x&quot;:200,&quot;y&quot;:80},{&quot;id&quot;:&quot;Z&quot;,&quot;label&quot;:&quot;Z&quot;,&quot;x&quot;:400,&quot;y&quot;:280},{&quot;id&quot;:&quot;Y&quot;,&quot;label&quot;:&quot;Y&quot;,&quot;x&quot;:600,&quot;y&quot;:80}]" data-edges="[[&quot;X&quot;,&quot;Z&quot;],[&quot;Y&quot;,&quot;Z&quot;]]" data-source="X" data-target="Y">
+</div>
+<aside class="notes">
+<p>Interactive collider demo. Default: run → d-separated (no path between independent causes). Condition on Z → d-connected (collider bias — conditioning opens the path). The counterintuitive case. Let audience verify it themselves.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-41" class="slide level2" data-background-image="images/plots/collider-full.png" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+<div class="absolute dgp-overlay" style="top: 0px; left: 0px; ">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>talent   <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb4-2"><a></a>beauty   <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb4-3"><a></a>celebrity <span class="ot">&lt;-</span> talent <span class="sc">+</span> beauty</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<aside class="notes">
+<p>Talent and beauty independent in population. Flat line. Ask: “What if we only look at celebrities?”</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-42" class="slide level2" data-background-image="images/plots/collider-selected.png" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+<div class="absolute dgp-overlay" style="top: 0px; left: 0px; ">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>talent   <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb5-2"><a></a>beauty   <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb5-3"><a></a>celebrity <span class="ot">&lt;-</span> talent <span class="sc">+</span> beauty</span>
+<span id="cb5-4"><a></a><span class="co"># Top 15% become famous</span></span>
+<span id="cb5-5"><a></a>celeb <span class="ot">&lt;-</span> celebrity <span class="sc">&gt;</span> P85</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<aside class="notes">
+<p>Among celebrities: strong negative slope. “Famous but can’t act — must be the looks.” Explaining away. Phantom association — doesn’t exist in the population.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-43" class="slide level2" data-background-image="images/plots/collider-gradient.png" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+<div class="absolute dgp-overlay" style="top: 0px; left: 0px; ">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>talent   <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb6-2"><a></a>beauty   <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb6-3"><a></a>celebrity <span class="ot">&lt;-</span> talent <span class="sc">+</span> beauty</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<aside class="notes">
+<p>Not a threshold artifact — structural. At every level of fame, negative association.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="collider-descendant" class="slide level2 center section-slide" data-background-color="#107895">
+<h2>Collider (Descendant)</h2>
+<aside class="notes">
+<p>Same collider, but now: what about something DOWNSTREAM of the collider? You know not to condition on Celebrity. But what about Instagram followers?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-44" class="slide level2">
+<h2></h2>
+<div class="bayes-ball-widget" data-nodes="[{&quot;id&quot;:&quot;X&quot;,&quot;label&quot;:&quot;X&quot;,&quot;x&quot;:200,&quot;y&quot;:60},{&quot;id&quot;:&quot;Y&quot;,&quot;label&quot;:&quot;Y&quot;,&quot;x&quot;:600,&quot;y&quot;:60},{&quot;id&quot;:&quot;Z&quot;,&quot;label&quot;:&quot;Z&quot;,&quot;x&quot;:400,&quot;y&quot;:185},{&quot;id&quot;:&quot;W&quot;,&quot;label&quot;:&quot;W&quot;,&quot;x&quot;:400,&quot;y&quot;:328}]" data-edges="[[&quot;X&quot;,&quot;Z&quot;],[&quot;Y&quot;,&quot;Z&quot;],[&quot;Z&quot;,&quot;W&quot;]]" data-source="X" data-target="Y">
+</div>
+<aside class="notes">
+<p>Condition on W (not Z!) → still d-connected. W = Followers, a consequence of Celebrity. Conditioning still partially opens the path.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-45" class="slide level2" data-background-image="images/plots/collider-descendant.png" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+<div class="absolute dgp-overlay" style="top: 0px; left: 0px; ">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>talent   <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb7-2"><a></a>beauty   <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb7-3"><a></a>celebrity <span class="ot">&lt;-</span> talent <span class="sc">+</span> beauty</span>
+<span id="cb7-4"><a></a>followers <span class="ot">&lt;-</span> <span class="fl">0.8</span> <span class="sc">*</span> celebrity</span>
+<span id="cb7-5"><a></a>            <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fl">1.2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<aside class="notes">
+<p>“You just study actors with &gt;100k followers.” Noisy proxy for Celebrity. Negative slope weaker but still there. Bias attenuated, not eliminated.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="putting-it-together" class="slide level2 center section-slide" data-background-color="#107895">
+<h2>Putting It Together</h2>
+<aside class="notes">
+<p>Title slide — transition from elemental structures to a realistic graph where multiple structures overlap and interact.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-46" class="slide level2">
+<h2></h2>
+<div class="bayes-ball-widget" data-nodes="[{&quot;id&quot;:&quot;A&quot;,&quot;label&quot;:&quot;A&quot;,&quot;x&quot;:120,&quot;y&quot;:60},{&quot;id&quot;:&quot;B&quot;,&quot;label&quot;:&quot;B&quot;,&quot;x&quot;:580,&quot;y&quot;:60},{&quot;id&quot;:&quot;C&quot;,&quot;label&quot;:&quot;C&quot;,&quot;x&quot;:350,&quot;y&quot;:170},{&quot;id&quot;:&quot;X&quot;,&quot;label&quot;:&quot;X&quot;,&quot;x&quot;:120,&quot;y&quot;:340},{&quot;id&quot;:&quot;Y&quot;,&quot;label&quot;:&quot;Y&quot;,&quot;x&quot;:580,&quot;y&quot;:340},{&quot;id&quot;:&quot;Z&quot;,&quot;label&quot;:&quot;Z&quot;,&quot;x&quot;:350,&quot;y&quot;:470}]" data-edges="[[&quot;A&quot;,&quot;C&quot;],[&quot;A&quot;,&quot;X&quot;],[&quot;B&quot;,&quot;C&quot;],[&quot;B&quot;,&quot;Y&quot;],[&quot;C&quot;,&quot;X&quot;],[&quot;C&quot;,&quot;Y&quot;],[&quot;X&quot;,&quot;Y&quot;],[&quot;X&quot;,&quot;Z&quot;],[&quot;Y&quot;,&quot;Z&quot;]]" data-source="X" data-target="Y">
+</div>
+<aside class="notes">
+<p>Multiple paths from X to Y. Let them explore: which nodes to condition on? This is where intuition needs algorithms.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="d-separation" class="title-slide slide level1 section-slide center" data-background-color="#107895">
+<h1>D-Separation</h1>
+<div class="citation-lower-left">
+<p><span class="citation" data-cites="pearlCausalityModelsReasoning2009">Pearl (<a href="#/references" role="doc-biblioref" onclick="">2009</a>)</span></p>
+</div>
+<aside class="notes">
+<p>“You just did this intuitively. Now let’s name the rule.” Synthesis moment, not new content.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="directed-separation" class="slide level2 center">
+<h2>Directed Separation</h2>
+<p>A path between X and Y is <strong>blocked</strong> given a conditioning set <strong>Z</strong> if it contains:</p>
+<div class="fragment">
+<div class="scm-box">
+<table class="caption-top">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 93%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"></td>
+<td style="text-align: left;">a <strong>non-collider</strong> (fork or chain) that is <strong>in Z</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"></td>
+<td style="text-align: left;">a <strong>collider</strong> that is <strong>not in Z</strong> (and has no descendant in Z)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="fragment">
+<p>X and Y are <strong>d-separated</strong> given <strong>Z</strong> if <em>every</em> path between them is blocked.</p>
+</div>
+<aside class="notes">
+<p>Two rules, that’s it. They already used them on the widget. Descendant clause: conditioning on a child of collider partially opens path too.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="from-surgery-to-statistics" class="slide level2 center">
+<h2>From Surgery to Statistics</h2>
+<div class="fragment">
+<p><span style="color:var(--iqb-accent); font-weight:600;">Graph surgery</span> — physically cut arrows into <span class="math inline">X</span></p>
+</div>
+<div class="fragment">
+<p><span style="color:var(--iqb-accent); font-weight:600;">Backdoor adjustment</span> — statistically neutralize them</p>
+</div>
+<div class="fragment">
+<p><span class="math display">P(Y \mid do(X = x)) = \sum_z P(Y \mid X = x, Z = z) \; P(Z = z)</span></p>
+</div>
+<div class="fragment">
+<p><span style="font-size:0.85em; color:var(--iqb-muted);">Left side: causal (rung 2). Right side: observable (rung 1).</span></p>
+</div>
+<aside class="notes">
+<p>Surgery = thought experiment. Backdoor adjustment = the computable version. Condition on Z → X “as if randomized” within each stratum. That’s the fork plots. “Controlling for Z” simulates an intervention. Works when Z satisfies backdoor criterion, fails otherwise (collider, mediator).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- μ-reset: Stand up, stretch. Replay in your mind: three structures — which do you control for, which not? Let it settle. Any questions? -->
+</section>
+<section id="exercise-the-causal-quartet" class="slide level2 center section-slide" data-background-color="#107895">
+<h2>Exercise: The Causal Quartet</h2>
+<div class="citation-lower-left">
+<p><span class="citation" data-cites="dagostinomcgowanCausalInferenceNot2024">D’Agostino McGowan et al. (<a href="#/references" role="doc-biblioref" onclick="">2024</a>)</span></p>
+</div>
+<aside class="notes">
+<p>Same association, different causal structures → different answers. Don’t spoil — let them discover it.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-47" class="slide level2 center">
+<h2></h2>
+<p><a href="https://moritzketzer.github.io/iqb-workshop/" target="_blank">moritzketzer.github.io/iqb-workshop</a></p>
+<p>Open <code>causal-quartet.R</code></p>
+<p>Breakout rooms in pairs (~30 min), then 5 min break before debrief.</p>
+<aside class="notes">
+<p>Script guides: (1) explore + discover equivalence, (2) predict from DAGs, (3) verify with adjusted lm, (4) reflect. DAG PNGs in their home directory. Walk around, help with R issues, don’t give away the punchline. If stuck on (4) M-bias: “Trace the paths. What happens when you condition on Z?”</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Debrief slides — shown after exercise -->
+</section>
+<section id="section-48" class="slide level2" data-background-image="images/plots/quartet-unadjusted.png" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+<aside class="notes">
+<p>Debrief. Let THEM explain what they see — they know this from the code now. “All four datasets, same slope, same scatter. So same answer for all four?”</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-49" class="slide level2" data-background-image="images/dags/dag-quartet-four.svg" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+<aside class="notes">
+<p>“But the underlying structures are different. You looked at these DAGs — four different roles for Z.” Walk through briefly: collider, confounder, mediator, M-bias. “Who predicted all four correctly?” Hands up.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-50" class="slide level2" data-background-image="images/plots/quartet-adjusted.png" data-background-size="contain" data-bg-padding="6">
+<h2></h2>
+<aside class="notes">
+<p>Dashed = unadjusted (all ~1). Teal = adjusted for Z. (1) Collider: 1.0 → 0.55 — adjusting introduced bias. (2) Confounder: 1.0 → 0.5 — only case where controlling helps. (3) Mediator: 1.0 → 0.0 — blocked the mechanism. (4) M-bias: 1.0 → 0.88 — Z is a collider on a backdoor path, conditioning opens it. “Who was surprised by at least one?”</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-51" class="slide level2" data-background-image="images/illustrations-custom/bareinboim-2022-pch-two-dags-l1-identification.svg" data-background-size="contain" data-bg-padding="2">
+<h2></h2>
+<div class="citation-lower-left">
+<p>Adapted from <span class="citation" data-cites="bareinboimPearlsHierarchyFoundations2022">Bareinboim et al. (<a href="#/references" role="doc-biblioref" onclick="">2022, fig. 27.4</a>)</span></p>
+</div>
+<aside class="notes">
+<p>Two-DAG identification diagram. Relevant for identification theory. Could follow the backdoor criterion section if there’s time.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="can-you-prove-mediation" class="slide level2 center quote-slide">
+<h2>Can you <em>prove</em> mediation?</h2>
+<div class="citation-lower-left">
+<p><span class="citation" data-cites="klineMediationMyth2015">Kline (<a href="#/references" role="doc-biblioref" onclick="">2015</a>)</span></p>
+</div>
+<aside class="notes">
+<p>Let the question sit 30 seconds. Open the floor. Mediator dataset (3) statistically indistinguishable from confounder (2). Same slopes, same correlations. Baron &amp; Kenny tests patterns consistent with mediation — also consistent with confounding. Kline (2015) “The Mediation Myth” — the Baron &amp; Kenny procedure doesn’t test mediation, it tests a pattern equally consistent with confounding. No statistical test can distinguish a chain from a fork. “Mediation is a causal claim. You can estimate it under assumptions. You cannot test it.” For those interested: see the Mediation Analysis section in the further reading list — Imai et al.&nbsp;(2010) show what nonparametric identification of mediation actually requires, and it’s a lot.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="today" class="slide level2 center section-slide" data-background-color="#107895">
+<h2>Today</h2>
+<aside class="notes">
+<p>Quick recap of what we covered:</p>
+<ul>
+<li>Simpson’s paradox and the kidney stone example — correlation flips depending on how you slice the data</li>
+<li>Structural Causal Models — equations + graph = a model of the data-generating process</li>
+<li>Three elementary structures: fork, chain, collider — and why they matter for conditioning</li>
+<li>d-separation — reading off conditional independencies from the graph</li>
+<li>The do-operator and graph surgery — turning observation into intervention</li>
+<li>The Causal Quartet — same ATE, radically different data stories</li>
+<li>dagitty exercise — building a DAG for Open Science, finding adjustment sets, seeing what goes wrong when you control for everything</li>
+</ul>
+<p>Open floor:</p>
+<ul>
+<li>Questions about anything from today?</li>
+<li>Anything unclear or surprising?</li>
+<li>Feedback — pace, level of detail, exercises?</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="tomorrow" class="slide level2 center section-slide" data-background-color="#107895">
+<h2>Tomorrow</h2>
+<aside class="notes">
+<p>Preview of Day 2 — we go deeper:</p>
+<ul>
+<li>What happens when the causal effect isn’t the same for everyone? Heterogeneous treatment effects, CATE</li>
+<li>How functional form connects to DAGs — linear SCMs, interactions, what the graph can and can’t tell you</li>
+<li>Multilevel models as causal models — varying intercepts and slopes, the BFLPE as a running example</li>
+<li>Directed Acyclic Mixed Graphs (DAMGs) — how to draw multilevel DAGs properly</li>
+<li>Group-mean centering and the Mundlak device — why centering is a causal operation</li>
+<li>Confounding in multilevel settings — between-cluster vs within-cluster confounding</li>
+<li>If time: dynamic SCMs and longitudinal panel models (CLPM)</li>
+</ul>
+<p>Open floor:</p>
+<ul>
+<li>Wishes for tomorrow? Topics you’d like more depth on?</li>
+<li>Anything from your own research you’d like to map onto a DAG?</li>
+<li>Interests we can try to weave in — no promises, but good to know</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="optional-dag-your-research" class="slide level2 center section-slide" data-background-color="#107895">
+<h2>Optional: DAG your Research</h2>
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-bareinboimPearlsHierarchyFoundations2022" class="csl-entry" role="listitem">
+Bareinboim, Elias, Juan D. Correa, Duligur Ibeling, and Thomas Icard. 2022. <span>“On <span>Pearl</span>’s <span>Hierarchy</span> and the <span>Foundations</span> of <span>Causal Inference</span>.”</span> In <em>Probabilistic and <span>Causal Inference</span></em>, 1st ed., edited by Hector Geffner, Rina Dechter, and Joseph Y. Halpern. ACM. <a href="https://doi.org/10.1145/3501714.3501743">https://doi.org/10.1145/3501714.3501743</a>.
+</div>
+<div id="ref-charigComparisonTreatmentRenal1986" class="csl-entry" role="listitem">
+Charig, C. R., D. R. Webb, S. R. Payne, and J. E. Wickham. 1986. <span>“Comparison of Treatment of Renal Calculi by Open Surgery, Percutaneous Nephrolithotomy, and Extracorporeal Shockwave Lithotripsy.”</span> <em>Br Med J (Clin Res Ed)</em> 292 (6524): 879–82. <a href="https://doi.org/10.1136/bmj.292.6524.879">https://doi.org/10.1136/bmj.292.6524.879</a>.
+</div>
+<div id="ref-dagostinomcgowanCausalInferenceNot2024" class="csl-entry" role="listitem">
+D’Agostino McGowan, Lucy, Travis Gerke, and Malcolm Barrett. 2024. <span>“Causal <span>Inference Is Not Just</span> a <span>Statistics Problem</span>.”</span> <em>Journal of Statistics and Data Science Education</em> 32 (2): 150–55. <a href="https://doi.org/10.1080/26939169.2023.2276446">https://doi.org/10.1080/26939169.2023.2276446</a>.
+</div>
+<div id="ref-DescriptionPredictionExplanation2021" class="csl-entry" role="listitem">
+Editorial. 2021. <span>“Description, Prediction, Explanation.”</span> <em>Nature Human Behaviour</em> 5 (10): 1261–61. <a href="https://doi.org/10.1038/s41562-021-01230-5">https://doi.org/10.1038/s41562-021-01230-5</a>.
+</div>
+<div id="ref-elwertEndogenousSelectionBias2014" class="csl-entry" role="listitem">
+Elwert, Felix, and Christopher Winship. 2014. <span>“Endogenous <span>Selection Bias</span>: <span>The Problem</span> of <span>Conditioning</span> on a <span>Collider Variable</span>.”</span> <em>Annual Review of Sociology</em> 40 (July): 31–53. <a href="https://doi.org/10.1146/annurev-soc-071913-043455">https://doi.org/10.1146/annurev-soc-071913-043455</a>.
+</div>
+<div id="ref-hollandStatisticsCausalInference1986" class="csl-entry" role="listitem">
+Holland, Paul W. 1986. <span>“Statistics and <span>Causal Inference</span>.”</span> <em>Journal of the American Statistical Association</em> 81 (396): 945–60. <a href="https://doi.org/10.1080/01621459.1986.10478354">https://doi.org/10.1080/01621459.1986.10478354</a>.
+</div>
+<div id="ref-kievitSimpsonsParadoxPsychological2013" class="csl-entry" role="listitem">
+Kievit, Rogier A., Willem E. Frankenhuis, Lourens J. Waldorp, and Denny Borsboom. 2013. <span>“Simpson’s Paradox in Psychological Science: A Practical Guide.”</span> <em>Frontiers in Psychology</em> 4: 513. <a href="https://www.frontiersin.org/articles/10.3389/fpsyg.2013.00513/full">https://www.frontiersin.org/articles/10.3389/fpsyg.2013.00513/full</a>.
+</div>
+<div id="ref-klineMediationMyth2015" class="csl-entry" role="listitem">
+Kline, Rex B. 2015. <span>“The <span>Mediation Myth</span>.”</span> <em>Basic and Applied Social Psychology</em> 37 (4): 202–13. <a href="https://doi.org/10.1080/01973533.2015.1049349">https://doi.org/10.1080/01973533.2015.1049349</a>.
+</div>
+<div id="ref-messerliChocolateConsumptionCognitive2012" class="csl-entry" role="listitem">
+Messerli, Franz H. 2012. <span>“Chocolate <span>Consumption</span>, <span>Cognitive Function</span>, and <span>Nobel Laureates</span>.”</span> <em>New England Journal of Medicine</em> 367 (16): 1562–64. <a href="https://doi.org/10.1056/NEJMon1211064">https://doi.org/10.1056/NEJMon1211064</a>.
+</div>
+<div id="ref-nealIntroductionCausalInferencea" class="csl-entry" role="listitem">
+Neal, Brady. n.d. <span>“Introduction to <span>Causal Inference</span>.”</span> Accessed March 7, 2026. <a href="https://www.bradyneal.com/causal-inference-course">https://www.bradyneal.com/causal-inference-course</a>.
+</div>
+<div id="ref-pearlCausalityModelsReasoning2009" class="csl-entry" role="listitem">
+Pearl, Judea. 2009. <em>Causality: Models, Reasoning, and Inference</em>. Second edition, reprinted with corrections. Cambridge University Press.
+</div>
+<div id="ref-pearlUnderstandingSimpsonsParadox2013" class="csl-entry" role="listitem">
+Pearl, Judea. 2013. <span>“Understanding <span>Simpson</span>’s <span>Paradox</span>.”</span> <em>SSRN Electronic Journal</em>, ahead of print. <a href="https://doi.org/10.2139/ssrn.2343788">https://doi.org/10.2139/ssrn.2343788</a>.
+</div>
+<div id="ref-pearlCausalInferenceStatistics2016" class="csl-entry" role="listitem">
+Pearl, Judea, Madelyn Glymour, and Nicholas P. Jewell. 2016. <em>Causal <span>Inference</span> in <span>Statistics</span>: <span>A Primer</span></em>. 1. edition. Wiley.
+</div>
+<div id="ref-pearlBookWhyNew2018" class="csl-entry" role="listitem">
+Pearl, Judea, and Dana Mackenzie. 2018. <em>The Book of Why: The New Science of Cause and Effect</em>. First edition. Basic Books.
+</div>
+<div id="ref-rubinEstimatingCausalEffects1974" class="csl-entry" role="listitem">
+Rubin, Donald B. 1974. <span>“Estimating Causal Effects of Treatments in Randomized and Nonrandomized Studies.”</span> <em>Journal of Educational Psychology</em> 66 (5): 688. <a href="https://psycnet.apa.org/record/1975-06502-001">https://psycnet.apa.org/record/1975-06502-001</a>.
+</div>
+<div id="ref-shmueliExplainPredict2010a" class="csl-entry" role="listitem">
+Shmueli, Galit. 2010. <span>“To <span>Explain</span> or to <span>Predict</span>?”</span> <em>Statistical Science</em> 25 (3): 289–310. <a href="https://www.jstor.org/stable/41058949">https://www.jstor.org/stable/41058949</a>.
+</div>
+<div id="ref-SpuriousCorrelations" class="csl-entry" role="listitem">
+<span>“Spurious <span>Correlations</span>.”</span> n.d. Accessed February 27, 2026. <a href="https://tylervigen.com/spurious-correlations">https://tylervigen.com/spurious-correlations</a>.
+</div>
+<div id="ref-SpuriousScholar" class="csl-entry" role="listitem">
+<span>“Spurious <span>Scholar</span>.”</span> n.d. Accessed February 27, 2026. <a href="https://tylervigen.com/spurious-scholar">https://tylervigen.com/spurious-scholar</a>.
+</div>
+<div id="ref-wrightRelativeImportanceHeredity1920" class="csl-entry" role="listitem">
+Wright, Sewall. 1920. <span>“The <span>Relative Importance</span> of <span>Heredity</span> and <span>Environment</span> in <span>Determining</span> the <span>Piebald Pattern</span> of <span>Guinea-Pigs</span>.”</span> <em>Proceedings of the National Academy of Sciences</em> 6 (6): 320–32. <a href="https://doi.org/10.1073/pnas.6.6.320">https://doi.org/10.1073/pnas.6.6.320</a>.
+</div>
+<div id="ref-wrightMethodPathCoefficients1934" class="csl-entry" role="listitem">
+Wright, Sewall. 1934. <span>“The Method of Path Coefficients.”</span> <em>The Annals of Mathematical Statistics</em> 5 (3): 161–215. <a href="https://www.jstor.org/stable/2957502?casa_token=W2Rnt77K4xEAAAAA:OIfplx9Qlg2_3chSeXIWMD6DNY6o0MpQ52AEhlHD-q_gRNSON3XE4zckyozxyl9IbLP-PyOOdYTcvpKNzCFr7xYWRyL5pdWwZ53q_uktbvmSb5oiWAg">https://www.jstor.org/stable/2957502?casa_token=W2Rnt77K4xEAAAAA:OIfplx9Qlg2_3chSeXIWMD6DNY6o0MpQ52AEhlHD-q_gRNSON3XE4zckyozxyl9IbLP-PyOOdYTcvpKNzCFr7xYWRyL5pdWwZ53q_uktbvmSb5oiWAg</a>.
+</div>
+</div>
+
+
+<script>
+// contain-padded: apply padding to RevealJS background elements.
+// Matches slide sections to their background elements by DOM order.
+(function() {
+  function applyBgPadding() {
+    var topSections = document.querySelectorAll('.reveal .slides > section');
+    var topBgs = document.querySelectorAll('.reveal .backgrounds > .slide-background');
+
+    topSections.forEach(function(outer, h) {
+      var inner = outer.querySelectorAll(':scope > section');
+      var bgOuter = topBgs[h];
+      if (!bgOuter) return;
+
+      if (inner.length === 0) {
+        pad(outer, bgOuter);
+      } else {
+        var innerBgs = bgOuter.querySelectorAll(':scope > .slide-background');
+        inner.forEach(function(sec, v) { pad(sec, innerBgs[v]); });
+      }
+    });
+  }
+
+  function pad(section, bg) {
+    if (!section.dataset.bgPadding || !bg) return;
+    var el = bg.querySelector('.slide-background-content');
+    if (!el) return;
+    el.style.padding = section.dataset.bgPadding + '%';
+    el.style.backgroundOrigin = 'content-box';
+    el.style.boxSizing = 'border-box';
+  }
+
+  function init() {
+    if (typeof Reveal !== 'undefined' && Reveal.isReady()) {
+      applyBgPadding();
+    } else if (typeof Reveal !== 'undefined') {
+      Reveal.on('ready', applyBgPadding);
+    } else {
+      setTimeout(init, 100);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script>
+    // Per-slide "Report issue" footer link for GitHub Issues
+    // Creates its own fixed-position element and updates it on slide change
+    // with pre-filled issue title containing deck name, slide number, and title.
+
+    function setupIssueFooter() {
+      const repoUrl = "https://github.com/moritzketzer/iqb-workshop";
+      const pathParts = window.location.pathname.split("/");
+      const filename = pathParts[pathParts.length - 1].replace(".html", "");
+
+      const deckLabel =
+        filename === "day1-fundamentals"
+          ? "Day 1"
+          : filename === "day2-advanced"
+            ? "Day 2"
+            : filename;
+
+      // Create our own footer element instead of relying on Quarto's
+      const issueFooter = document.createElement("div");
+      issueFooter.id = "issue-footer";
+      issueFooter.style.cssText =
+        "position: fixed; bottom: var(--footer-bottom, 10px); left: 0; right: 0; z-index: 100; font-size: var(--footer-size, 1rem); line-height: 1; color: var(--footer-color, #7a8e99); text-align: center;";
+      document.querySelector(".reveal").appendChild(issueFooter);
+
+      function updateFooter() {
+        const slide = Reveal.getCurrentSlide();
+        if (!slide) return;
+
+        const heading = slide.querySelector("h1, h2, h3");
+        const slideTitle = heading ? heading.textContent.trim() : "Untitled";
+        const indices = Reveal.getIndices();
+        const slideNumber = indices.h + 1;
+
+        const issueTitle = `[${deckLabel}] Slide ${slideNumber}: ${slideTitle}`;
+        const issueBody = `**Deck**: ${deckLabel} (${filename}.qmd)\n**Slide**: ${slideNumber} — ${slideTitle}\n\n---\n\n_Describe the issue, question, or suggestion:_\n`;
+        const issueUrl = `${repoUrl}/issues/new?title=${encodeURIComponent(issueTitle)}&body=${encodeURIComponent(issueBody)}`;
+
+        issueFooter.innerHTML = `<a href="${issueUrl}" target="_blank" style="text-decoration: none; color: inherit;">Spotted a mistake? Question? Comment? Let me know →</a>`;
+      }
+
+      Reveal.on("slidechanged", updateFooter);
+      Reveal.on("ready", updateFooter);
+    }
+
+    if (typeof Reveal !== "undefined") {
+      if (Reveal.isReady()) {
+        setupIssueFooter();
+      } else {
+        Reveal.on("ready", setupIssueFooter);
+      }
+    } else {
+      document.addEventListener("DOMContentLoaded", function () {
+        setupIssueFooter();
+      });
+    }
+    </script>
+    <script>
+    // Per-slide citation overlays pinned to viewport corners.
+    //
+    // Architecture:
+    // - The .citation-lower-left / .citation-lower-right divs inside each slide
+    //   are hidden (display:none). They contain Pandoc-rendered @citation markup.
+    // - On slide change, this script extracts cite keys + text from those divs
+    //   and builds NEW elements in position:fixed overlays appended to .reveal
+    //   (outside the .slides CSS-transform context).
+    // - A CSS-only tooltip (.cite-tooltip) shows the full bibliography entry on
+    //   hover, pulling content from Quarto's #ref-<key> elements.
+
+    function setupCitationOverlay() {
+      function cleanWebCitation(text) {
+        text = text.replace(/\s*\(n\.d\.\)/g, "");
+        text = text.replace(/\s*n\.d\.\s*/g, " ");
+        text = text.replace(/\s*Accessed\s+\w+\s+\d{1,2},\s+\d{4}\.\s*/g, " ");
+        text = text.replace(/\(\s*\)/g, "");
+        text = text.replace(/\s{2,}/g, " ");
+        return text.trim();
+      }
+
+      // Create one overlay div per position and attach to .reveal
+      function makeOverlay(id) {
+        var el = document.createElement("div");
+        el.id = id;
+        document.querySelector(".reveal").appendChild(el);
+        return el;
+      }
+
+      var overlays = {
+        left:  makeOverlay("citation-lower-left-overlay"),
+        right: makeOverlay("citation-lower-right-overlay"),
+      };
+
+      function updateOverlay(overlay, divClass) {
+        overlay.innerHTML = "";
+        overlay.style.display = "none";
+
+        var slide = Reveal.getCurrentSlide();
+        if (!slide) return;
+
+        var cite = slide.querySelector("." + divClass);
+        if (!cite) return;
+
+        var citeSpan = cite.querySelector("[data-cites]");
+        var citeKeys = citeSpan ? citeSpan.dataset.cites.split(" ") : [];
+        var isWebsite = cite.classList.contains("website");
+
+        var citeText = document.createElement("span");
+        citeText.className = "cite-text";
+        var visibleText = cite.textContent.trim();
+        if (isWebsite) { visibleText = cleanWebCitation(visibleText); }
+        citeText.textContent = visibleText;
+        overlay.appendChild(citeText);
+
+        if (citeKeys.length > 0) {
+          var tooltip = document.createElement("div");
+          tooltip.className = "cite-tooltip";
+          var hasContent = false;
+
+          citeKeys.forEach(function (key) {
+            var refEl = document.getElementById("ref-" + key);
+            if (refEl) {
+              var entry = document.createElement("div");
+              entry.className = "csl-entry";
+              var html = refEl.innerHTML;
+              if (isWebsite) { html = cleanWebCitation(html); }
+              entry.innerHTML = html;
+              tooltip.appendChild(entry);
+              hasContent = true;
+            }
+          });
+
+          if (hasContent) { overlay.appendChild(tooltip); }
+        }
+
+        overlay.style.display = "block";
+      }
+
+      function updateAll() {
+        updateOverlay(overlays.left,  "citation-lower-left");
+        updateOverlay(overlays.right, "citation-lower-right");
+      }
+
+      Reveal.on("slidechanged", updateAll);
+      updateAll();
+    }
+
+    if (typeof Reveal !== "undefined") {
+      if (Reveal.isReady()) {
+        setupCitationOverlay();
+      } else {
+        Reveal.on("ready", setupCitationOverlay);
+      }
+    } else {
+      document.addEventListener("DOMContentLoaded", setupCitationOverlay);
+    }
+    </script>
+    <style>
+    /* === Bayes Ball Widget ===================================================
+     * Interactive d-separation visualization for RevealJS slides.
+     * Circle nodes, thin black strokes, solid arrowheads, teal (#107895) text
+     * in Source Sans 3. One widget per slide — sized to fill the slide.
+     * ======================================================================= */
+
+    /* ── Subsection title slides ─────────────────────────────────────────── */
+    /* Centered h2 on dark background (structure labels: Fork, Chain, …).    */
+    /* Display-level sizing (2× body) to match h1 section slides.            */
+    .reveal section.center.has-dark-background h2 {
+      font-size: 2em;
+    }
+
+    .bayes-ball-widget {
+      --bb-accent: #107895;
+      --bb-stroke: #222;
+      --bb-observed: #D55E00;
+      --bb-open: #009E73;
+      --bb-blocked: #D55E00;
+      --bb-ball: #E69F00;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8em;
+      user-select: none;
+      height: 100%;
+    }
+
+    .bayes-ball-widget svg {
+      display: block;
+      flex: 1 1 auto;
+      max-height: 55vh;
+    }
+
+    /* ── Edges ─────────────────────────────────────────────────────────────── */
+    .bayes-ball-widget .bb-edge {
+      stroke: var(--bb-stroke);
+      stroke-width: 2;
+      stroke-linecap: butt;
+      fill: none;
+      transition: stroke 0.3s, stroke-width 0.3s, stroke-dasharray 0.3s;
+    }
+
+    .bayes-ball-widget .bb-edge.path-open {
+      stroke: var(--bb-open);
+      stroke-width: 2.8;
+    }
+
+    .bayes-ball-widget .bb-edge.path-blocked {
+      stroke: var(--bb-blocked);
+      stroke-width: 2.8;
+      stroke-dasharray: 8 4;
+    }
+
+    /* ── Nodes (circles) ───────────────────────────────────────────────────── */
+    .bayes-ball-widget .bb-node {
+      fill: white;
+      stroke: var(--bb-stroke);
+      stroke-width: 2.4;
+      cursor: pointer;
+      transition: fill 0.25s, stroke 0.25s;
+    }
+
+    .bayes-ball-widget .bb-node:hover {
+      stroke-width: 2.8;
+      filter: drop-shadow(0 0 4px rgba(16, 120, 149, 0.3));
+    }
+
+    .bayes-ball-widget .bb-node.observed {
+      fill: var(--bb-observed);
+      stroke: var(--bb-observed);
+    }
+
+
+    /* ── Labels ────────────────────────────────────────────────────────────── */
+    .bayes-ball-widget .bb-node-label {
+      font-family: 'Source Sans 3', 'Source Sans Pro', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 34px;
+      text-anchor: middle;
+      dominant-baseline: central;
+      pointer-events: none;
+      fill: var(--bb-accent);
+      transition: fill 0.25s;
+    }
+
+    .bayes-ball-widget .bb-node.observed ~ .bb-node-label {
+      fill: white;
+    }
+
+    /* ── Ball ──────────────────────────────────────────────────────────────── */
+    .bayes-ball-widget .bb-ball {
+      fill: var(--bb-ball);
+      stroke: #c47e00;
+      stroke-width: 2;
+      opacity: 0;
+    }
+
+    /* ── Controls row ──────────────────────────────────────────────────────── */
+    .bayes-ball-widget .bb-controls {
+      display: flex;
+      flex-direction: row;
+      gap: 0.8em;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: nowrap;
+    }
+
+    .bayes-ball-widget .bb-btn {
+      font-family: 'Source Sans 3', 'Source Sans Pro', system-ui, sans-serif;
+      font-size: 0.85em;
+      font-weight: 600;
+      padding: 0.3em 1.2em;
+      border: 2px solid var(--bb-accent);
+      border-radius: 5px;
+      background: white;
+      color: var(--bb-accent);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .bayes-ball-widget .bb-btn:hover {
+      background: var(--bb-accent);
+      color: white;
+    }
+
+    .bayes-ball-widget .bb-btn:disabled {
+      opacity: 0.4;
+      cursor: default;
+    }
+
+    /* ── Result badge ──────────────────────────────────────────────────────── */
+    .bayes-ball-widget .bb-result {
+      font-family: 'Source Sans 3', 'Source Sans Pro', system-ui, sans-serif;
+      font-size: 0.9em;
+      font-weight: 700;
+      padding: 0.25em 1em;
+      border-radius: 5px;
+      white-space: nowrap;
+      min-height: 1.6em;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .bayes-ball-widget .bb-result.show { opacity: 1; }
+
+    .bayes-ball-widget .bb-result.d-connected {
+      color: var(--bb-open);
+      border: 2px solid var(--bb-open);
+    }
+
+    .bayes-ball-widget .bb-result.d-separated {
+      color: var(--bb-blocked);
+      border: 2px solid var(--bb-blocked);
+    }
+
+    </style>
+
+    <script>
+    // === Bayes Ball Widget =====================================================
+    // Interactive d-separation tool for RevealJS slides.
+    // Circle nodes with teal labels, solid arrowheads, click-to-condition,
+    // animated ball traversal.
+    //
+    // Node data: { "id": "Z", "label": "Z", "x": 300, "y": 80 }
+    // Edge data: [["Z","X"], ["Z","Y"]]
+    // =========================================================================
+
+    (function () {
+      "use strict";
+
+      var ANIM_DURATION = 350;
+      var NODE_R = 46;
+      var SVG_PAD = 20;
+      var ARROW_OFFSET = 6;
+
+      // ── Bayes Ball algorithm ────────────────────────────────────────────────
+      function bayesBall(nodes, edges, observed, sourceId, targetId) {
+        var children = {}, parents = {};
+        nodes.forEach(function (n) { children[n.id] = []; parents[n.id] = []; });
+        edges.forEach(function (e) {
+          children[e[0]].push(e[1]);
+          parents[e[1]].push(e[0]);
+        });
+
+        var observedSet = new Set(observed);
+        var hasObservedDescendant = new Set();
+        function markAncestors(nodeId) {
+          parents[nodeId].forEach(function (p) {
+            if (!hasObservedDescendant.has(p)) {
+              hasObservedDescendant.add(p);
+              markAncestors(p);
+            }
+          });
+        }
+        observed.forEach(function (o) {
+          hasObservedDescendant.add(o);
+          markAncestors(o);
+        });
+
+        var queue = [[sourceId, "up"], [sourceId, "down"]];
+        var visited = new Set();
+        var edgeTraversed = {};
+
+        while (queue.length > 0) {
+          var item = queue.shift();
+          var nodeId = item[0], direction = item[1];
+          var key = nodeId + "-" + direction;
+          if (visited.has(key)) continue;
+          visited.add(key);
+          var isObs = observedSet.has(nodeId);
+
+          if (!isObs && direction === "up") {
+            parents[nodeId].forEach(function (p) {
+              edgeTraversed[nodeId + "->" + p] = true;
+              queue.push([p, "up"]);
+            });
+            children[nodeId].forEach(function (c) {
+              edgeTraversed[nodeId + "->" + c] = true;
+              queue.push([c, "down"]);
+            });
+          }
+          if (!isObs && direction === "down") {
+            children[nodeId].forEach(function (c) {
+              edgeTraversed[nodeId + "->" + c] = true;
+              queue.push([c, "down"]);
+            });
+          }
+          if (isObs && direction === "up") {
+            // Observed, ball from child → pass to parents (explaining away)
+            parents[nodeId].forEach(function (p) {
+              edgeTraversed[nodeId + "->" + p] = true;
+              queue.push([p, "up"]);
+            });
+          }
+          if (isObs && direction === "down") {
+            // Observed, ball from parent → bounce UP to parents only
+            // This activates colliders: Z observed in X→Z←Y lets ball
+            // reach Y via Z's parents. Does NOT pass to children, so
+            // chains/forks with observed nodes stay correctly blocked.
+            parents[nodeId].forEach(function (p) {
+              edgeTraversed[nodeId + "->" + p] = true;
+              queue.push([p, "up"]);
+            });
+          }
+        }
+
+        var reachable = visited.has(targetId + "-up") || visited.has(targetId + "-down");
+        var edgeStatus = {};
+        edges.forEach(function (e) {
+          var fwd = e[0] + "->" + e[1], bwd = e[1] + "->" + e[0];
+          edgeStatus[fwd] = (edgeTraversed[fwd] || edgeTraversed[bwd]) ? "open" : "blocked";
+        });
+        return { reachable: reachable, visited: visited, edgeStatus: edgeStatus };
+      }
+
+      // ── Circle edge point ──────────────────────────────────────────────────
+      function circleEdgePoint(cx, cy, r, tx, ty) {
+        var dx = tx - cx, dy = ty - cy;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist === 0) return { x: cx, y: cy };
+        return { x: cx + (dx / dist) * r, y: cy + (dy / dist) * r };
+      }
+
+      // ── SVG creation ────────────────────────────────────────────────────────
+      function createWidget(widget) {
+        var nodesData = JSON.parse(widget.dataset.nodes);
+        var edgesData = JSON.parse(widget.dataset.edges);
+        var sourceId = widget.dataset.source;
+        var targetId = widget.dataset.target;
+
+        nodesData.forEach(function (n) {
+          n.r = n.r || NODE_R;
+          n.label = n.label || n.id;
+        });
+
+        // SVG bounds
+        var minX = Infinity, minY = Infinity, maxX = 0, maxY = 0;
+        nodesData.forEach(function (n) {
+          if (n.x - n.r - SVG_PAD < minX) minX = n.x - n.r - SVG_PAD;
+          if (n.y - n.r - SVG_PAD < minY) minY = n.y - n.r - SVG_PAD;
+          if (n.x + n.r + SVG_PAD > maxX) maxX = n.x + n.r + SVG_PAD;
+          if (n.y + n.r + SVG_PAD > maxY) maxY = n.y + n.r + SVG_PAD;
+        });
+        var svgW = maxX - minX, svgH = maxY - minY;
+
+        var ns = "http://www.w3.org/2000/svg";
+        var svg = document.createElementNS(ns, "svg");
+        svg.setAttribute("viewBox", minX + " " + minY + " " + svgW + " " + svgH);
+        svg.style.width = "100%";
+        svg.style.maxWidth = svgW + "px";
+
+        var uid = "bb-" + Math.random().toString(36).slice(2, 8);
+        var defs = document.createElementNS(ns, "defs");
+
+        function makeMarker(id, color) {
+          var m = document.createElementNS(ns, "marker");
+          m.setAttribute("id", id);
+          m.setAttribute("viewBox", "0 0 10 10");
+          m.setAttribute("refX", "7");
+          m.setAttribute("refY", "5");
+          m.setAttribute("markerWidth", "9");
+          m.setAttribute("markerHeight", "9");
+          m.setAttribute("orient", "auto-start-reverse");
+          var p = document.createElementNS(ns, "path");
+          p.setAttribute("d", "M 0 0 L 10 5 L 0 10 z");
+          p.setAttribute("fill", color);
+          m.appendChild(p);
+          return m;
+        }
+        defs.appendChild(makeMarker(uid, "#222"));
+        defs.appendChild(makeMarker(uid + "-open", "#009E73"));
+        defs.appendChild(makeMarker(uid + "-blocked", "#D55E00"));
+        svg.appendChild(defs);
+
+        var nodeMap = {};
+        nodesData.forEach(function (n) { nodeMap[n.id] = n; });
+
+        // Draw edges
+        var edgeElements = {};
+        edgesData.forEach(function (e) {
+          var from = nodeMap[e[0]], to = nodeMap[e[1]];
+          var p1 = circleEdgePoint(from.x, from.y, from.r, to.x, to.y);
+          var p2 = circleEdgePoint(to.x, to.y, to.r, from.x, from.y);
+          var dx = p2.x - p1.x, dy = p2.y - p1.y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist > 0) {
+            p2.x -= (dx / dist) * ARROW_OFFSET;
+            p2.y -= (dy / dist) * ARROW_OFFSET;
+          }
+
+          var line = document.createElementNS(ns, "line");
+          line.setAttribute("x1", p1.x);
+          line.setAttribute("y1", p1.y);
+          line.setAttribute("x2", p2.x);
+          line.setAttribute("y2", p2.y);
+          line.classList.add("bb-edge");
+          line.setAttribute("marker-end", "url(#" + uid + ")");
+          line.dataset.uid = uid;
+          svg.appendChild(line);
+          edgeElements[e[0] + "->" + e[1]] = line;
+        });
+
+        // Draw nodes
+        var nodeElements = {};
+        nodesData.forEach(function (n) {
+          var g = document.createElementNS(ns, "g");
+
+          var circle = document.createElementNS(ns, "circle");
+          circle.setAttribute("cx", n.x);
+          circle.setAttribute("cy", n.y);
+          circle.setAttribute("r", n.r);
+          circle.classList.add("bb-node");
+          g.appendChild(circle);
+
+          var label = document.createElementNS(ns, "text");
+          label.setAttribute("x", n.x);
+          label.setAttribute("y", n.y);
+          label.classList.add("bb-node-label");
+          label.textContent = n.label;
+          g.appendChild(label);
+
+          svg.appendChild(g);
+          nodeElements[n.id] = circle;
+        });
+
+        // Ball
+        var ball = document.createElementNS(ns, "circle");
+        ball.classList.add("bb-ball");
+        ball.setAttribute("r", "12");
+        ball.setAttribute("cx", nodeMap[sourceId].x);
+        ball.setAttribute("cy", nodeMap[sourceId].y);
+        svg.appendChild(ball);
+
+        // Controls
+        var controls = document.createElement("div");
+        controls.className = "bb-controls";
+
+        var runBtn = document.createElement("button");
+        runBtn.className = "bb-btn";
+        runBtn.textContent = "Run";
+
+        var resetBtn = document.createElement("button");
+        resetBtn.className = "bb-btn";
+        resetBtn.textContent = "Reset";
+
+        var result = document.createElement("span");
+        result.className = "bb-result";
+
+        controls.appendChild(runBtn);
+        controls.appendChild(resetBtn);
+
+        widget.appendChild(svg);
+        widget.appendChild(controls);
+        widget.appendChild(result);
+
+        // State
+        var observed = new Set();
+        var animating = false;
+
+        nodesData.forEach(function (n) {
+          nodeElements[n.id].addEventListener("click", function () {
+            if (animating) return;
+            clearResult();
+            if (observed.has(n.id)) {
+              observed.delete(n.id);
+              nodeElements[n.id].classList.remove("observed");
+            } else {
+              observed.add(n.id);
+              nodeElements[n.id].classList.add("observed");
+            }
+          });
+        });
+
+        function clearResult() {
+          result.className = "bb-result";
+          result.textContent = "";
+          Object.keys(edgeElements).forEach(function (k) {
+            var el = edgeElements[k];
+            el.classList.remove("path-open", "path-blocked");
+            el.setAttribute("marker-end", "url(#" + uid + ")");
+          });
+          ball.style.opacity = "0";
+        }
+
+        resetBtn.addEventListener("click", function () {
+          if (animating) return;
+          observed.clear();
+          nodesData.forEach(function (n) {
+            nodeElements[n.id].classList.remove("observed");
+          });
+          clearResult();
+        });
+
+        runBtn.addEventListener("click", function () {
+          if (animating) return;
+          animating = true;
+          runBtn.disabled = true;
+          clearResult();
+
+          var allPaths = enumeratePaths(nodesData, edgesData, sourceId, targetId);
+          var openPaths = [];
+          var blockedPaths = [];
+          allPaths.forEach(function (path) {
+            var result = isPathOpen(path, edgesData, Array.from(observed), nodesData);
+            if (result.open) {
+              openPaths.push(path);
+            } else {
+              // Truncate to stop at the blocking node
+              blockedPaths.push(path.slice(0, result.blockIdx + 1));
+            }
+          });
+
+          var isConnected = openPaths.length > 0;
+          var pathsToAnimate = isConnected ? openPaths : [blockedPaths[0] || [sourceId]];
+
+          animatePathSequence(ball, pathsToAnimate, nodeMap, edgeElements, edgesData, uid, isConnected, 0, function () {
+            if (isConnected) {
+              result.textContent = openPaths.length + " open path" + (openPaths.length > 1 ? "s" : "") + " — d-connected";
+              result.className = "bb-result show d-connected";
+            } else {
+              result.textContent = "all paths blocked — d-separated";
+              result.className = "bb-result show d-separated";
+            }
+            animating = false;
+            runBtn.disabled = false;
+          });
+        });
+      }
+
+      // ── Path enumeration ────────────────────────────────────────────────────
+
+      // Find ALL simple paths from source to target in the undirected skeleton.
+      function enumeratePaths(nodes, edges, sourceId, targetId) {
+        var adj = {};
+        nodes.forEach(function (n) { adj[n.id] = []; });
+        edges.forEach(function (e) {
+          adj[e[0]].push(e[1]);
+          adj[e[1]].push(e[0]);
+        });
+
+        var results = [];
+        var visited = new Set([sourceId]);
+
+        function dfs(current, path) {
+          if (current === targetId) { results.push(path.slice()); return; }
+          adj[current].forEach(function (nb) {
+            if (!visited.has(nb)) {
+              visited.add(nb);
+              path.push(nb);
+              dfs(nb, path);
+              path.pop();
+              visited.delete(nb);
+            }
+          });
+        }
+
+        dfs(sourceId, [sourceId]);
+        // Sort by length (shortest first)
+        results.sort(function (a, b) { return a.length - b.length; });
+        return results;
+      }
+
+      // Check whether a specific path is d-connected given observed set.
+      // A path is blocked if ANY intermediate node blocks it:
+      //   - Non-collider (on this path) that IS observed → blocks
+      //   - Collider (on this path) where NEITHER it NOR any descendant is observed → blocks
+      function isPathOpen(path, edges, observed, nodes) {
+        if (path.length <= 2) return { open: true, blockIdx: null }; // direct edge, always open
+
+        var observedSet = new Set(observed);
+
+        // Build directed children map for descendant lookup
+        var childrenMap = {};
+        nodes.forEach(function (n) { childrenMap[n.id] = []; });
+        edges.forEach(function (e) { childrenMap[e[0]].push(e[1]); });
+
+        // Build directed parent set for edge direction lookup
+        var parentSet = {};
+        nodes.forEach(function (n) { parentSet[n.id] = new Set(); });
+        edges.forEach(function (e) { parentSet[e[1]].add(e[0]); });
+
+        function hasObservedDescendant(nodeId) {
+          var stack = [nodeId];
+          var seen = new Set();
+          while (stack.length > 0) {
+            var n = stack.pop();
+            if (seen.has(n)) continue;
+            seen.add(n);
+            if (observedSet.has(n)) return true;
+            childrenMap[n].forEach(function (c) { stack.push(c); });
+          }
+          return false;
+        }
+
+        // Check each intermediate node (not first or last)
+        for (var i = 1; i < path.length - 1; i++) {
+          var prev = path[i - 1];
+          var node = path[i];
+          var next = path[i + 1];
+
+          // Is this node a collider on this path?
+          // Collider: both edges point INTO the node (prev→node←next)
+          var prevPointsIn = parentSet[node].has(prev); // prev is parent of node
+          var nextPointsIn = parentSet[node].has(next); // next is parent of node
+          var isCollider = prevPointsIn && nextPointsIn;
+
+          if (isCollider) {
+            // Collider: path open only if node or a descendant is observed
+            if (!hasObservedDescendant(node)) return { open: false, blockIdx: i };
+          } else {
+            // Non-collider: path open only if node is NOT observed
+            if (observedSet.has(node)) return { open: false, blockIdx: i };
+          }
+        }
+        return { open: true, blockIdx: null };
+      }
+
+      // ── Animation ──────────────────────────────────────────────────────────
+
+      // Highlight edges along a path
+      function highlightPathEdges(path, edgeElements, edges, uid, isOpen) {
+        var cls = isOpen ? "path-open" : "path-blocked";
+        var markerSuffix = isOpen ? "-open" : "-blocked";
+
+        for (var i = 0; i < path.length - 1; i++) {
+          var a = path[i], b = path[i + 1];
+          // Find the directed edge key (could be a→b or b→a)
+          var fwd = a + "->" + b, bwd = b + "->" + a;
+          var key = edgeElements[fwd] ? fwd : bwd;
+          if (edgeElements[key]) {
+            edgeElements[key].classList.add(cls);
+            edgeElements[key].setAttribute("marker-end", "url(#" + uid + markerSuffix + ")");
+          }
+        }
+      }
+
+      // Animate ball along a single path, then call done
+      function animateBall(ball, hops, nodeMap, idx, done) {
+        if (idx >= hops.length) { done(); return; }
+        var node = nodeMap[hops[idx]];
+        ball.style.opacity = "1";
+        ball.style.transition = "cx " + ANIM_DURATION + "ms ease-in-out, cy " + ANIM_DURATION + "ms ease-in-out";
+        ball.setAttribute("cx", node.x);
+        ball.setAttribute("cy", node.y);
+        setTimeout(function () { animateBall(ball, hops, nodeMap, idx + 1, done); }, ANIM_DURATION);
+      }
+
+      // Animate multiple paths sequentially — one ball per path
+      function animatePathSequence(ball, paths, nodeMap, edgeElements, edges, uid, isOpen, pathIdx, done) {
+        if (pathIdx >= paths.length) { done(); return; }
+
+        var path = paths[pathIdx];
+        var isLastPath = (pathIdx === paths.length - 1);
+
+        // Reset ball to source position instantly
+        ball.style.transition = "none";
+        ball.setAttribute("cx", nodeMap[path[0]].x);
+        ball.setAttribute("cy", nodeMap[path[0]].y);
+        ball.style.opacity = "1";
+
+        // Small delay to allow transition reset
+        setTimeout(function () {
+          animateBall(ball, path, nodeMap, 0, function () {
+            // After ball reaches end, highlight the path edges
+            highlightPathEdges(path, edgeElements, edges, uid, isOpen);
+
+            if (isLastPath) {
+              // Last path: ball stays visible, no fade
+              done();
+            } else {
+              // Linger 500ms at stop position, then fade out, then next path
+              setTimeout(function () {
+                ball.style.transition = "opacity 200ms ease-out";
+                ball.style.opacity = "0";
+                setTimeout(function () {
+                  animatePathSequence(ball, paths, nodeMap, edgeElements, edges, uid, isOpen, pathIdx + 1, done);
+                }, 200);
+              }, 500);
+            }
+          });
+        }, 50);
+      }
+
+      // ── Init ────────────────────────────────────────────────────────────────
+      function initAll() {
+        document.querySelectorAll(".bayes-ball-widget").forEach(function (w) {
+          if (!w.dataset.bbInit) {
+            w.dataset.bbInit = "true";
+            createWidget(w);
+          }
+        });
+      }
+
+      if (typeof Reveal !== "undefined") {
+        if (Reveal.isReady()) { initAll(); } else { Reveal.on("ready", initAll); }
+        Reveal.on("slidechanged", initAll);
+      } else {
+        document.addEventListener("DOMContentLoaded", initAll);
+      }
+    })();
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/moritzketzer\.github\.io\/iqb-workshop\/");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
